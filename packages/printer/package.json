@@ -1,0 +1,14 @@
+{
+  "name": "@react-thermal-printer/printer",
+  "version": "0.0.0",
+  "description": "Printer interface for thermal printing.",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "esm/index.js",
+    "import": "esm/index.js"
+  }
+}

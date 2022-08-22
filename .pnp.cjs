@@ -21,6 +21,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."\
       },\
       {\
+        "name": "@react-thermal-printer/printer",\
+        "reference": "workspace:packages/printer"\
+      },\
+      {\
         "name": "react-thermal-printer",\
         "reference": "workspace:packages/react-thermal-printer"\
       }\
@@ -28,6 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
+      ["@react-thermal-printer/printer", ["workspace:packages/printer"]],\
       ["react-thermal-printer", ["workspace:packages/react-thermal-printer"]],\
       ["root", ["workspace:."]]\
     ],\
@@ -147,6 +152,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.4.0"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@react-thermal-printer/printer", [\
+        ["workspace:packages/printer", {\
+          "packageLocation": "./packages/printer/",\
+          "packageDependencies": [\
+            ["@react-thermal-printer/printer", "workspace:packages/printer"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["@types/eslint", [\

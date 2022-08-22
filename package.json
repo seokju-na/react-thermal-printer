@@ -5,6 +5,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "lint": "eslint --cache -c .eslintrc.js 'packages/**/*.{ts,tsx}'",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit --incremental"
+  },
   "devDependencies": {
     "@types/eslint": "^8",
     "@types/prettier": "^2",

@@ -88,6 +88,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-thermal-printer/printer@workspace:packages/printer":
+  version: 0.0.0-use.local
+  resolution: "@react-thermal-printer/printer@workspace:packages/printer"
+  languageName: unknown
+  linkType: soft
+
 "@types/eslint@npm:^8":
   version: 8.4.6
   resolution: "@types/eslint@npm:8.4.6"
