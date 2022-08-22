@@ -17,14 +17,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "react-thermal-printer",\
+        "name": "root",\
         "reference": "workspace:."\
+      },\
+      {\
+        "name": "react-thermal-printer",\
+        "reference": "workspace:packages/react-thermal-printer"\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["react-thermal-printer", ["workspace:."]]\
+      ["react-thermal-printer", ["workspace:packages/react-thermal-printer"]],\
+      ["root", ["workspace:."]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -38,12 +43,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["react-thermal-printer", [\
+        ["workspace:packages/react-thermal-printer", {\
+          "packageLocation": "./packages/react-thermal-printer/",\
+          "packageDependencies": [\
+            ["react-thermal-printer", "workspace:packages/react-thermal-printer"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["root", [\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["react-thermal-printer", "workspace:."]\
+            ["root", "workspace:."]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["typescript", [\
+        ["patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af", {\
+          "packageLocation": "./.yarn/cache/typescript-patch-fc259c5d56-9096d8f6c1.zip/node_modules/typescript/",\
+          "packageDependencies": [\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]]\
     ]\

@@ -1,0 +1,26 @@
+{
+  "name": "react-thermal-printer",
+  "description": "A React component to thermal printing",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Seokju Na",
+    "email": "seokju.me@gmail.com",
+    "url": "https://github.com/seokju-na"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seokju-na/react-thermal-printer",
+    "directory": "packages/react-thermal-printer"
+  },
+  "homepage": "https://github.com/seokju-na/react-thermal-printer",
+  "bugs": {
+    "url": "https://github.com/seokju-na/react-thermal-printer/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

@@ -1,7 +1,8 @@
 {
-  "name": "react-thermal-printer",
-  "version": "0.0.0",
-  "main": "dist/index.js",
+  "name": "root",
+  "private": true,
   "packageManager": "yarn@3.2.2",
-  "license": "MIT"
+  "workspaces": [
+    "packages/*"
+  ]
 }
