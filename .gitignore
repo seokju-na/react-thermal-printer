@@ -12,3 +12,7 @@
 
 .idea/
 node_modules/
+dist/
+esm/
+*.tsbuildinfo
+.eslintcache
