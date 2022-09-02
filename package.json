@@ -7,13 +7,17 @@
   ],
   "scripts": {
     "lint": "eslint --cache -c .eslintrc.js 'packages/**/*.{ts,tsx}'",
-    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit --incremental"
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit --incremental",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "devDependencies": {
     "@types/eslint": "^8",
+    "@types/jsdom": "^20",
     "@types/prettier": "^2",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
+    "@vitejs/plugin-react": "^2.0.1",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.4.2",
@@ -21,7 +25,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jsdom": "^20.0.0",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.9",
+    "vitest": "^0.22.1"
   }
 }
