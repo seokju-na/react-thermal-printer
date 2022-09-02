@@ -1,0 +1,44 @@
+name: ci
+on: pull_request
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/.eslintcache
+          key: lint-${{ hashFiles('**/.eslintcache') }}
+          restore-keys: |
+            lint-
+      - run: yarn install --immutable --immutable-cache
+      - run: yarn lint
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/*.tsbuildinfo
+          key: typecheck-${{ hashFiles('**/*.tsbuildinfo') }}
+          restore-keys: |
+            typecheck-
+      - run: yarn install --immutable --immutable-cache
+      - run: yarn typecheck
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn install --immutable --immutable-cache
+      - run: yarn test
