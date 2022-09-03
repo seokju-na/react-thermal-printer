@@ -1,0 +1,42 @@
+name: publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn install --immutable --immutable-cache
+      - name: bump version
+        run: |
+          # git user config
+          git config --local user.name "Seokju Na"
+          git config --local user.email "seokju.me@gmail.com"
+
+          # bump version
+          yarn version apply --all
+          git add ./\*\/package.json
+          git checkout -- .
+          git diff-index --quiet HEAD -- || SHOULD_COMMIT="yes"
+          
+          # update
+          echo $SHOULD_COMMIT
+          if [ -n "$SHOULD_COMMIT" ];
+            then
+              git commit -m "bump version [skip ci]"
+              git push origin HEAD
+            else
+              echo "no updates";
+          fi
+      - name: publish
+        run: |
+          echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" | tee $HOME/.yarnrc.yml
+          yarn workspaces foreach --from 'packages/*' --since $(git rev-parse HEAD~1) npm publish --tolerate-republish
