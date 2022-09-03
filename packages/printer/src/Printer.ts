@@ -11,12 +11,14 @@ export interface Printer {
   setTextBold(bold: boolean): this;
   setTextSize(width: TextSize, height: TextSize): this;
   setTextUnderline(underline: TextUnderline): this;
+  setTextNormal(): this;
   setAlign(align: Align): this;
   text(data: string): this;
   raw(data: Uint8Array): this;
   newLine(): this;
   cut(): this;
   qrcode(url: string): this;
+  initialize(): this;
   getData(): Uint8Array;
   clear(): this;
   debug(): this;

@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
     '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+    '@typescript-eslint/no-explicit-any': 'off',
     'prefer-const': 'error',
     'no-var': 'error',
     curly: ['error', 'all'],

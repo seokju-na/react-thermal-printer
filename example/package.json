@@ -1,0 +1,23 @@
+{
+  "name": "react-thermal-printer-exmaple",
+  "private": true,
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.13",
+    "babel-loader": "^8.2.5",
+    "next": "^12.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-thermal-printer": "workspace:^",
+    "typescript": "^4.8.2",
+    "webpack": "^5.74.0"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7",
+    "@types/node": "^18.7.14",
+    "@types/react": "^18",
+    "@types/react-dom": "^18"
+  }
+}

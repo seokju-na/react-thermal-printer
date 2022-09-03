@@ -1,1 +1,4 @@
-vitest.config.ts
+jest.setup.ts
+example
+**/dist
+**/esm
