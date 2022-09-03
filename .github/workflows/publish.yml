@@ -39,4 +39,4 @@ jobs:
       - name: publish
         run: |
           echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" | tee $HOME/.yarnrc.yml
-          yarn workspaces foreach --from 'packages/*' --since $(git rev-parse HEAD~1) npm publish --tolerate-republish
+          yarn workspaces foreach --no-private npm publish --tolerate-republish

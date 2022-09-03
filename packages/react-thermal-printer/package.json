@@ -27,6 +27,7 @@
     "url": "https://github.com/seokju-na/react-thermal-printer/issues"
   },
   "scripts": {
+    "prepack": "yarn build",
     "build": "node ../../.scripts/build.mjs"
   },
   "peerDependencies": {

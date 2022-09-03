@@ -24,6 +24,7 @@ async function build(options = {}) {
     sourcemap: true,
     plugins: [pnpPlugin()],
     external,
+    jsx: 'automatic',
     ...options,
   });
 }
@@ -40,6 +41,7 @@ async function types(outDir) {
       moduleResolution: 'Node',
       lib: ['DOM', 'DOM.Iterable', 'ESNext'],
       skipLibCheck: true,
+      jsx: 'react-jsx',
     },
     include: ['src'],
     exclude: [
@@ -64,7 +66,7 @@ async function types(outDir) {
 }
 
 await Promise.all([
-  build({ format: 'esm', outdir: 'esm' }),
   build({ format: 'cjs', outdir: 'dist' }),
+  build({ format: 'esm', outdir: 'esm' }),
   types('dist'),
 ]);
