@@ -2,6 +2,7 @@
   "name": "@react-thermal-printer/printer",
   "version": "0.0.0",
   "description": "Printer interface provides ESC/POS commands.",
+  "license": "MIT",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "types": "src/index.ts",
@@ -10,6 +11,9 @@
     "types": "dist/index.d.ts",
     "module": "esm/index.js",
     "import": "esm/index.js"
+  },
+  "scripts": {
+    "build": "node ../../.scripts/build.mjs"
   },
   "dependencies": {
     "iconv-lite": "^0.6.3"

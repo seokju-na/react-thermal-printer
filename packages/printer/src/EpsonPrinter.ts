@@ -10,10 +10,6 @@ export class EpsonPrinter extends BasePrinter {
     super(options);
   }
 
-  cut(): this {
-    return this;
-  }
-
   qrcode(): this {
     throw new Error('TODO');
   }

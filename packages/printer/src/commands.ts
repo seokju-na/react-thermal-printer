@@ -155,6 +155,20 @@ export function textFont(n: number) {
 }
 
 /**
+ * Select print mode(s)
+ * | Format   | Value    |
+ * |---------|----------|
+ * | ASCII   | ESC ! n  |
+ * | Hex     | 1B 21 n  |
+ * | Decimal | 27 33 n  |
+ *
+ * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=23
+ */
+export function textMode(n: number) {
+  return [ESC, 0x21, n];
+}
+
+/**
  * Select character size
  * | Format   | Value    |
  * |---------|----------|
@@ -166,4 +180,30 @@ export function textFont(n: number) {
  */
 export function textSize(n: number) {
   return [GS, 0x21, n];
+}
+
+/**
+ * Select cut mode and cut paper
+ * <Function A>
+ * | Format   | Value    |
+ * |---------|----------|
+ * | ASCII   | GS V m  |
+ * | Hex     | 1D 56 m |
+ * | Decimal | 29 86 m |
+ *
+ * <Function B, C, D>
+ * | Format   | Value    |
+ * |---------|-----------|
+ * | ASCII   | GS V m n  |
+ * | Hex     | 1D 56 m n |
+ * | Decimal | 29 86 m n |
+ *
+ * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=87
+ */
+export function cut(m: number, n?: number) {
+  const cmd = [GS, 0x56, m];
+  if (n != null) {
+    cmd.push(n);
+  }
+  return cmd;
 }

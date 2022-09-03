@@ -16,3 +16,4 @@ dist/
 esm/
 *.tsbuildinfo
 .eslintcache
+.next

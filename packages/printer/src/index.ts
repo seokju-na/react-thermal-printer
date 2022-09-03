@@ -20,6 +20,6 @@ export function getPrinter({ type, ...options }: PrinterOptions): Printer {
 }
 
 export type { CharacterSet } from './CharacterSet';
-export type { Printer } from './Printer';
+export * from './Printer';
 export { EpsonPrinter } from './EpsonPrinter';
 export { StarPrinter } from './StarPrinter';

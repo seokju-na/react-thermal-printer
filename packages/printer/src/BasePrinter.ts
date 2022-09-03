@@ -1,18 +1,20 @@
 import { CharacterSet } from './CharacterSet';
-import { Printer, TextSize, Align, TextUnderline, TextFont } from './Printer';
+import { Align, Printer, TextFont, TextSize, TextUnderline } from './Printer';
 import {
+  alignment,
+  characterSet,
+  cut,
   initialize,
   LF,
-  characterSet,
-  alignment,
   textBold,
-  textUnderline,
   textFont,
+  textMode,
   textSize,
+  textUnderline,
 } from './commands';
 import { encode } from './encode';
 
-interface Options {
+export interface BasePrinterOptions {
   characterSet?: CharacterSet;
 }
 
@@ -26,7 +28,7 @@ export abstract class BasePrinter implements Printer {
   protected cmds: Cmd[] = [];
   protected characterSet: CharacterSet;
 
-  constructor(options?: Options) {
+  protected constructor(options?: BasePrinterOptions) {
     this.characterSet = options?.characterSet ?? 'pc437_usa';
   }
 
@@ -110,6 +112,14 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
+  setTextNormal(): this {
+    this.cmds.push({
+      name: 'setTextNormal',
+      data: textMode(0),
+    });
+    return this;
+  }
+
   setAlign(align: Align): this {
     const n = (() => {
       switch (align) {
@@ -156,10 +166,24 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
+  cut(): this {
+    this.cmds.push({
+      name: 'cut',
+      data: cut(48),
+    });
+    return this;
+  }
+
+  initialize(): this {
+    this.cmds.push({
+      name: 'initialize',
+      data: initialize(),
+    });
+    return this;
+  }
+
   getData(): Uint8Array {
     const data = this.cmds.flatMap(x => x.data);
-    data.unshift(...initialize());
-
     return new Uint8Array(data);
   }
 
@@ -173,6 +197,5 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
-  abstract cut(): this;
   abstract qrcode(url: string): this;
 }

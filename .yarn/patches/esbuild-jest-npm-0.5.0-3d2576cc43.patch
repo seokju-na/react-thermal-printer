@@ -1,0 +1,42 @@
+diff --git a/esbuild-jest.d.ts b/esbuild-jest.d.ts
+index 633c44def658bb3249888d7a78d4601227912ca4..9526daf7cb2701091bc6937eade7dcb69318b1d8 100644
+--- a/esbuild-jest.d.ts
++++ b/esbuild-jest.d.ts
+@@ -2,6 +2,7 @@ import { Transformer } from '@jest/transform';
+ import { Loader } from 'esbuild';
+ 
+ interface Options {
++    jsx?: 'automatic' | 'classic';
+     jsxFactory?: string;
+     jsxFragment?: string;
+     sourcemap?: boolean | 'inline' | 'external';
+diff --git a/esbuild-jest.es.js b/esbuild-jest.es.js
+index 140e050cb5aa1bbc1589cf1d5781ae373486fc8a..766386c9803515f96e9b9463cef5bcec28a522bd 100644
+--- a/esbuild-jest.es.js
++++ b/esbuild-jest.es.js
+@@ -49,6 +49,10 @@ const createTransformer = (options)=>({
+                 loader,
+                 format: (options === null || options === void 0 ? void 0 : options.format) || 'cjs',
+                 target: (options === null || options === void 0 ? void 0 : options.target) || 'es2018',
++                ...(options === null || options === void 0 ? void 0 : options.jsx) ? {
++                    jsx: options.jsx
++                } : {
++                },
+                 ...(options === null || options === void 0 ? void 0 : options.jsxFactory) ? {
+                     jsxFactory: options.jsxFactory
+                 } : {
+diff --git a/esbuild-jest.js b/esbuild-jest.js
+index 82ddd865ebb2b889e523b88172183ebf940669f1..e816574b28e0a0b3e4c682efe47fabdf236186f8 100644
+--- a/esbuild-jest.js
++++ b/esbuild-jest.js
+@@ -55,6 +55,10 @@ const createTransformer = (options)=>({
+                 loader,
+                 format: (options === null || options === void 0 ? void 0 : options.format) || 'cjs',
+                 target: (options === null || options === void 0 ? void 0 : options.target) || 'es2018',
++                ...(options === null || options === void 0 ? void 0 : options.jsx) ? {
++                    jsx: options.jsx
++                } : {
++                },
+                 ...(options === null || options === void 0 ? void 0 : options.jsxFactory) ? {
+                     jsxFactory: options.jsxFactory
+                 } : {

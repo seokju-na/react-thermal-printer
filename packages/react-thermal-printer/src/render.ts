@@ -1,0 +1,51 @@
+import { getPrinter } from '@react-thermal-printer/printer/src/index';
+import { Children, ComponentProps, isValidElement, ReactElement, ReactNode } from 'react';
+import { Printer } from './components/Printer';
+import { isPrintable } from './types/Printable';
+import { PrinterContext } from './types/PrinterContext';
+
+type PrinterProps = ComponentProps<typeof Printer>;
+
+interface RenderOptions {
+  debug?: boolean;
+}
+
+/**
+ * Render the React element as printable binary data.
+ */
+export async function render(
+  elem: ReactElement<PrinterProps>,
+  options?: RenderOptions
+): Promise<Uint8Array> {
+  const { type, characterSet, width = 48, initialize = true, children } = elem.props;
+  const printer = getPrinter({ type, characterSet });
+
+  if (characterSet != null) {
+    printer.setCharacterSet(characterSet);
+  }
+  await print(children, { printer, width });
+
+  if (initialize) {
+    printer.initialize();
+  }
+
+  if (options?.debug) {
+    printer.debug();
+  }
+
+  return printer.getData();
+}
+
+async function print(node: ReactNode, context: PrinterContext) {
+  for (const child of Children.toArray(node)) {
+    if (!isValidElement(child)) {
+      continue;
+    }
+
+    if (isPrintable(child.type)) {
+      await child.type.print(child, context);
+    } else {
+      await print(child.props.children, context);
+    }
+  }
+}
