@@ -1,4 +1,4 @@
-import { getPrinter } from '@react-thermal-printer/printer/src/index';
+import { getPrinter } from '@react-thermal-printer/printer';
 import { Children, ComponentProps, isValidElement, ReactElement, ReactNode } from 'react';
 import { Printer } from './components/Printer';
 import { isPrintable } from './types/Printable';

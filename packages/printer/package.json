@@ -13,6 +13,7 @@
     "import": "esm/index.js"
   },
   "scripts": {
+    "prepack": "yarn build",
     "build": "node ../../.scripts/build.mjs"
   },
   "dependencies": {
