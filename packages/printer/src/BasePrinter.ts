@@ -1,17 +1,15 @@
 import { CharacterSet } from './CharacterSet';
 import { Align, Printer, TextFont, TextSize, TextUnderline } from './Printer';
-import {
-  alignment,
-  characterSet,
-  cut,
-  initialize,
-  LF,
-  textBold,
-  textFont,
-  textMode,
-  textSize,
-  textUnderline,
-} from './commands';
+import { alignment } from './commands/alignment';
+import { characterSet } from './commands/characterSet';
+import { LF } from './commands/common';
+import { cut } from './commands/cut';
+import { initialize } from './commands/initialize';
+import { textBold } from './commands/textBold';
+import { textFont } from './commands/textFont';
+import { textMode } from './commands/textMode';
+import { textSize } from './commands/textSize';
+import { textUnderline } from './commands/textUnderline';
 import { encode } from './encode';
 
 export interface BasePrinterOptions {
