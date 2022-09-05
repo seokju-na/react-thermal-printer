@@ -17,3 +17,4 @@ esm/
 *.tsbuildinfo
 .eslintcache
 .next
+.DS_Store*
