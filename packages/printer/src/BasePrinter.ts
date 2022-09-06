@@ -5,6 +5,7 @@ import { characterSet } from './commands/characterSet';
 import { LF } from './commands/common';
 import { cut } from './commands/cut';
 import { initialize } from './commands/initialize';
+import { invert } from './commands/invert';
 import { textBold } from './commands/textBold';
 import { textFont } from './commands/textFont';
 import { textMode } from './commands/textMode';
@@ -134,6 +135,15 @@ export abstract class BasePrinter implements Printer {
       name: 'setAlign',
       args: [align],
       data: alignment(n),
+    });
+    return this;
+  }
+
+  invert(enabled: boolean): this {
+    this.cmds.push({
+      name: 'invert',
+      args: [enabled],
+      data: invert(enabled ? 1 : 0),
     });
     return this;
   }

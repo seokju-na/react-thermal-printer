@@ -8,6 +8,7 @@ interface Props {
   bold?: boolean;
   font?: TextFont;
   underline?: TextUnderline;
+  invert?: boolean;
   size?: { width: TextSize; height: TextSize };
   children: ReactNode;
 }
@@ -17,7 +18,7 @@ export const Text: Printable<Props> = ({ children }) => {
 };
 
 Text.print = (elem, { printer }) => {
-  const { children, align, bold, underline, size } = elem.props;
+  const { children, align, bold, underline, invert, size } = elem.props;
 
   if (align != null) {
     printer.setAlign(align);
@@ -28,6 +29,9 @@ Text.print = (elem, { printer }) => {
   if (underline != null) {
     printer.setTextUnderline(underline);
   }
+  if (invert != null) {
+    printer.invert(true);
+  }
   if (size != null) {
     printer.setTextSize(size.width, size.height);
   }
@@ -36,6 +40,7 @@ Text.print = (elem, { printer }) => {
     .text(childrenToString(children))
     .newLine()
     .setTextNormal() // reset
+    .invert(false) // reset
     .setAlign('left'); // reset
 };
 

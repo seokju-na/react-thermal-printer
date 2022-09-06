@@ -19,6 +19,7 @@ it('print text', async () => {
     .text('i love pizza')
     .newLine()
     .setTextNormal()
+    .invert(false)
     .setAlign('left')
     .getData();
 
@@ -42,6 +43,7 @@ it('print text with configs', async () => {
     .text('안녕하세요')
     .newLine()
     .setTextNormal()
+    .invert(false)
     .setAlign('left')
     .getData();
 
@@ -60,6 +62,7 @@ it('print text with fragments', async () => {
     .text('hello world')
     .newLine()
     .setTextNormal()
+    .invert(false)
     .setAlign('left')
     .getData();
 
@@ -81,6 +84,7 @@ it('print text with html special characters', async () => {
     .text(`'"<>`)
     .newLine()
     .setTextNormal()
+    .invert(false)
     .setAlign('left')
     .getData();
 

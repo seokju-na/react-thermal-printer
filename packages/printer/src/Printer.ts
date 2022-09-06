@@ -13,6 +13,7 @@ export interface Printer {
   setTextUnderline(underline: TextUnderline): this;
   setTextNormal(): this;
   setAlign(align: Align): this;
+  invert(enabled: boolean): this;
   text(data: string): this;
   raw(data: Uint8Array): this;
   newLine(): this;
