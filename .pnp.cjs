@@ -25,6 +25,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:example"\
       },\
       {\
+        "name": "@react-thermal-printer/image",\
+        "reference": "workspace:packages/image"\
+      },\
+      {\
         "name": "@react-thermal-printer/printer",\
         "reference": "workspace:packages/printer"\
       },\
@@ -36,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
+      ["@react-thermal-printer/image", ["workspace:packages/image"]],\
       ["@react-thermal-printer/printer", ["workspace:packages/printer"]],\
       ["react-thermal-printer", ["virtual:86531d9c4f55c8a4a7c08972573e16b827c1b658ef5df244f7f8dccad4e9eb47c91a7c6d7d5b7495af2dc3b6d84282160a40c0e6fca23c7ed23233d72672d0ff#workspace:packages/react-thermal-printer", "workspace:packages/react-thermal-printer"]],\
       ["react-thermal-printer-exmaple", ["workspace:example"]],\
@@ -1552,6 +1557,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.4.0"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@react-thermal-printer/image", [\
+        ["workspace:packages/image", {\
+          "packageLocation": "./packages/image/",\
+          "packageDependencies": [\
+            ["@react-thermal-printer/image", "workspace:packages/image"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["@react-thermal-printer/printer", [\

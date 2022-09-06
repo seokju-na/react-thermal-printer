@@ -1007,6 +1007,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-thermal-printer/image@workspace:packages/image":
+  version: 0.0.0-use.local
+  resolution: "@react-thermal-printer/image@workspace:packages/image"
+  languageName: unknown
+  linkType: soft
+
 "@react-thermal-printer/printer@workspace:^, @react-thermal-printer/printer@workspace:packages/printer":
   version: 0.0.0-use.local
   resolution: "@react-thermal-printer/printer@workspace:packages/printer"
