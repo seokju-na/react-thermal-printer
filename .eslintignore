@@ -2,3 +2,7 @@ jest.setup.ts
 example
 **/dist
 **/esm
+**/build
+**/.yarn
+**/.docusaurus
+
