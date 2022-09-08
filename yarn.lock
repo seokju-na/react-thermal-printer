@@ -1007,7 +1007,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-thermal-printer/image@workspace:packages/image":
+"@react-thermal-printer/image@workspace:^, @react-thermal-printer/image@workspace:packages/image":
   version: 0.0.0-use.local
   resolution: "@react-thermal-printer/image@workspace:packages/image"
   languageName: unknown
@@ -1017,6 +1017,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@react-thermal-printer/printer@workspace:packages/printer"
   dependencies:
+    "@react-thermal-printer/image": "workspace:^"
     iconv-lite: ^0.6.3
   languageName: unknown
   linkType: soft
@@ -1052,6 +1053,33 @@ __metadata:
   dependencies:
     tslib: ^2.4.0
   checksum: 5c2f173e950dd3929d84ae48b3586a274d5a874e7cf2013b3d8081e4f8c723fa3a4d4e63b263e84bb7f06431f87b640e91a12655410463c81a3dc2bbc15eceda
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:4.2.3":
+  version: 4.2.3
+  resolution: "@tanstack/query-core@npm:4.2.3"
+  checksum: b37efdc32b1731575eba398eda3b7a4cd3ed25ee1032d5200124c37ab4e58711d310e2e29e9e51284553a7c03c85e55cf8da6833bc3b1e215e0e43e7399ab3ca
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "@tanstack/react-query@npm:4.2.3"
+  dependencies:
+    "@tanstack/query-core": 4.2.3
+    "@types/use-sync-external-store": ^0.0.3
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 0a38ae05271e1669c6efd5cc77608103b6dfde577ecdc88c3f0e72953aea11c102c9b5a49fa2ca822f260a68f9f9646c5e847e7d87c99117b2c2e3b1356cbc8b
   languageName: node
   linkType: hard
 
@@ -1302,6 +1330,13 @@ __metadata:
   version: 4.0.2
   resolution: "@types/tough-cookie@npm:4.0.2"
   checksum: e055556ffdaa39ad85ede0af192c93f93f986f4bd9e9426efdc2948e3e2632db3a4a584d4937dbf6d7620527419bc99e6182d3daf2b08685e710f2eda5291905
+  languageName: node
+  linkType: hard
+
+"@types/use-sync-external-store@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@types/use-sync-external-store@npm:0.0.3"
+  checksum: 161ddb8eec5dbe7279ac971531217e9af6b99f7783213566d2b502e2e2378ea19cf5e5ea4595039d730aa79d3d35c6567d48599f69773a02ffcff1776ec2a44e
   languageName: node
   linkType: hard
 
@@ -6587,6 +6622,7 @@ __metadata:
   resolution: "react-thermal-printer-exmaple@workspace:example"
   dependencies:
     "@babel/core": ^7.18.13
+    "@tanstack/react-query": ^4.2.3
     "@types/babel__core": ^7
     "@types/node": ^18.7.14
     "@types/react": ^18
@@ -7851,7 +7887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
