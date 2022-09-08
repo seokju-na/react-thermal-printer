@@ -4,7 +4,8 @@
   "packageManager": "yarn@3.2.2",
   "workspaces": [
     "packages/*",
-    "example"
+    "example",
+    "website"
   ],
   "scripts": {
     "lint": "eslint --cache -c .eslintrc.js 'packages/**/*.{ts,tsx}'",
