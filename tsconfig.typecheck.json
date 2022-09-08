@@ -8,7 +8,6 @@
     "**/*.test.tsx",
     "**/node_modules",
     "**/dist/",
-    "**/esm/",
-    "website"
+    "**/esm/"
   ]
 }
