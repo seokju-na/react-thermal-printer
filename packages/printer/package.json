@@ -18,6 +18,7 @@
     "build": "node ../../.scripts/build.mjs"
   },
   "dependencies": {
+    "@react-thermal-printer/image": "workspace:^",
     "iconv-lite": "^0.6.3"
   }
 }

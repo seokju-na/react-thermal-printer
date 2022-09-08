@@ -19,6 +19,7 @@ export interface Printer {
   newLine(): this;
   cut(): this;
   qrcode(url: string): this;
+  image(data: Uint8Array, width: number, height: number): this;
   initialize(): this;
   getData(): Uint8Array;
   clear(): this;
