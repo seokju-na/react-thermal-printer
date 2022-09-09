@@ -1,5 +1,10 @@
 import { BasePrinter, BasePrinterOptions } from './BasePrinter';
 import { alignment } from './commands/alignment';
+import { barcodeHRIFont } from './commands/barcodeHRIFont';
+import { barcodeHRIPosition } from './commands/barcodeHRIPosition';
+import { barcodeHeight } from './commands/barcodeHeight';
+import { barcodePrint } from './commands/barcodePrint';
+import { barcodeWidth } from './commands/barcodeWidth';
 import { characterSet } from './commands/characterSet';
 import { LF } from './commands/common';
 import { cut } from './commands/cut';
@@ -168,6 +173,28 @@ it('qrcode', () => {
       ...qrcodeCorrectionLevel(50),
       ...qrcodeStore(20, 0, ...encode('https://seokju.me', 'pc437_usa')),
       ...qrcodePrint(),
+    ])
+  );
+});
+
+it('barcode', () => {
+  const printer = new TestPrinter();
+  const data = '1234567890';
+  const encoded = Buffer.from(data, 'ascii');
+
+  printer.barcode(data, 'CODE39', {
+    hriPosition: 'top-bottom',
+    hriFont: 'B',
+    width: 4,
+    height: 170,
+  });
+  expect(printer.getData()).toEqual(
+    Uint8Array.from([
+      ...barcodeHRIPosition(3),
+      ...barcodeHRIFont(1),
+      ...barcodeWidth(4),
+      ...barcodeHeight(170),
+      ...barcodePrint(69, encoded.byteLength, ...Array.from(encoded)),
     ])
   );
 });

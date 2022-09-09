@@ -1,7 +1,21 @@
 import { Image } from '@react-thermal-printer/image/src';
 import { CharacterSet } from './CharacterSet';
-import { Align, Printer, QRCodeOptions, TextFont, TextSize, TextUnderline } from './Printer';
+import {
+  Align,
+  BarcodeOptions,
+  BarcodeType,
+  Printer,
+  QRCodeOptions,
+  TextFont,
+  TextSize,
+  TextUnderline,
+} from './Printer';
 import { alignment } from './commands/alignment';
+import { barcodeHRIFont } from './commands/barcodeHRIFont';
+import { barcodeHRIPosition } from './commands/barcodeHRIPosition';
+import { barcodeHeight } from './commands/barcodeHeight';
+import { barcodePrint } from './commands/barcodePrint';
+import { barcodeWidth } from './commands/barcodeWidth';
 import { characterSet } from './commands/characterSet';
 import { LF } from './commands/common';
 import { cut } from './commands/cut';
@@ -264,6 +278,103 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'qrcodePrint',
       data: qrcodePrint(),
+    });
+
+    return this;
+  }
+
+  barcode(data: string, type: BarcodeType, options: BarcodeOptions = {}): this {
+    const { hriPosition = 'none', hriFont = 'A', width = 3, height = 162 } = options;
+    const hriPositionValue = (() => {
+      switch (hriPosition) {
+        case 'none':
+          return 0;
+        case 'top':
+          return 1;
+        case 'bottom':
+          return 2;
+        case 'top-bottom':
+          return 3;
+      }
+    })();
+    this.cmds.push({
+      name: 'barcodeHRIPosition',
+      args: [hriPosition],
+      data: barcodeHRIPosition(hriPositionValue),
+    });
+
+    const hriFontValue = (() => {
+      switch (hriFont) {
+        case 'A':
+          return 0;
+        case 'B':
+          return 1;
+        case 'C':
+          return 2;
+        case 'D':
+          return 3;
+        case 'E':
+          return 4;
+        case 'special_A':
+          return 97;
+        case 'special_B':
+          return 98;
+      }
+    })();
+    this.cmds.push({
+      name: 'barcodeHRIFont',
+      args: [hriFont],
+      data: barcodeHRIFont(hriFontValue),
+    });
+
+    this.cmds.push({
+      name: 'barcodeWidth',
+      args: [width],
+      data: barcodeWidth(width),
+    });
+    this.cmds.push({
+      name: 'barcodeHeight',
+      args: [height],
+      data: barcodeHeight(height),
+    });
+
+    const typeValue = (() => {
+      switch (type) {
+        case 'UPC-A':
+          return 65;
+        case 'UPC-E':
+          return 66;
+        case 'JAN13':
+          return 67;
+        case 'JAN8':
+          return 68;
+        case 'CODE39':
+          return 69;
+        case 'ITF':
+          return 70;
+        case 'CODABAR':
+          return 71;
+        case 'CODE93':
+          return 72;
+        case 'CODE128':
+          return 73;
+        case 'GS1-128':
+          return 74;
+        case 'GS1 (DataBar Omnidirectional)':
+          return 75;
+        case 'GS1 (DataBar Truncated)':
+          return 76;
+        case 'GS1 (DataBar Limited)':
+          return 77;
+        case 'GS1 (DataBar Expanded)':
+          return 78;
+      }
+    })();
+    const encoded = encode(data, 'pc437_usa'); // ascii
+    this.cmds.push({
+      name: 'barcodePrint',
+      args: [data, type],
+      data: barcodePrint(typeValue, encoded.byteLength, ...Array.from(encoded)),
     });
 
     return this;

@@ -20,6 +20,58 @@ export interface QRCodeOptions {
   correction?: 'L' | 'M' | 'Q' | 'H';
 }
 
+/**
+ * Type of barcode
+ *
+ * | Type                        | Characters (ASCII)                                                                 | Length              |
+ * | --------------------------- | ---------------------------------------------------------------------------------- | ------------------- |
+ * | UPC-A                       | 0-9                                                                                | 11, 12              |
+ * | UPC-E                       | 0-9                                                                                | 6-8, 11, 12         |
+ * | JAN13                       | 0-9                                                                                | 12, 13              |
+ * | JAN8                        | 0-9                                                                                | 7, 8                |
+ * | CODE39                      | 0-9, A-Z, SP, $, %, *, +, -, ., /                                                  | 1-255               |
+ * | ITF                         | 0-9                                                                                | 2-256 (even number) |
+ * | CODABAR                     | 0-9, A-D, a-d, $, +, -, ., /, :                                                    | 2-255               |
+ * | CODE93                      | 00h-7Fh                                                                            | 1-255               |
+ * | CODE128                     | 00h-7Fh                                                                            | 2-255               |
+ * | GS1-128                     | NUL-SP(7Fh)                                                                        | 2-255               |
+ * | GS1 DataBar Omnidirectional | 0-9                                                                                | 13                  |
+ * | GS1 DataBar Truncated       | 0-9                                                                                | 13                  |
+ * | GS1 DataBar Limited         | 0-9                                                                                | 13                  |
+ * | GS1 DataBar Expanded        | 0-9, A-D, a-d, SP, !, ", %, $, ', (, ), *, +, ,, -, ., /, :, ;, <, =, >, ?, _, {   | 2-255               |
+ *
+ * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=128
+ */
+export type BarcodeType =
+  | 'UPC-A'
+  | 'UPC-E'
+  | 'JAN13'
+  | 'JAN8'
+  | 'CODE39'
+  | 'ITF'
+  | 'CODABAR'
+  | 'CODE93'
+  | 'CODE128'
+  | 'GS1-128'
+  | 'GS1 (DataBar Omnidirectional)'
+  | 'GS1 (DataBar Truncated)'
+  | 'GS1 (DataBar Limited)'
+  | 'GS1 (DataBar Expanded)';
+
+export interface BarcodeOptions {
+  /** @default none */
+  hriPosition?: 'none' | 'top' | 'bottom' | 'top-bottom';
+  /** @default A */
+  hriFont?: TextFont;
+  /** @default 3 */
+  width?: 1 | 2 | 3 | 4 | 5 | 6;
+  /**
+   * Available range 1-255
+   * @default 162
+   */
+  height?: number;
+}
+
 export interface Printer {
   setCharacterSet(set: CharacterSet): this;
   setTextFont(font: TextFont): this;
@@ -35,6 +87,7 @@ export interface Printer {
   cut(): this;
   image(data: Uint8Array, width: number, height: number): this;
   qrcode(data: string, options?: QRCodeOptions): this;
+  barcode(data: string, type: BarcodeType, options?: BarcodeOptions): this;
   initialize(): this;
   getData(): Uint8Array;
   clear(): this;
