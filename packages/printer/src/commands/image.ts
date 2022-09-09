@@ -16,7 +16,8 @@ export function image(
   xH: number,
   yL: number,
   yH: number,
-  ...data: number[]
+  data: ArrayLike<number>
 ) {
-  return [GS, 0x76, 0x30, m, xL, xH, yL, yH, ...data];
+  const base = [GS, 0x76, 0x30, m, xL, xH, yL, yH];
+  return base.concat(Array.from(data));
 }

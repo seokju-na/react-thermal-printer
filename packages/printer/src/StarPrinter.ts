@@ -70,7 +70,7 @@ export class StarPrinter extends BasePrinter {
     this.cmds.push({
       name: 'qrcodeStore',
       args: [data],
-      data: starQRCodeStore(pL, pH, ...Array.from(encoded)),
+      data: starQRCodeStore(pL, pH, encoded),
     });
     this.cmds.push({
       name: 'qrcodePrint',

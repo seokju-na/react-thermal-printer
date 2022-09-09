@@ -11,6 +11,7 @@ import { ESC, GS } from './common';
  * m = 0
  * @see https://www.starmicronics.com/support/Mannualfolder/escpos_cm_en.pdf
  */
-export function starQRCodeStore(nL: number, nH: number, ...data: number[]) {
-  return [ESC, GS, 0x79, 0x44, 0x31, 0, nL, nH, ...data];
+export function starQRCodeStore(nL: number, nH: number, data: ArrayLike<number>) {
+  const base = [ESC, GS, 0x79, 0x44, 0x31, 0, nL, nH];
+  return base.concat(Array.from(data));
 }
