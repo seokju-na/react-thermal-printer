@@ -4,6 +4,11 @@ import { characterSet } from './commands/characterSet';
 import { LF } from './commands/common';
 import { cut } from './commands/cut';
 import { invert } from './commands/invert';
+import { qrcodeCellSize } from './commands/qrcodeCellSize';
+import { qrcodeCorrectionLevel } from './commands/qrcodeCorrectionLevel';
+import { qrcodeModel } from './commands/qrcodeModel';
+import { qrcodePrint } from './commands/qrcodePrint';
+import { qrcodeStore } from './commands/qrcodeStore';
 import { textBold } from './commands/textBold';
 import { textFont } from './commands/textFont';
 import { textMode } from './commands/textMode';
@@ -14,10 +19,6 @@ import { encode } from './encode';
 class TestPrinter extends BasePrinter {
   constructor(options?: BasePrinterOptions) {
     super(options);
-  }
-
-  qrcode(): this {
-    throw new Error();
   }
 }
 
@@ -150,4 +151,23 @@ it('cut', () => {
 
   printer.cut();
   expect(printer.getData()).toEqual(Uint8Array.from(cut(48)));
+});
+
+it('qrcode', () => {
+  const printer = new TestPrinter();
+
+  printer.qrcode('https://seokju.me', {
+    model: 'model2',
+    cellSize: 6,
+    correction: 'Q',
+  });
+  expect(printer.getData()).toEqual(
+    Uint8Array.from([
+      ...qrcodeModel(50),
+      ...qrcodeCellSize(6),
+      ...qrcodeCorrectionLevel(50),
+      ...qrcodeStore(20, 0, ...encode('https://seokju.me', 'pc437_usa')),
+      ...qrcodePrint(),
+    ])
+  );
 });

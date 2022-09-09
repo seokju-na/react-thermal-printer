@@ -1,6 +1,6 @@
 import { Image } from '@react-thermal-printer/image/src';
 import { CharacterSet } from './CharacterSet';
-import { Align, Printer, TextFont, TextSize, TextUnderline } from './Printer';
+import { Align, Printer, QRCodeOptions, TextFont, TextSize, TextUnderline } from './Printer';
 import { alignment } from './commands/alignment';
 import { characterSet } from './commands/characterSet';
 import { LF } from './commands/common';
@@ -8,6 +8,11 @@ import { cut } from './commands/cut';
 import { image } from './commands/image';
 import { initialize } from './commands/initialize';
 import { invert } from './commands/invert';
+import { qrcodeCellSize } from './commands/qrcodeCellSize';
+import { qrcodeCorrectionLevel } from './commands/qrcodeCorrectionLevel';
+import { qrcodeModel } from './commands/qrcodeModel';
+import { qrcodePrint } from './commands/qrcodePrint';
+import { qrcodeStore } from './commands/qrcodeStore';
 import { textBold } from './commands/textBold';
 import { textFont } from './commands/textFont';
 import { textMode } from './commands/textMode';
@@ -201,6 +206,69 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
+  qrcode(data: string, options: QRCodeOptions = {}): this {
+    const { model = 'model2', cellSize = 3, correction = 'L' } = options;
+    const modelValue = (() => {
+      switch (model) {
+        case 'model1':
+          return 49;
+        case 'model2':
+          return 50;
+        case 'micro':
+          return 51;
+      }
+    })();
+    this.cmds.push({
+      name: 'qrcodeModel',
+      args: [model],
+      data: qrcodeModel(modelValue),
+    });
+
+    this.cmds.push({
+      name: 'qrcodeCellSize',
+      args: [cellSize],
+      data: qrcodeCellSize(cellSize),
+    });
+
+    const correctionValue = (() => {
+      switch (correction) {
+        case 'L':
+          return 48;
+        case 'M':
+          return 49;
+        case 'Q':
+          return 50;
+        case 'H':
+          return 51;
+      }
+    })();
+    this.cmds.push({
+      name: 'qrcodeCorrection',
+      args: [correction],
+      data: qrcodeCorrectionLevel(correctionValue),
+    });
+
+    const encoded = encode(data, 'pc437_usa'); // ascii
+    const length = new ArrayBuffer(2);
+    const view = new DataView(length);
+    view.setUint16(0, encoded.byteLength + 3, true);
+
+    const pL = view.getUint8(0);
+    const pH = view.getUint8(1);
+
+    this.cmds.push({
+      name: 'qrcodeStore',
+      args: [data],
+      data: qrcodeStore(pL, pH, ...Array.from(encoded)),
+    });
+    this.cmds.push({
+      name: 'qrcodePrint',
+      data: qrcodePrint(),
+    });
+
+    return this;
+  }
+
   initialize(): this {
     this.cmds.push({
       name: 'initialize',
@@ -223,6 +291,4 @@ export abstract class BasePrinter implements Printer {
     console.debug(this.cmds);
     return this;
   }
-
-  abstract qrcode(url: string): this;
 }

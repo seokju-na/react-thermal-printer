@@ -9,8 +9,4 @@ export class EpsonPrinter extends BasePrinter {
   constructor(options?: Options) {
     super(options);
   }
-
-  qrcode(): this {
-    throw new Error('TODO');
-  }
 }
