@@ -1,4 +1,5 @@
 import { getPrinter } from '@react-thermal-printer/printer';
+import { render } from '@testing-library/react';
 import fs from 'node:fs';
 import { PNG } from 'pngjs';
 import { ImageData } from '../utils/readImageData';
@@ -20,6 +21,13 @@ function readPNG(filename: string) {
       });
   });
 }
+
+it('render <img /> in DOM', () => {
+  const { container } = render(<Image src="https://via.placeholder.com/300.png" />);
+  const img = container.querySelector('img');
+  expect(img).not.toBeNull();
+  expect(img).toHaveAttribute('src', 'https://via.placeholder.com/300.png');
+});
 
 it('print image', async () => {
   const src = 'fixtures/epson-thermal-printer.png';

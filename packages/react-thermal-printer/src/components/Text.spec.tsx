@@ -1,10 +1,33 @@
 import { getPrinter } from '@react-thermal-printer/printer';
-import { render as renderToDOM, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Text } from './Text';
 
 it('render children in DOM', () => {
-  renderToDOM(<Text>abc</Text>);
+  render(<Text>abc</Text>);
   expect(screen.queryByText('abc')).not.toBeNull();
+});
+
+it('data props', () => {
+  render(
+    <Text
+      align="center"
+      bold={true}
+      font="B"
+      underline="2dot_thick"
+      invert={true}
+      size={{ width: 3, height: 4 }}
+    >
+      hello
+    </Text>
+  );
+  const text = screen.getByText('hello');
+  expect(text).toHaveAttribute('data-align', 'center');
+  expect(text).toHaveAttribute('data-bold', 'true');
+  expect(text).toHaveAttribute('data-font', 'B');
+  expect(text).toHaveAttribute('data-underline', '2dot_thick');
+  expect(text).toHaveAttribute('data-invert', 'true');
+  expect(text).toHaveAttribute('data-size-width', '3');
+  expect(text).toHaveAttribute('data-size-height', '4');
 });
 
 it('print text', async () => {

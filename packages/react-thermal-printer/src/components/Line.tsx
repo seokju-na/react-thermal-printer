@@ -1,4 +1,4 @@
-import { ExtendHTMLProps } from '../types/ExtendHTMLProps';
+import { ExtendHTMLProps } from '../types/HTMLProps';
 import { Printable } from '../types/Printable';
 
 type Props = ExtendHTMLProps<
@@ -12,8 +12,8 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Line: Printable<Props> = (props: Props) => {
-  return <hr {...props} />;
+export const Line: Printable<Props> = ({ character, ...props }: Props) => {
+  return <hr data-character={character} {...props} />;
 };
 
 Line.print = (elem, { printer, width }) => {

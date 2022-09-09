@@ -15,6 +15,6 @@ interface Props extends PrinterOptions {
   children: ReactNode;
 }
 
-export function Printer({ children }: Props) {
-  return <div>{children}</div>;
+export function Printer({ width, children }: Props) {
+  return <div data-width={width}>{children}</div>;
 }

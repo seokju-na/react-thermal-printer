@@ -1,7 +1,7 @@
 import { Align, TextFont, TextSize, TextUnderline } from '@react-thermal-printer/printer';
 import { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ExtendHTMLProps } from '../types/ExtendHTMLProps';
+import { ExtendHTMLProps } from '../types/HTMLProps';
 import { Printable } from '../types/Printable';
 
 type Props = ExtendHTMLProps<
@@ -17,8 +17,21 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Text: Printable<Props> = ({ children, ...props }) => {
-  return <div {...props}>{children}</div>;
+export const Text: Printable<Props> = props => {
+  return (
+    <div
+      data-align={props.align}
+      data-bold={props.bold}
+      data-font={props.font}
+      data-underline={props.underline}
+      data-invert={props.invert}
+      data-size-width={props.size?.width}
+      data-size-height={props.size?.height}
+      {...styling(props)}
+    >
+      {props.children}
+    </div>
+  );
 };
 
 Text.print = (elem, { printer }) => {
@@ -60,4 +73,26 @@ function childrenToString(node: ReactNode) {
     str = str.replace(from, to);
   });
   return str;
+}
+
+function styling(props: Props): Props {
+  const { align, bold, font: _, underline, invert: __, style, ...otherProps } = props;
+
+  return {
+    style: {
+      textAlign:
+        align === 'left'
+          ? 'left'
+          : align === 'center'
+          ? 'center'
+          : align === 'right'
+          ? 'right'
+          : undefined,
+      textDecoration:
+        underline === '1dot_thick' || underline === '2dot_thick' ? 'underline' : undefined,
+      fontWeight: bold ? 'bold' : undefined,
+      ...style,
+    },
+    ...otherProps,
+  };
 }

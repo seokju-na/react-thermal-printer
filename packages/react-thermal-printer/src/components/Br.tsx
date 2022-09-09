@@ -1,4 +1,4 @@
-import { ExtendHTMLProps } from '../types/ExtendHTMLProps';
+import { ExtendHTMLProps } from '../types/HTMLProps';
 import { Printable } from '../types/Printable';
 
 type Props = ExtendHTMLProps<'br'>;
