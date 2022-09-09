@@ -5,4 +5,5 @@ export * from './components/Line';
 export * from './components/Text';
 export * from './components/Raw';
 export * from './components/Image';
+export * from './components/QRCode';
 export * from './render';
