@@ -1,7 +1,10 @@
+import { ExtendHTMLProps } from '../types/ExtendHTMLProps';
 import { Printable } from '../types/Printable';
 
-export const Br: Printable = () => {
-  return <br />;
+type Props = ExtendHTMLProps<'br'>;
+
+export const Br: Printable = (props: Props) => {
+  return <br {...props} />;
 };
 
 Br.print = (_, { printer }) => {

@@ -1,4 +1,4 @@
-interface ImageData {
+export interface ImageData {
   /** pixel data */
   readonly data: Uint8Array;
   readonly width: number;

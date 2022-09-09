@@ -14,5 +14,8 @@ export const QRCode: Printable<Props> = () => {
 QRCode.print = (elem, { printer }) => {
   const { content, align = 'left', ...options } = elem.props;
 
-  printer.setAlign(align).qrcode(content, options).setAlign(align); // reset
+  if (align != null) {
+    printer.setAlign(align);
+  }
+  printer.qrcode(content, options);
 };
