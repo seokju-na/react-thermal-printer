@@ -14,7 +14,6 @@ export class Image {
     private readonly height: number
   ) {
     this.pixels = this.getPixels(data, width, height);
-    console.log(this.pixels);
   }
 
   toRaster(): number[] {

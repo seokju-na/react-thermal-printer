@@ -1,8 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render as renderToDOM } from '@testing-library/react';
-import { render } from '../render';
 import { Line } from './Line';
-import { Printer } from './Printer';
 
 it('render <hr /> in DOM', () => {
   const { container } = renderToDOM(<Line />);
@@ -10,23 +8,19 @@ it('render <hr /> in DOM', () => {
 });
 
 it('print line', async () => {
-  const actual = await render(
-    <Printer type="epson" width={5} initialize={false}>
-      <Line />
-    </Printer>
-  );
-  const expected = getPrinter({ type: 'epson' }).text('-----').newLine().getData();
+  const actual = getPrinter({ type: 'epson' });
+  const expected = getPrinter({ type: 'epson' });
 
-  expect(actual).toEqual(expected);
+  Line.print(<Line />, { printer: actual, width: 5 });
+
+  expect(actual.getData()).toEqual(expected.text('-----').newLine().getData());
 });
 
 it('print line with custom character', async () => {
-  const actual = await render(
-    <Printer type="epson" width={5} initialize={false}>
-      <Line character="=" />
-    </Printer>
-  );
-  const expected = getPrinter({ type: 'epson' }).text('=====').newLine().getData();
+  const actual = getPrinter({ type: 'epson' });
+  const expected = getPrinter({ type: 'epson' });
 
-  expect(actual).toEqual(expected);
+  Line.print(<Line character="=" />, { printer: actual, width: 5 });
+
+  expect(actual.getData()).toEqual(expected.text('=====').newLine().getData());
 });

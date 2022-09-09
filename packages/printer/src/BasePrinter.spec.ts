@@ -171,7 +171,7 @@ it('qrcode', () => {
       ...qrcodeModel(50),
       ...qrcodeCellSize(6),
       ...qrcodeCorrectionLevel(50),
-      ...qrcodeStore(20, 0, ...encode('https://seokju.me', 'pc437_usa')),
+      ...qrcodeStore(20, 0, encode('https://seokju.me', 'pc437_usa')),
       ...qrcodePrint(),
     ])
   );
@@ -194,7 +194,7 @@ it('barcode', () => {
       ...barcodeHRIFont(1),
       ...barcodeWidth(4),
       ...barcodeHeight(170),
-      ...barcodePrint(69, encoded.byteLength, ...Array.from(encoded)),
+      ...barcodePrint(69, encoded.byteLength, encoded),
     ])
   );
 });

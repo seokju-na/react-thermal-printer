@@ -13,7 +13,10 @@ export const Barcode: Printable<Props> = () => {
 };
 
 Barcode.print = (elem, { printer }) => {
-  const { type, content, align = 'left', ...options } = elem.props;
+  const { type, content, align, ...options } = elem.props;
 
-  printer.setAlign(align).barcode(content, type, options).setAlign(align); // reset
+  if (align != null) {
+    printer.setAlign(align);
+  }
+  printer.barcode(content, type, options);
 };

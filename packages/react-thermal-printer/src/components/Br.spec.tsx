@@ -1,8 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render as renderToDOM } from '@testing-library/react';
-import { render } from '../render';
 import { Br } from './Br';
-import { Printer } from './Printer';
 
 it('render <br /> in DOM', () => {
   const { container } = renderToDOM(<Br />);
@@ -10,12 +8,9 @@ it('render <br /> in DOM', () => {
 });
 
 it('print new line', async () => {
-  const actual = await render(
-    <Printer type="epson" initialize={false}>
-      <Br />
-    </Printer>
-  );
-  const expected = getPrinter({ type: 'epson' }).newLine().getData();
+  const actual = getPrinter({ type: 'epson' });
+  const expected = getPrinter({ type: 'epson' });
 
-  expect(actual).toEqual(expected);
+  Br.print(<Br />, { printer: actual, width: 44 });
+  expect(actual.getData()).toEqual(expected.newLine().getData());
 });

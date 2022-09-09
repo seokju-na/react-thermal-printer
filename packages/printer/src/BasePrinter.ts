@@ -215,7 +215,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'image',
       args: [data.byteLength, width, height],
-      data: image(0, xL, xH, yL, yH, ...img.toRaster()),
+      data: image(0, xL, xH, yL, yH, img.toRaster()),
     });
     return this;
   }
@@ -273,7 +273,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'qrcodeStore',
       args: [data],
-      data: qrcodeStore(pL, pH, ...Array.from(encoded)),
+      data: qrcodeStore(pL, pH, encoded),
     });
     this.cmds.push({
       name: 'qrcodePrint',
@@ -374,7 +374,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'barcodePrint',
       args: [data, type],
-      data: barcodePrint(typeValue, encoded.byteLength, ...Array.from(encoded)),
+      data: barcodePrint(typeValue, encoded.byteLength, encoded),
     });
 
     return this;

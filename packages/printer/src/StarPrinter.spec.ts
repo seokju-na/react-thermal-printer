@@ -19,7 +19,7 @@ it('qrcode', () => {
       ...starQRCodeModel(2),
       ...starQRCodeCellSize(5),
       ...starQRCodeCorrectionLevel(1),
-      ...starQRCodeStore(17, 0, ...encode('https://seokju.me', 'pc437_usa')),
+      ...starQRCodeStore(17, 0, encode('https://seokju.me', 'pc437_usa')),
       ...starQRCodePrint(),
     ])
   );

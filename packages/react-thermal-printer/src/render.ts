@@ -1,4 +1,4 @@
-import { getPrinter } from '@react-thermal-printer/printer';
+import { getPrinter, Printer as PrinterInterface } from '@react-thermal-printer/printer';
 import { Children, ComponentProps, isValidElement, ReactElement, ReactNode } from 'react';
 import { Printer } from './components/Printer';
 import { isPrintable } from './types/Printable';
@@ -44,8 +44,13 @@ async function print(node: ReactNode, context: PrinterContext) {
 
     if (isPrintable(child.type)) {
       await child.type.print(child, context);
+      resetPrinter(context.printer);
     } else {
       await print(child.props.children, context);
     }
   }
+}
+
+function resetPrinter(printer: PrinterInterface) {
+  printer.setTextNormal().setAlign('left').invert(false);
 }

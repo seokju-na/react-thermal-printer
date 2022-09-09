@@ -1,15 +1,19 @@
+import { ExtendHTMLProps } from '../types/HTMLProps';
 import { Printable } from '../types/Printable';
 
-interface Props {
-  /**
-   * Character to draw line
-   * @default '-'
-   */
-  character?: string;
-}
+type Props = ExtendHTMLProps<
+  'hr',
+  {
+    /**
+     * Character to draw line
+     * @default '-'
+     */
+    character?: string;
+  }
+>;
 
-export const Line: Printable<Props> = () => {
-  return <hr />;
+export const Line: Printable<Props> = ({ character, ...props }: Props) => {
+  return <hr data-character={character} {...props} />;
 };
 
 Line.print = (elem, { printer, width }) => {

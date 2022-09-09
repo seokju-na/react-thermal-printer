@@ -1,15 +1,10 @@
 import { getPrinter } from '@react-thermal-printer/printer';
-import { render } from '../render';
 import { Cut } from './Cut';
-import { Printer } from './Printer';
 
 it('feed lines and cut', async () => {
-  const actual = await render(
-    <Printer type="epson" initialize={false}>
-      <Cut lineFeeds={3} />
-    </Printer>
-  );
-  const expected = getPrinter({ type: 'epson' }).newLine().newLine().newLine().cut().getData();
+  const actual = getPrinter({ type: 'epson' });
+  const expected = getPrinter({ type: 'epson' });
 
-  expect(actual).toEqual(expected);
+  Cut.print(<Cut lineFeeds={3} />, { printer: actual, width: 44 });
+  expect(actual.getData()).toEqual(expected.newLine().newLine().newLine().cut().getData());
 });

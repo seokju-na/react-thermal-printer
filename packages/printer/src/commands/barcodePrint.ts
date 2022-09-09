@@ -10,6 +10,7 @@ import { GS } from './common';
  *
  * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=128
  */
-export function barcodePrint(m: number, n: number, ...data: number[]) {
-  return [GS, 0x6b, m, n, ...data];
+export function barcodePrint(m: number, n: number, data: ArrayLike<number>) {
+  const base = [GS, 0x6b, m, n];
+  return base.concat(Array.from(data));
 }
