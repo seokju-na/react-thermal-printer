@@ -1,0 +1,5 @@
+releases:
+  "@react-thermal-printer/image": patch
+
+undecided:
+  - "@react-thermal-printer/printer"
