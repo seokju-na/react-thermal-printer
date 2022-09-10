@@ -1,7 +1,8 @@
 import { PrinterOptions } from '@react-thermal-printer/printer';
 import { ReactNode } from 'react';
+import { ExtendHTMLProps } from '../types/HTMLProps';
 
-interface Props extends PrinterOptions {
+interface PrinterProps extends PrinterOptions {
   /**
    * number of characters in one line
    * @default 48
@@ -15,6 +16,23 @@ interface Props extends PrinterOptions {
   children: ReactNode;
 }
 
-export function Printer({ width, children }: Props) {
-  return <div data-width={width}>{children}</div>;
+export function Printer({
+  type,
+  width,
+  characterSet,
+  initialize,
+  children,
+  ...props
+}: ExtendHTMLProps<'div', PrinterProps>) {
+  return (
+    <div
+      data-printer-type={type}
+      data-character-set={characterSet}
+      data-initialize={initialize}
+      data-width={width}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
