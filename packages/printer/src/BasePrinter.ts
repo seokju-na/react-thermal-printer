@@ -1,4 +1,4 @@
-import { Image } from '@react-thermal-printer/image/src';
+import { Image } from '@react-thermal-printer/image';
 import { CharacterSet } from './CharacterSet';
 import {
   Align,
