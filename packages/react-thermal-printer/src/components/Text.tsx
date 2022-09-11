@@ -1,4 +1,5 @@
 import { Align, TextFont, TextSize, TextUnderline } from '@react-thermal-printer/printer';
+import classNames from 'classnames';
 import { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { ExtendHTMLProps } from '../types/HTMLProps';
@@ -76,7 +77,7 @@ function childrenToString(node: ReactNode) {
 }
 
 function styling(props: Props): Props {
-  const { align, bold, font: _, underline, invert: __, style, ...otherProps } = props;
+  const { align, bold, font: _, underline, invert: __, style, className, ...otherProps } = props;
 
   return {
     style: {
@@ -93,6 +94,7 @@ function styling(props: Props): Props {
       fontWeight: bold ? 'bold' : undefined,
       ...style,
     },
+    className: classNames('rtp-text', className),
     ...otherProps,
   };
 }

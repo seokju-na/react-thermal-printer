@@ -3433,6 +3433,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["classnames", [\
+        ["npm:2.3.1", {\
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.1-f2ae0a8d3c-14db8889d5.zip/node_modules/classnames/",\
+          "packageDependencies": [\
+            ["classnames", "npm:2.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["clean-stack", [\
         ["npm:2.2.0", {\
           "packageLocation": "./.yarn/cache/clean-stack-npm-2.2.0-a8ce435a5c-2ac8cd2b2f.zip/node_modules/clean-stack/",\
@@ -8317,6 +8326,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/pngjs", "npm:6.0.1"],\
             ["@types/react", "npm:18.0.18"],\
             ["@types/react-dom", "npm:18.0.6"],\
+            ["classnames", "npm:2.3.1"],\
             ["pngjs", "npm:6.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a5a4cfa1564970fb8b2167f7a85e596df3b87c954bfca7eab6a979dc0d9a27c7e84f9b48a4c26f1f9cfd5a6061024984014d06a28b4e3d8877585668fae2dcdd#npm:18.2.0"]\
@@ -8338,6 +8348,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/pngjs", "npm:6.0.1"],\
             ["@types/react", "npm:18.0.18"],\
             ["@types/react-dom", "npm:18.0.6"],\
+            ["classnames", "npm:2.3.1"],\
             ["pngjs", "npm:6.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a5a4cfa1564970fb8b2167f7a85e596df3b87c954bfca7eab6a979dc0d9a27c7e84f9b48a4c26f1f9cfd5a6061024984014d06a28b4e3d8877585668fae2dcdd#npm:18.2.0"]\

@@ -1,4 +1,5 @@
 import { Align } from '@react-thermal-printer/printer';
+import classNames from 'classnames';
 import { ReactElement } from 'react';
 import { ExtendHTMLProps } from '../types/HTMLProps';
 import { Printable } from '../types/Printable';
@@ -17,8 +18,16 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Image: Printable<Props> = ({ align, src, reader: _, ...props }: Props) => {
-  return <img data-align={align} data-src={src} src={src} {...props} />;
+export const Image: Printable<Props> = ({ align, src, reader: _, className, ...props }: Props) => {
+  return (
+    <img
+      data-align={align}
+      data-src={src}
+      src={src}
+      className={classNames('rtp-image', className)}
+      {...props}
+    />
+  );
 };
 
 Image.print = async (elem, { printer }) => {

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ExtendHTMLProps } from '../types/HTMLProps';
 import { Printable } from '../types/Printable';
 
@@ -12,8 +13,8 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Line: Printable<Props> = ({ character, ...props }: Props) => {
-  return <hr data-character={character} {...props} />;
+export const Line: Printable<Props> = ({ character, className, ...props }: Props) => {
+  return <hr data-character={character} className={classNames('rtp-line', className)} {...props} />;
 };
 
 Line.print = (elem, { printer, width }) => {

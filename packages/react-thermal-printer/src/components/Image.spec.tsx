@@ -29,6 +29,11 @@ it('render <img /> in DOM', () => {
   expect(img).toHaveAttribute('src', 'https://via.placeholder.com/300.png');
 });
 
+it('has ".rtp-image" css class', () => {
+  const { container } = render(<Image src="https://via.placeholder.com/300.png" />);
+  expect(container.querySelector('.rtp-image')).not.toBeNull();
+});
+
 it('print image', async () => {
   const src = 'fixtures/epson-thermal-printer.png';
   const actual = getPrinter({ type: 'epson' });
