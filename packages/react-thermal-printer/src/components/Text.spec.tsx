@@ -18,7 +18,7 @@ it('data props', () => {
       align="center"
       bold={true}
       font="B"
-      underline="2dot_thick"
+      underline="2dot-thick"
       invert={true}
       size={{ width: 3, height: 4 }}
     >
@@ -29,7 +29,7 @@ it('data props', () => {
   expect(text).toHaveAttribute('data-align', 'center');
   expect(text).toHaveAttribute('data-bold', 'true');
   expect(text).toHaveAttribute('data-font', 'B');
-  expect(text).toHaveAttribute('data-underline', '2dot_thick');
+  expect(text).toHaveAttribute('data-underline', '2dot-thick');
   expect(text).toHaveAttribute('data-invert', 'true');
   expect(text).toHaveAttribute('data-size-width', '3');
   expect(text).toHaveAttribute('data-size-height', '4');
@@ -53,7 +53,7 @@ it('print text with configs', async () => {
       align="center"
       bold={true}
       invert={true}
-      underline="2dot_thick"
+      underline="2dot-thick"
       size={{ width: 3, height: 3 }}
     >
       안녕하세요
@@ -65,7 +65,7 @@ it('print text with configs', async () => {
     expected
       .setAlign('center')
       .setTextBold(true)
-      .setTextUnderline('2dot_thick')
+      .setTextUnderline('2dot-thick')
       .invert(true)
       .setTextSize(3, 3)
       .text('안녕하세요')

@@ -76,10 +76,10 @@ it('set text underline', () => {
   printer.setTextUnderline('none');
   expect(printer.getData()).toEqual(Uint8Array.from(textUnderline(0)));
 
-  printer.clear().setTextUnderline('1dot_thick');
+  printer.clear().setTextUnderline('1dot-thick');
   expect(printer.getData()).toEqual(Uint8Array.from(textUnderline(1)));
 
-  printer.clear().setTextUnderline('2dot_thick');
+  printer.clear().setTextUnderline('2dot-thick');
   expect(printer.getData()).toEqual(Uint8Array.from(textUnderline(2)));
 });
 

@@ -7,4 +7,5 @@ export * from './components/Raw';
 export * from './components/Image';
 export * from './components/QRCode';
 export * from './components/Barcode';
+export * from './components/Row';
 export * from './render';
