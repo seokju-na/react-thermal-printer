@@ -1,4 +1,5 @@
 import { PrinterOptions } from '@react-thermal-printer/printer';
+import classNames from 'classnames';
 import { ReactNode } from 'react';
 import { ExtendHTMLProps } from '../types/HTMLProps';
 
@@ -22,6 +23,7 @@ export function Printer({
   characterSet,
   initialize,
   children,
+  className,
   ...props
 }: ExtendHTMLProps<'div', PrinterProps>) {
   return (
@@ -30,6 +32,7 @@ export function Printer({
       data-character-set={characterSet}
       data-initialize={initialize}
       data-width={width}
+      className={classNames('rtp-printer', className)}
       {...props}
     >
       {children}

@@ -7,6 +7,11 @@ it('render children in DOM', () => {
   expect(screen.queryByText('abc')).not.toBeNull();
 });
 
+it('has ".rtp-text" css class', () => {
+  const { container } = render(<Text>abc</Text>);
+  expect(container.querySelector('.rtp-text')).not.toBeNull();
+});
+
 it('data props', () => {
   render(
     <Text

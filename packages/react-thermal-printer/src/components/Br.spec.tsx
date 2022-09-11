@@ -7,6 +7,11 @@ it('render <br /> in DOM', () => {
   expect(container.querySelector('br')).not.toBeNull();
 });
 
+it('has ".rtp-br" css class', () => {
+  const { container } = renderToDOM(<Br />);
+  expect(container.querySelector('.rtp-br')).not.toBeNull();
+});
+
 it('print new line', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });

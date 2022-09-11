@@ -1,10 +1,15 @@
 import { getPrinter } from '@react-thermal-printer/printer';
-import { render as renderToDOM } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Line } from './Line';
 
 it('render <hr /> in DOM', () => {
-  const { container } = renderToDOM(<Line />);
+  const { container } = render(<Line />);
   expect(container.querySelector('hr')).not.toBeNull();
+});
+
+it('has ".rtp-line" css class', () => {
+  const { container } = render(<Line />);
+  expect(container.querySelector('.rtp-line')).not.toBeNull();
 });
 
 it('print line', async () => {
