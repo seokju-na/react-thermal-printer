@@ -1,9 +1,9 @@
 import { CharacterSet } from './CharacterSet';
 
 export type Align = 'left' | 'center' | 'right';
-export type TextFont = 'A' | 'B' | 'C' | 'D' | 'E' | 'special_A' | 'special_B';
+export type TextFont = 'A' | 'B' | 'C' | 'D' | 'E' | 'special-A' | 'special-B';
 export type TextSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-export type TextUnderline = '1dot_thick' | '2dot_thick' | 'none';
+export type TextUnderline = '1dot-thick' | '2dot-thick' | 'none';
 export interface QRCodeOptions {
   /** @default model2 */
   model?: 'model1' | 'model2' | 'micro';

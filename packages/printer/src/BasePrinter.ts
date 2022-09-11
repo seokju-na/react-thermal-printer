@@ -75,9 +75,9 @@ export abstract class BasePrinter implements Printer {
           return 3;
         case 'E':
           return 4;
-        case 'special_A':
+        case 'special-A':
           return 97;
-        case 'special_B':
+        case 'special-B':
           return 98;
       }
     })();
@@ -102,9 +102,9 @@ export abstract class BasePrinter implements Printer {
   setTextUnderline(underline: TextUnderline): this {
     const n = (() => {
       switch (underline) {
-        case '1dot_thick':
+        case '1dot-thick':
           return 1;
-        case '2dot_thick':
+        case '2dot-thick':
           return 2;
         case 'none':
           return 0;
@@ -315,9 +315,9 @@ export abstract class BasePrinter implements Printer {
           return 3;
         case 'E':
           return 4;
-        case 'special_A':
+        case 'special-A':
           return 97;
-        case 'special_B':
+        case 'special-B':
           return 98;
       }
     })();
