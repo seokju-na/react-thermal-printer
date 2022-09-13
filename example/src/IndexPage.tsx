@@ -43,8 +43,7 @@ export function IndexPage() {
           <Text align="center">@ JSConf Korea 2022</Text>
           <Text align="center">Have Fun!</Text>
           <Cut />
-        </Printer>,
-        { debug: true }
+        </Printer>
       );
 
       await writer.write(data);
