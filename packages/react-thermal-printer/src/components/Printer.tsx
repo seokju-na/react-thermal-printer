@@ -14,6 +14,8 @@ interface PrinterProps extends PrinterOptions {
    * @default true
    */
   initialize?: boolean;
+  /** log esc/pos commands before render. */
+  debug?: boolean;
   children: ReactNode;
 }
 

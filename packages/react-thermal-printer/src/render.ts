@@ -7,18 +7,11 @@ import { resetPrinter } from './utils/resetPrinter';
 
 type PrinterProps = ComponentProps<typeof Printer>;
 
-interface RenderOptions {
-  debug?: boolean;
-}
-
 /**
  * Render the React element as printable binary data.
  */
-export async function render(
-  elem: ReactElement<PrinterProps>,
-  options?: RenderOptions
-): Promise<Uint8Array> {
-  const { type, characterSet, width = 48, initialize = true, children } = elem.props;
+export async function render(elem: ReactElement<PrinterProps>): Promise<Uint8Array> {
+  const { type, characterSet, width = 48, initialize = true, debug = false, children } = elem.props;
   const printer = getPrinter({ type, characterSet });
 
   if (characterSet != null) {
@@ -30,7 +23,7 @@ export async function render(
     printer.initialize();
   }
 
-  if (options?.debug) {
+  if (debug) {
     printer.debug();
   }
 
