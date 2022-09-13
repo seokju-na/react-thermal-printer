@@ -56,12 +56,6 @@ Row.print = (elem, { printer, width }) => {
     width: Math.min(rightMaxWidth, rightLength),
   });
 
-  console.log('leftSize', leftSize);
-  console.log('leftLength', leftLength);
-  console.log('leftLines', leftLines);
-  console.log('rightSize', rightSize);
-  console.log('rightLines', rightLines);
-
   for (let i = 0; i < Math.max(leftLines.length, rightLines.length); i++) {
     const leftLine = leftLines[i];
     const rightLine = rightLines[i];

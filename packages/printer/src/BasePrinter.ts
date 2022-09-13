@@ -399,6 +399,7 @@ export abstract class BasePrinter implements Printer {
   }
 
   debug(): this {
+    // eslint-disable-next-line no-console
     console.debug(this.cmds);
     return this;
   }
