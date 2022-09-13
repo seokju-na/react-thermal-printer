@@ -24,7 +24,7 @@ jobs:
 
           # bump version
           yarn version apply --all
-          git add ./\*\/package.json
+          git add -A
           git checkout -- .
           git diff-index --quiet HEAD -- || SHOULD_COMMIT="yes"
           

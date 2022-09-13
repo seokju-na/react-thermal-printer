@@ -1,6 +1,6 @@
 {
   "name": "react-thermal-printer",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "A React component to thermal printing",
   "license": "MIT",
   "main": "src/index.ts",
