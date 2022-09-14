@@ -23,10 +23,13 @@ type Props = ExtendHTMLProps<
 >;
 
 export const Row: Printable<Props> = ({ left, right, gap, className, ...props }) => {
+  const leftEl = typeof left === 'string' ? <Text>{left}</Text> : left;
+  const rightEl = typeof right === 'string' ? <Text>{right}</Text> : right;
+
   return (
     <div data-gap={gap} className={classNames('rtp-row', className)} {...props}>
-      {typeof left === 'string' ? <Text>{left}</Text> : left}
-      {typeof right === 'string' ? <Text>{right}</Text> : right}
+      {cloneElement(leftEl, { className: classNames('rtp-row-left', leftEl.props.className) })}
+      {cloneElement(rightEl, { className: classNames('rtp-row-right', rightEl.props.className) })}
     </div>
   );
 };
