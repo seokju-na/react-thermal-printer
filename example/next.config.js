@@ -17,14 +17,10 @@ function getBabelLoaderTargetLocations(currentServiceLocation) {
     .filter(val => val !== '')
     .map(val => JSON.parse(val));
 
-  return (
-    workspaces
-      // 루트 워크스페이스는 제외합니다.
-      .filter(workspace => workspace.location !== '.')
-      // 현재 서비스 프로젝트는 제외합니다.
-      .filter(workspace => workspace.location !== currentServiceLocation)
-      .map(workspace => workspace.location)
-  );
+  return workspaces
+    .filter(workspace => workspace.location !== '.')
+    .filter(workspace => workspace.location !== currentServiceLocation)
+    .map(workspace => workspace.location);
 }
 
 const currentServiceDir = process.cwd();

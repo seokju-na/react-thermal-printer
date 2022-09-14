@@ -36,24 +36,21 @@ Row.print = (elem, { printer, width }) => {
   const leftElem = typeof left === 'string' ? <Text>{left}</Text> : left;
   const rightElem = typeof right === 'string' ? <Text>{right}</Text> : right;
 
-  const availableWidth = width - gap;
-  const leftMaxWidth = Math.floor(availableWidth / 2);
-  const rightMaxWidth = availableWidth - leftMaxWidth;
-
   const leftString = reactNodeToString(leftElem.props.children);
   const leftSize = leftElem.props.size?.width;
   const leftLength = textLength(leftString, { size: leftSize });
-  const leftLines = wrapText(leftString, {
-    size: leftSize,
-    width: Math.min(leftMaxWidth, leftLength),
-  });
 
   const rightString = reactNodeToString(rightElem.props.children);
   const rightSize = rightElem.props.size?.width;
   const rightLength = textLength(rightString, { size: rightSize });
+
+  const leftLines = wrapText(leftString, {
+    size: leftSize,
+    width: Math.min(width - gap - rightLength, leftLength),
+  });
   const rightLines = wrapText(rightString, {
     size: rightSize,
-    width: Math.min(rightMaxWidth, rightLength),
+    width: rightLength,
   });
 
   for (let i = 0; i < Math.max(leftLines.length, rightLines.length); i++) {
@@ -78,7 +75,7 @@ Row.print = (elem, { printer, width }) => {
 
 function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string) {
   return cloneElement(textElem, {
-    align: 'left', // align cannot be affect inside of <Row />
+    align: 'left', // align cannot be affect inside the <Row />
     inline: true,
     children: text,
   });
