@@ -24,6 +24,7 @@ export function Printer({
   width,
   characterSet,
   initialize,
+  debug,
   children,
   className,
   ...props
@@ -34,6 +35,7 @@ export function Printer({
       data-character-set={characterSet}
       data-initialize={initialize}
       data-width={width}
+      data-debug={debug}
       className={classNames('rtp-printer', className)}
       {...props}
     >
