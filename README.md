@@ -59,7 +59,7 @@ const receipt = (
 const data: Uint8Array = await render(receipt);
 ```
 
-<img alt="receipt" width="360" src="https://user-images.githubusercontent.com/13250888/189718147-a7c0c18c-b099-428e-9fc6-30e5cb116b6e.png">
+<img alt="receipt" width="360" src="https://user-images.githubusercontent.com/13250888/190206825-e54d2d4f-c4e7-45e0-ba8f-eff5cd2b06ff.png">
 
 ## API
 
