@@ -83,20 +83,19 @@ Interface of thermal printer.
 
 Requires `type` to determine printer type.
 
-**Note**: Supported printer types are `epson`, `star`.
-
 ```tsx
 <Printer type="epson">...</Printer>
 <Printer type="epson" width={42}>...</Printer>
 <Printer type="epson" characterSet="korea">...</Printer>
 ```
 
+**Note**: Supported printer types are `epson`, `star`.
+
+
 ### `<Text>`
 Display text, and change text size or style to make it bold, underline, etc.
 
 `<Text>` component also allows `<div>` element props.
-
-**Note**: `<Text>` allows only text nodes.
 
 ```tsx
 <Text>text</Text>
@@ -108,6 +107,8 @@ Display text, and change text size or style to make it bold, underline, etc.
 <Text invert={true}>invert text</Text>
 <Text size={{ width: 2, height: 2 }}>big size text</Text> 
 ```
+
+**Note**: `<Text>` allows only text nodes.
 
 ### `<Row>`
 Display `<Text>` on the left and right sides.
