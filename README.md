@@ -66,22 +66,127 @@ const data: Uint8Array = await render(receipt);
 - [Components](#components)
   - [`<Printer>`](#printer)
   - [`<Text>`](#text)
+  - [`<Row>`](#row)
   - [`<Br>`](#br)
+  - [`<Line>`](#line)
+  - [`<Barcode>`](#barcode)
+  - [`<QRCode>`](#qrcode)
+  - [`<Image>`](#image)
+  - [`<Cut>`](#cut)
+  - [`<Raw>`](#raw)
 - [Functions](#functions)
   - [render](#render)
 
 ## Components
 ### `<Printer>`
-.
+Interface of thermal printer.
+
+Requires `type` to determine printer type.
+
+**Note**: Supported printer types are `epson`, `star`.
+
+```tsx
+<Printer type="epson">...</Printer>
+<Printer type="epson" width={42}>...</Printer>
+<Printer type="epson" characterSet="korea">...</Printer>
+```
 
 ### `<Text>`
-.
+Display text, and change text size or style to make it bold, underline, etc.
+
+`<Text>` component also allows `<div>` element props.
+
+**Note**: `<Text>` allows only text nodes.
+
+```tsx
+<Text>text</Text>
+<Text>fragment is {'allowed'}</Text>
+<Text align="center">center text</Text>
+<Text align="right">right text</Text>
+<Text bold={true}>bold text</Text>
+<Text underline="1dot-thick">underline text</Text>
+<Text invert={true}>invert text</Text>
+<Text size={{ width: 2, height: 2 }}>big size text</Text> 
+```
+
+### `<Row>`
+Display `<Text>` on the left and right sides.
+
+```tsx
+<Row left="left" right="right" />
+<Row left="left" right="right" gap={2} />
+<Row 
+  left={<Text>left</Text>}
+  right="right"
+/>
+<Row
+  left={<Text>left</Text>}
+  right="very very long text will be multi line placed."
+/>
+```
 
 ### `<Br>`
 Feed line.
 
 ```tsx
 <Br />
+```
+
+### `<Line>`
+Draw line. Prints the character as much as the `width` which from `<Printer>`. 
+
+```tsx
+<Line />
+<Line character="=" />
+```
+
+### `<Barcode>`
+Print barcode.
+
+```tsx
+<Barcode type="UPC-A" content="111111111111" />
+<Barcode type="CODE39" content="A000$" />
+<Barcode align="center" type="UPC-A" content="111111111111" />
+```
+
+### `<QRCode>`
+Print qr code (2d barcode).
+
+```tsx
+<QRCode content="https://github.com/seokju-na/react-thermal-printer" />
+<QRCode align="center" content="https://github.com/seokju-na/react-thermal-printer" />
+```
+
+### `<Image>`
+Print image bitmap.
+
+Uses [Floyd–Steinberg dithering](https://github.com/noopkat/floyd-steinberg).
+
+```tsx
+<Image src="https://my-cdn.com/image.png" />
+<Image align="center" src="https://my-cdn.com/image.png" />
+<Image src="https://my-cdn.com/image.png" reader={myCustomImageReader} />
+
+function myCustomImageReader(
+  elem: ReactElement<ComponentProps<typeof Image>>
+): Promise<Uint8Array>;
+```
+
+### `<Cut>`
+Cut the paper.
+
+Perform full cutting, and feeds lines after cutting.
+
+```tsx
+<Cut />
+<Cut lineFeeds={6} />
+```
+
+### `<Raw>`
+Print raw data.
+
+```tsx
+<Raw data={Uint8Array.from([0x00, 0x01, ...])} />
 ```
 
 ## Functions
