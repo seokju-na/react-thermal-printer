@@ -14,7 +14,7 @@ type Props = ExtendHTMLProps<
     underline?: TextUnderline;
     invert?: boolean;
     size?: { width: TextSize; height: TextSize };
-    /** if false, dont' feed line after print text */
+    /** if true, don't feed line after print text */
     inline?: boolean;
     children?: ReactNode;
   }
