@@ -4,6 +4,7 @@ import {
   Align,
   BarcodeOptions,
   BarcodeType,
+  CashDrawerPin,
   Printer,
   QRCodeOptions,
   TextFont,
@@ -16,6 +17,7 @@ import { barcodeHRIPosition } from './commands/barcodeHRIPosition';
 import { barcodeHeight } from './commands/barcodeHeight';
 import { barcodePrint } from './commands/barcodePrint';
 import { barcodeWidth } from './commands/barcodeWidth';
+import { cashdraw } from './commands/cashdraw';
 import { characterSet } from './commands/characterSet';
 import { LF } from './commands/common';
 import { cut } from './commands/cut';
@@ -375,6 +377,25 @@ export abstract class BasePrinter implements Printer {
       name: 'barcodePrint',
       args: [data, type],
       data: barcodePrint(typeValue, encoded.byteLength, encoded),
+    });
+
+    return this;
+  }
+
+  cashdraw(pin: CashDrawerPin): this {
+    const m = (() => {
+      switch (pin) {
+        case '2pin':
+          return 0;
+        case '5pin':
+          return 1;
+      }
+    })();
+
+    this.cmds.push({
+      name: 'cashdraw',
+      args: [pin],
+      data: cashdraw(m, 0x19, 0x78),
     });
 
     return this;
