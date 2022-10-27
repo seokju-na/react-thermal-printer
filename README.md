@@ -190,6 +190,14 @@ Print raw data.
 <Raw data={Uint8Array.from([0x00, 0x01, ...])} />
 ```
 
+### `<Cashdraw>`
+Open cash drawer.
+
+```tsx
+<Cashdraw pin="2pin" />
+<Cashdraw pin="5pin" />
+```
+
 ## Functions
 ### `render`
 Returns: `Promise<Uint8Array>`
