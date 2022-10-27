@@ -72,6 +72,8 @@ export interface BarcodeOptions {
   height?: number;
 }
 
+export type CashDrawerPin = '2pin' | '5pin';
+
 export interface Printer {
   setCharacterSet(set: CharacterSet): this;
   setTextFont(font: TextFont): this;
@@ -88,6 +90,7 @@ export interface Printer {
   image(data: Uint8Array, width: number, height: number): this;
   qrcode(data: string, options?: QRCodeOptions): this;
   barcode(data: string, type: BarcodeType, options?: BarcodeOptions): this;
+  cashdraw(pin: CashDrawerPin): this;
   initialize(): this;
   getData(): Uint8Array;
   clear(): this;
