@@ -10,3 +10,16 @@ export * from './components/QRCode';
 export * from './components/Barcode';
 export * from './components/Row';
 export * from './render';
+
+export type {
+  Align,
+  TextFont,
+  TextSize,
+  TextUnderline,
+  QRCodeOptions,
+  BarcodeType,
+  BarcodeOptions,
+  CashDrawerPin,
+  CharacterSet,
+  PrinterType,
+} from '@react-thermal-printer/printer';
