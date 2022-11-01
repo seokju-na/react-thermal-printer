@@ -204,6 +204,7 @@ Returns: `Promise<Uint8Array>`
 
 Render element to `Uint8Array` data which corresponding to the esc/pos command.
 
+Print via serial port:
 ```tsx
 import { render, Printer, Text } from 'react-thermal-printer';
 
@@ -221,6 +222,28 @@ if (writer != null) {
   await writer.write(data);
   writer.releaseLock();
 }
+```
+
+Print via network:
+```tsx
+import { render, Printer, Text } from 'react-thermal-printer';
+import { connect } from 'net';
+
+const data = await render(
+  <Printer type="epson">
+    <Text>Hello World</Text>
+  </Printer>
+);
+
+const conn = connect({
+  host: '192.168.0.99',
+  port: 9100,
+  timeout: 3000,
+}, () => {
+  conn.write(Buffer.from(data), () => {
+    conn.destroy();
+  });
+});
 ```
 
 ## License
