@@ -25,7 +25,7 @@ export function wrapText(
     if (lengthOfLine > width) {
       line = line.slice(0, line.length - 1);
       result.push({
-        text: line,
+        text: adjustLine(line, size, width),
         length: textLength(line, { size }),
       });
       line = char;
@@ -34,10 +34,18 @@ export function wrapText(
     const isLast = i === chars.length - 1;
     if (isLast && line.length > 0) {
       result.push({
-        text: line,
+        text: adjustLine(line, size, width),
         length: textLength(line, { size }),
       });
     }
   });
   return result;
+}
+
+function adjustLine(line: string, size: TextSize | undefined, length: number) {
+  const len = textLength(line, { size });
+  if (len < length) {
+    return `${line}${' '.repeat(length - len)}`;
+  }
+  return line;
 }
