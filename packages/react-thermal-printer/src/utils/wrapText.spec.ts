@@ -21,11 +21,11 @@ it('wrap text to multiple lines', () => {
     },
     {
       length: 7,
-      text: '깨나 불',
+      text: '깨나 불 ',
     },
     {
       length: 4,
-      text: '조심',
+      text: '조심    ',
     },
   ]);
 });
