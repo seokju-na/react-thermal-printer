@@ -1,11 +1,6 @@
 import { TextSize } from '@react-thermal-printer/printer';
 import { textLength } from './textLength';
 
-interface Line {
-  text: string;
-  length: number;
-}
-
 /** wrap text to multiple lines */
 export function wrapText(
   text: string,
@@ -13,9 +8,9 @@ export function wrapText(
     size?: TextSize;
     width: number;
   }
-): Line[] {
+): string[] {
   const { size, width } = options;
-  const result: Line[] = [];
+  const lines: string[] = [];
   const chars = text.split('');
   let line = '';
 
@@ -24,28 +19,32 @@ export function wrapText(
     const lengthOfLine = textLength(line, { size });
     if (lengthOfLine > width) {
       line = line.slice(0, line.length - 1);
-      result.push({
-        text: adjustLine(line, size, width),
-        length: textLength(line, { size }),
-      });
+      lines.push(adjustLine(line, size, width));
       line = char;
     }
 
     const isLast = i === chars.length - 1;
     if (isLast && line.length > 0) {
-      result.push({
-        text: adjustLine(line, size, width),
-        length: textLength(line, { size }),
-      });
+      lines.push(adjustLine(line, size, width));
     }
   });
-  return result;
+  return lines;
 }
 
 function adjustLine(line: string, size: TextSize | undefined, length: number) {
-  const len = textLength(line, { size });
-  if (len < length) {
-    return `${line}${' '.repeat(length - len)}`;
+  const spaceCount = calcSpaceCount(line, size, length);
+  return `${line}${' '.repeat(spaceCount)}`;
+}
+
+function calcSpaceCount(line: string, size: TextSize | undefined, length: number) {
+  let count = 0;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const lineWithSpace = `${line}${' '.repeat(count)}`;
+    const lineLength = textLength(lineWithSpace, { size });
+    if (lineLength >= length) {
+      return lineLength === length ? count : count - 1;
+    }
+    count += 1;
   }
-  return line;
 }
