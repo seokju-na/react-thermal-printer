@@ -40,8 +40,8 @@ function calcSpaceCount(line: string, size: TextSize | undefined, length: number
   let count = 0;
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    line = `${line}${' '.repeat(count)}`;
-    const lineLength = textLength(line, { size });
+    const lineWithSpace = `${line}${' '.repeat(count)}`;
+    const lineLength = textLength(lineWithSpace, { size });
     if (lineLength >= length) {
       return lineLength === length ? count : count - 1;
     }
