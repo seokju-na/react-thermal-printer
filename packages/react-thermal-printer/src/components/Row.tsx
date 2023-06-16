@@ -65,7 +65,7 @@ Row.print = (elem, { printer, width }) => {
     size: leftSize,
     width: leftLineWidth,
   });
-  const centerLineWidth = width - gap * 2 - leftLength - rightLength;
+  const centerLineWidth = width - Math.max(gap * 2, 1) - leftLength - rightLength;
   const centerLines =
     centerString !== undefined
       ? wrapText(centerString, { size: centerSize, width: centerLineWidth })
@@ -83,7 +83,7 @@ Row.print = (elem, { printer, width }) => {
     const rightLine = rightLines[i];
 
     if (leftLine != null) {
-      Text.print(lineText(leftElem, leftLine.text), { printer, width });
+      Text.print(lineText(leftElem, leftLine), { printer, width });
       resetPrinter(printer);
     } else {
       space(printer, leftLineWidth);
@@ -92,7 +92,7 @@ Row.print = (elem, { printer, width }) => {
     if (centerElem != null) {
       space(printer, gap);
       if (centerLine != null) {
-        Text.print(lineText(leftElem, centerLine.text), { printer, width });
+        Text.print(lineText(centerElem, centerLine), { printer, width });
         resetPrinter(printer);
       } else {
         space(printer, centerLineWidth);
@@ -101,7 +101,7 @@ Row.print = (elem, { printer, width }) => {
 
     space(printer, gap);
     if (rightLine != null) {
-      Text.print(lineText(rightElem, rightLine.text), { printer, width });
+      Text.print(lineText(rightElem, rightLine), { printer, width });
       resetPrinter(printer);
     } else {
       space(printer, rightLineWidth);
