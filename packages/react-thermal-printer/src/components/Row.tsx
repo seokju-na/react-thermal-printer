@@ -1,3 +1,4 @@
+import { Printer } from '@react-thermal-printer/printer';
 import classNames from 'classnames';
 import { cloneElement, ComponentProps, ReactElement } from 'react';
 import { ExtendHTMLProps } from '../types/HTMLProps';
@@ -12,6 +13,7 @@ type Props = ExtendHTMLProps<
   'div',
   {
     left: string | ReactElement<ComponentProps<typeof Text>>;
+    center?: string | ReactElement<ComponentProps<typeof Text>>;
     right: string | ReactElement<ComponentProps<typeof Text>>;
     /**
      * gap between left and right
@@ -22,59 +24,95 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Row: Printable<Props> = ({ left, right, gap, className, ...props }) => {
+export const Row: Printable<Props> = ({ left, center, right, gap, className, ...props }) => {
   const leftEl = typeof left === 'string' ? <Text>{left}</Text> : left;
+  const centerEl = typeof center === 'string' ? <Text>{center}</Text> : center;
   const rightEl = typeof right === 'string' ? <Text>{right}</Text> : right;
 
   return (
     <div data-gap={gap} className={classNames('rtp-row', className)} {...props}>
       {cloneElement(leftEl, { className: classNames('rtp-row-left', leftEl.props.className) })}
+      {centerEl !== undefined
+        ? cloneElement(centerEl, {
+            className: classNames('rtp-row-center', centerEl.props.className),
+          })
+        : null}
       {cloneElement(rightEl, { className: classNames('rtp-row-right', rightEl.props.className) })}
     </div>
   );
 };
 
 Row.print = (elem, { printer, width }) => {
-  const { left, right, gap = 0 } = elem.props;
+  const { left, center, right, gap = 0 } = elem.props;
   const leftElem = typeof left === 'string' ? <Text>{left}</Text> : left;
+  const centerElem = typeof center === 'string' ? <Text>{center}</Text> : center;
   const rightElem = typeof right === 'string' ? <Text>{right}</Text> : right;
 
   const leftString = reactNodeToString(leftElem.props.children);
   const leftSize = leftElem.props.size?.width;
   const leftLength = textLength(leftString, { size: leftSize });
 
+  const centerString =
+    centerElem !== undefined ? reactNodeToString(centerElem.props.children) : undefined;
+  const centerSize = centerElem?.props.size?.width;
+
   const rightString = reactNodeToString(rightElem.props.children);
   const rightSize = rightElem.props.size?.width;
   const rightLength = textLength(rightString, { size: rightSize });
 
+  const leftLineWidth = centerElem !== undefined ? leftLength : width - gap - rightLength;
   const leftLines = wrapText(leftString, {
     size: leftSize,
-    width: Math.min(width - gap - rightLength, leftLength),
+    width: leftLineWidth,
   });
+  const centerLineWidth = width - gap * 2 - leftLength - rightLength;
+  const centerLines =
+    centerString !== undefined
+      ? wrapText(centerString, { size: centerSize, width: centerLineWidth })
+      : undefined;
+  const rightLineWidth = rightLength;
   const rightLines = wrapText(rightString, {
     size: rightSize,
-    width: rightLength,
+    width: rightLineWidth,
   });
 
-  for (let i = 0; i < Math.max(leftLines.length, rightLines.length); i++) {
+  const maxLines = Math.max(leftLines.length, centerLines?.length ?? 0, rightLines.length);
+  for (let i = 0; i < maxLines; i++) {
     const leftLine = leftLines[i];
+    const centerLine = centerLines?.[i];
     const rightLine = rightLines[i];
 
     if (leftLine != null) {
       Text.print(lineText(leftElem, leftLine.text), { printer, width });
       resetPrinter(printer);
+    } else {
+      space(printer, leftLineWidth);
     }
 
-    const spaceLength = width - (leftLine?.length ?? 0) - (rightLine?.length ?? 0);
-    printer.text(' '.repeat(spaceLength));
+    if (centerElem != null) {
+      space(printer, gap);
+      if (centerLine != null) {
+        Text.print(lineText(leftElem, centerLine.text), { printer, width });
+        resetPrinter(printer);
+      } else {
+        space(printer, centerLineWidth);
+      }
+    }
 
+    space(printer, gap);
     if (rightLine != null) {
       Text.print(lineText(rightElem, rightLine.text), { printer, width });
       resetPrinter(printer);
+    } else {
+      space(printer, rightLineWidth);
     }
     printer.newLine();
   }
 };
+
+function space(printer: Printer, length: number) {
+  printer.text(' '.repeat(length));
+}
 
 function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string) {
   return cloneElement(textElem, {
