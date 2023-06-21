@@ -10,6 +10,8 @@ export * from './components/QRCode';
 export * from './components/Barcode';
 export * from './components/Row';
 export * from './render';
+export * from './utils/textLength';
+export * from './utils/wrapText';
 
 export type {
   Align,
