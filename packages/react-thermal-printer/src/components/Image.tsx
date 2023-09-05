@@ -1,5 +1,5 @@
-import { Align } from '@react-thermal-printer/printer';
 import type { Image as ImageData, ImageTransform } from '@react-thermal-printer/image';
+import { Align } from '@react-thermal-printer/printer';
 import classNames from 'classnames';
 import { ReactElement } from 'react';
 import { ExtendHTMLProps } from '../types/HTMLProps';
