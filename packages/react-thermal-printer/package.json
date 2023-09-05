@@ -18,6 +18,7 @@
     "email": "seokju.me@gmail.com",
     "url": "https://github.com/seokju-na"
   },
+  "readme": "https://github.com/seokju-na/react-thermal-printer",
   "repository": {
     "type": "git",
     "url": "https://github.com/seokju-na/react-thermal-printer",
@@ -36,6 +37,7 @@
     "react-dom": "*"
   },
   "dependencies": {
+    "@react-thermal-printer/image": "workspace:^",
     "@react-thermal-printer/printer": "workspace:^",
     "classnames": "^2.3.1"
   },
