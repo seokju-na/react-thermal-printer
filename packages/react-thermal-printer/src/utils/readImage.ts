@@ -1,12 +1,7 @@
-export interface ImageData {
-  /** pixel data */
-  readonly data: Uint8Array;
-  readonly width: number;
-  readonly height: number;
-}
+import type { Image } from '@react-thermal-printer/image';
 
-export function readImageData(src: string) {
-  return new Promise<ImageData>((resolve, reject) => {
+export function readImage(src: string) {
+  return new Promise<Image>((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = '';
     img.onload = () => {

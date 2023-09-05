@@ -16,5 +16,11 @@
   "scripts": {
     "prepack": "yarn build",
     "build": "node ../../.scripts/build.mjs"
+  },
+  "dependencies": {
+    "floyd-steinberg": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/floyd-steinberg": "^1.0.0"
   }
 }

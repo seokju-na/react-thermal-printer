@@ -1005,6 +1005,9 @@ __metadata:
 "@react-thermal-printer/image@workspace:^, @react-thermal-printer/image@workspace:packages/image":
   version: 0.0.0-use.local
   resolution: "@react-thermal-printer/image@workspace:packages/image"
+  dependencies:
+    "@types/floyd-steinberg": ^1.0.0
+    floyd-steinberg: ^1.0.6
   languageName: unknown
   linkType: soft
 
@@ -1360,6 +1363,13 @@ __metadata:
   version: 0.0.51
   resolution: "@types/estree@npm:0.0.51"
   checksum: e56a3bcf759fd9185e992e7fdb3c6a5f81e8ff120e871641607581fb3728d16c811702a7d40fa5f869b7f7b4437ab6a87eb8d98ffafeee51e85bbe955932a189
+  languageName: node
+  linkType: hard
+
+"@types/floyd-steinberg@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@types/floyd-steinberg@npm:1.0.0"
+  checksum: b1920a5cab1ab5142b2898fb320a131e7727e1877a934931f3e16fa053b994059261ab0eae29d07ba8c67ea7c587afc4f61289961e5f51ecf4ca05dc1210c7d0
   languageName: node
   linkType: hard
 
@@ -3651,6 +3661,13 @@ __metadata:
   version: 3.2.7
   resolution: "flatted@npm:3.2.7"
   checksum: 427633049d55bdb80201c68f7eb1cbd533e03eac541f97d3aecab8c5526f12a20ccecaeede08b57503e772c769e7f8680b37e8d482d1e5f8d7e2194687f9ea35
+  languageName: node
+  linkType: hard
+
+"floyd-steinberg@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "floyd-steinberg@npm:1.0.6"
+  checksum: 8ab0eb103940dae38332a1942506ef638f959cc9cb72566754496c879ea84b964837bcdf41aa51ad1bdfdb7059174f8f7839ba0cb1d2a06f7503182f819e2585
   languageName: node
   linkType: hard
 
@@ -6105,6 +6122,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-thermal-printer@workspace:packages/react-thermal-printer"
   dependencies:
+    "@react-thermal-printer/image": "workspace:^"
     "@react-thermal-printer/printer": "workspace:^"
     "@testing-library/react": ^13.3.0
     "@types/pngjs": ^6

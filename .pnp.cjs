@@ -1555,7 +1555,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:packages/image", {\
           "packageLocation": "./packages/image/",\
           "packageDependencies": [\
-            ["@react-thermal-printer/image", "workspace:packages/image"]\
+            ["@react-thermal-printer/image", "workspace:packages/image"],\
+            ["@types/floyd-steinberg", "npm:1.0.0"],\
+            ["floyd-steinberg", "npm:1.0.6"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -1981,6 +1983,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-estree-npm-1.0.0-eddde5b631-910d97fb70.zip/node_modules/@types/estree/",\
           "packageDependencies": [\
             ["@types/estree", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/floyd-steinberg", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/@types-floyd-steinberg-npm-1.0.0-9e4129927d-b1920a5cab.zip/node_modules/@types/floyd-steinberg/",\
+          "packageDependencies": [\
+            ["@types/floyd-steinberg", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4879,6 +4890,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["floyd-steinberg", [\
+        ["npm:1.0.6", {\
+          "packageLocation": "./.yarn/cache/floyd-steinberg-npm-1.0.6-05dc975e9e-8ab0eb1039.zip/node_modules/floyd-steinberg/",\
+          "packageDependencies": [\
+            ["floyd-steinberg", "npm:1.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["form-data", [\
         ["npm:4.0.0", {\
           "packageLocation": "./.yarn/cache/form-data-npm-4.0.0-916facec2d-01135bf867.zip/node_modules/form-data/",\
@@ -7613,6 +7633,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/react-thermal-printer-virtual-710a243e39/1/packages/react-thermal-printer/",\
           "packageDependencies": [\
             ["react-thermal-printer", "virtual:86531d9c4f55c8a4a7c08972573e16b827c1b658ef5df244f7f8dccad4e9eb47c91a7c6d7d5b7495af2dc3b6d84282160a40c0e6fca23c7ed23233d72672d0ff#workspace:packages/react-thermal-printer"],\
+            ["@react-thermal-printer/image", "workspace:packages/image"],\
             ["@react-thermal-printer/printer", "workspace:packages/printer"],\
             ["@testing-library/react", "virtual:710a243e39acf00fd872e7a45e2525715a2388e2c89c4d4950020640755a3e20769ce03cf648ab880aecb73d82d225775db3f765e66185cd7fc1806d86e212fc#npm:13.3.0"],\
             ["@types/pngjs", "npm:6.0.1"],\
@@ -7635,6 +7656,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/react-thermal-printer/",\
           "packageDependencies": [\
             ["react-thermal-printer", "workspace:packages/react-thermal-printer"],\
+            ["@react-thermal-printer/image", "workspace:packages/image"],\
             ["@react-thermal-printer/printer", "workspace:packages/printer"],\
             ["@testing-library/react", "virtual:710a243e39acf00fd872e7a45e2525715a2388e2c89c4d4950020640755a3e20769ce03cf648ab880aecb73d82d225775db3f765e66185cd7fc1806d86e212fc#npm:13.3.0"],\
             ["@types/pngjs", "npm:6.0.1"],\

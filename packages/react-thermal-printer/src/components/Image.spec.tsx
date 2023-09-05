@@ -1,8 +1,8 @@
 import { getPrinter } from '@react-thermal-printer/printer';
+import { Image as ImageData } from '@react-thermal-printer/image';
 import { render } from '@testing-library/react';
 import fs from 'node:fs';
 import { PNG } from 'pngjs';
-import { ImageData } from '../utils/readImageData';
 import { Image } from './Image';
 
 function readPNG(filename: string) {
@@ -45,5 +45,5 @@ it('print image', async () => {
   });
 
   const png = await readPNG(src);
-  expect(actual.getData()).toEqual(expected.image(png.data, png.width, png.height).getData());
+  expect(actual.getData()).toEqual(expected.image(png).getData());
 });

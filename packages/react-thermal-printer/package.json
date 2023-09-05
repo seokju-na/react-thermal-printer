@@ -36,6 +36,7 @@
     "react-dom": "*"
   },
   "dependencies": {
+    "@react-thermal-printer/image": "workspace:^",
     "@react-thermal-printer/printer": "workspace:^",
     "classnames": "^2.3.1"
   },
