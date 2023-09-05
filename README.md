@@ -161,8 +161,6 @@ Print qr code (2d barcode).
 ### `<Image>`
 Print image bitmap.
 
-Uses [Floyd–Steinberg dithering](https://github.com/noopkat/floyd-steinberg).
-
 ```tsx
 <Image src="https://my-cdn.com/image.png" />
 <Image align="center" src="https://my-cdn.com/image.png" />
@@ -170,7 +168,14 @@ Uses [Floyd–Steinberg dithering](https://github.com/noopkat/floyd-steinberg).
 
 function myCustomImageReader(
   elem: ReactElement<ComponentProps<typeof Image>>
-): Promise<Uint8Array>;
+): Promise<Image>;
+```
+
+Apply greyscale([Floyd-Steinberg dithering](https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering)):
+```tsx
+import { transforms } from '@react-therma-printer/image';
+
+<Image src="https://my-cdn.com/image.png" transforms={[transforms.floydSteinberg]} />
 ```
 
 ### `<Cut>`
