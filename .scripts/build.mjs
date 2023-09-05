@@ -36,6 +36,7 @@ async function types(outDir) {
       noEmit: false,
       declaration: true,
       emitDeclarationOnly: true,
+      allowSyntheticDefaultImports: true,
       target: 'ESNext',
       module: 'ESNext',
       moduleResolution: 'Node',
