@@ -23,14 +23,14 @@ function readPNG(filename: string) {
 }
 
 it('render <img /> in DOM', () => {
-  const { container } = render(<Image src="https://via.placeholder.com/300.png"/>);
+  const { container } = render(<Image src="https://via.placeholder.com/300.png" />);
   const img = container.querySelector('img');
   expect(img).not.toBeNull();
   expect(img).toHaveAttribute('src', 'https://via.placeholder.com/300.png');
 });
 
 it('has ".rtp-image" css class', () => {
-  const { container } = render(<Image src="https://via.placeholder.com/300.png"/>);
+  const { container } = render(<Image src="https://via.placeholder.com/300.png" />);
   expect(container.querySelector('.rtp-image')).not.toBeNull();
 });
 
@@ -39,7 +39,7 @@ it('print image', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  await Image.print(<Image src={src} reader={({ props: { src } }) => readPNG(src)}/>, {
+  await Image.print(<Image src={src} reader={({ props: { src } }) => readPNG(src)} />, {
     printer: actual,
     width: 44,
   });
