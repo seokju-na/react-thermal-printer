@@ -1,0 +1,3 @@
+releases:
+  "@react-thermal-printer/printer": patch
+  react-thermal-printer: patch
