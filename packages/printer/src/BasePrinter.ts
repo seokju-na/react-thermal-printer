@@ -208,7 +208,7 @@ export abstract class BasePrinter implements Printer {
   image(img: Image): this {
     const size = new ArrayBuffer(4);
     const view = new DataView(size);
-    view.setUint16(0, img.width / 8, true);
+    view.setUint16(0, Math.ceil(img.width / 8), true);
     view.setUint16(2, img.height, true);
 
     const [xL, xH, yL, yH] = [...new Uint8Array(size).values()] as [number, number, number, number];
