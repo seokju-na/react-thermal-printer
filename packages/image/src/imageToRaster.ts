@@ -1,6 +1,22 @@
 import { Image } from './Image';
 
-export function imageToRaster(image: Image): number[] {
+export interface ImageToRasterOptions {
+  /**
+   * Converts rgb color into black.
+   * Returns true or 1 to fill black color.
+   * If returns false or 0, will be empty pixel.
+   *
+   * @default a > 0 && (r + g + b) / 3 < 230
+   */
+  rgbToBlack?: (pixel: Pixel) => boolean | 1 | 0;
+}
+
+const defaultRgbToBlack = ({ r, g, b, a }: Pixel) => a > 0 && (r + g + b) / 3 < 230;
+
+export function imageToRaster(
+  image: Image,
+  { rgbToBlack = defaultRgbToBlack }: ImageToRasterOptions = {}
+): number[] {
   const pixels = getPixels(image);
   const raster: number[] = [];
 
@@ -20,17 +36,10 @@ export function imageToRaster(image: Image): number[] {
           };
         }
 
-        if (pixel.a > 126) {
-          // checking transparency
-          const grayscale = parseInt(
-            String(0.2126 * pixel.r + 0.7152 * pixel.g + 0.0722 * pixel.b)
-          );
-
-          if (grayscale < 128) {
-            // checking color
-            const mask = 1 << (7 - k); // setting bitwise mask
-            byte |= mask; // setting the correct bit to 1
-          }
+        const color = rgbToBlack(pixel);
+        if (color === 1) {
+          const mask = 1 << (7 - k);
+          byte |= mask;
         }
       }
       raster.push(byte);
