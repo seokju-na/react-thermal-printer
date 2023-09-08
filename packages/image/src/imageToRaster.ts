@@ -37,7 +37,8 @@ export function imageToRaster(
         }
 
         const color = rgbToBlack(pixel);
-        if (color === 1) {
+        // eslint-disable-next-line no-extra-boolean-cast
+        if (Boolean(color)) {
           const mask = 1 << (7 - k);
           byte |= mask;
         }
