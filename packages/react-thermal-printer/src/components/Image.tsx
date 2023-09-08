@@ -1,4 +1,8 @@
-import type { Image as ImageData, ImageTransform } from '@react-thermal-printer/image';
+import type {
+  Image as ImageData,
+  ImageTransform,
+  ImageToRasterOptions,
+} from '@react-thermal-printer/image';
 import { Align } from '@react-thermal-printer/printer';
 import classNames from 'classnames';
 import { ReactElement } from 'react';
@@ -20,6 +24,7 @@ type Props = ExtendHTMLProps<
      * <Image transforms={[transforms.floydSteinberg]} {...} />
      */
     transforms?: ImageTransform[];
+    rgbToBlack?: ImageToRasterOptions['rgbToBlack'];
     /**
      * Image data reader
      * @default read data from <img /> and <canvas />
@@ -41,7 +46,12 @@ export const Image: Printable<Props> = ({ align, src, reader: _, className, ...p
 };
 
 Image.print = async (elem, { printer }) => {
-  const { align, transforms = [], reader = ({ props: { src } }) => readImage(src) } = elem.props;
+  const {
+    align,
+    transforms = [],
+    rgbToBlack,
+    reader = ({ props: { src } }) => readImage(src),
+  } = elem.props;
   let image = await reader(elem);
   for (const transform of transforms) {
     image = transform(image);
@@ -50,5 +60,5 @@ Image.print = async (elem, { printer }) => {
   if (align != null) {
     printer.setAlign(align);
   }
-  printer.image(image);
+  printer.image(image, { rgbToBlack });
 };
