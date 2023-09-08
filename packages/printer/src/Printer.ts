@@ -1,4 +1,4 @@
-import { Image } from '@react-thermal-printer/image';
+import { Image, ImageToRasterOptions } from '@react-thermal-printer/image';
 import { CharacterSet } from './CharacterSet';
 
 export type Align = 'left' | 'center' | 'right';
@@ -88,7 +88,7 @@ export interface Printer {
   raw(data: Uint8Array): this;
   newLine(): this;
   cut(): this;
-  image(image: Image): this;
+  image(image: Image, options?: ImageToRasterOptions): this;
   qrcode(data: string, options?: QRCodeOptions): this;
   barcode(data: string, type: BarcodeType, options?: BarcodeOptions): this;
   cashdraw(pin: CashDrawerPin): this;
