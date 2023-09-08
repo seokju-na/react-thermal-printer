@@ -1,4 +1,4 @@
-import { Image, imageToRaster } from '@react-thermal-printer/image';
+import { Image, imageToRaster, ImageToRasterOptions } from '@react-thermal-printer/image';
 import { CharacterSet } from './CharacterSet';
 import {
   Align,
@@ -205,7 +205,7 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
-  image(img: Image): this {
+  image(img: Image, options?: ImageToRasterOptions): this {
     const size = new ArrayBuffer(4);
     const view = new DataView(size);
     view.setUint16(0, Math.ceil(img.width / 8), true);
@@ -216,7 +216,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'image',
       args: [img.data.byteLength, img.width, img.height],
-      data: image(0, xL, xH, yL, yH, imageToRaster(img)),
+      data: image(0, xL, xH, yL, yH, imageToRaster(img, options)),
     });
     return this;
   }
