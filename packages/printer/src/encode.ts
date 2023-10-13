@@ -40,6 +40,6 @@ const encoding: Record<CharacterSet, string> = {
   kz1048_kazakhstan: 'RK1048',
   japan: 'EUC-JP',
   korea: 'EUC-KR',
-  china: 'EUC-CN',
+  china: 'GB18030',
   hk_tw: 'Big5-HKSCS',
 };
