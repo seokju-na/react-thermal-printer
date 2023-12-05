@@ -6,6 +6,11 @@ interface Props {
    * @default 6
    */
   lineFeeds?: number;
+  /**
+   * partial cut
+   * @default false
+   */
+  partial?: boolean;
 }
 
 export const Cut: Printable<Props> = () => {
@@ -13,9 +18,9 @@ export const Cut: Printable<Props> = () => {
 };
 
 Cut.print = (elem, { printer }) => {
-  const { lineFeeds = 6 } = elem.props;
+  const { lineFeeds = 6, partial = false } = elem.props;
   for (let i = 0; i < lineFeeds; i++) {
     printer.newLine();
   }
-  printer.cut();
+  printer.cut(partial);
 };

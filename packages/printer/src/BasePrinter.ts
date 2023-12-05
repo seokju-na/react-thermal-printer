@@ -197,10 +197,10 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
-  cut(): this {
+  cut(partial = false): this {
     this.cmds.push({
       name: 'cut',
-      data: cut(48),
+      data: cut(partial ? 49 : 48),
     });
     return this;
   }
