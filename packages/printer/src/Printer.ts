@@ -87,7 +87,7 @@ export interface Printer {
   text(data: string): this;
   raw(data: Uint8Array): this;
   newLine(): this;
-  cut(): this;
+  cut(partial?: boolean): this;
   image(image: Image, options?: ImageToRasterOptions): this;
   qrcode(data: string, options?: QRCodeOptions): this;
   barcode(data: string, type: BarcodeType, options?: BarcodeOptions): this;
