@@ -91,6 +91,20 @@ Requires `type` to determine printer type.
 
 **Note**: Supported printer types are `epson`, `star`.
 
+#### Custom `encoder`
+
+Pass `encoder` prop to use custom encoder.
+
+Example code (utf8 encoding):
+```tsx
+const encoder = text => new TextEncoder().encode(text);
+const receipt = (
+  <Printer type="epson" encoder={encoder}>
+    ...
+  </Printer>
+);
+```
+
 
 ### `<Text>`
 Display text, and change text size or style to make it bold, underline, etc.
@@ -181,11 +195,13 @@ import { transforms } from '@react-therma-printer/image';
 ### `<Cut>`
 Cut the paper.
 
-Perform full cutting, and feeds lines after cutting.
+Perform full/partial cutting, and feeds lines after cutting.
 
 ```tsx
 <Cut />
 <Cut lineFeeds={6} />
+// partial cut
+<Cut partial={true} />
 ```
 
 ### `<Raw>`
