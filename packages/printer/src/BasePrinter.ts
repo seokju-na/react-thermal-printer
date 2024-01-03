@@ -35,9 +35,11 @@ import { textMode } from './commands/textMode';
 import { textSize } from './commands/textSize';
 import { textUnderline } from './commands/textUnderline';
 import { encode } from './encode';
+import { PrinterEncoder } from '.';
 
 export interface BasePrinterOptions {
   characterSet?: CharacterSet;
+  encoder?: PrinterEncoder;
 }
 
 interface Cmd {
@@ -49,9 +51,11 @@ interface Cmd {
 export abstract class BasePrinter implements Printer {
   protected cmds: Cmd[] = [];
   protected characterSet: CharacterSet;
+  protected encoder: PrinterEncoder;
 
   protected constructor(options?: BasePrinterOptions) {
     this.characterSet = options?.characterSet ?? 'pc437_usa';
+    this.encoder = options?.encoder ?? encode;
   }
 
   setCharacterSet(set: CharacterSet): this {
@@ -175,7 +179,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'text',
       args: [data],
-      data: Array.from(encode(data, this.characterSet)),
+      data: Array.from(this.encoder(data, this.characterSet)),
     });
     return this;
   }
