@@ -4,10 +4,16 @@ import { Printer } from './Printer';
 import { StarPrinter } from './StarPrinter';
 
 export type PrinterType = 'epson' | 'star';
+export type PrinterEncoder = (text: string, characterSet: CharacterSet) => Uint8Array;
 
 export interface PrinterOptions {
   type: PrinterType;
   characterSet?: CharacterSet;
+  /**
+   * Encoder for text
+   * @default uses encoder from "iconv-lite"
+   */
+  encoder?: PrinterEncoder;
 }
 
 export function getPrinter({ type, ...options }: PrinterOptions): Printer {
