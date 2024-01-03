@@ -95,8 +95,8 @@ Requires `type` to determine printer type.
 
 Pass `encoder` prop to use custom encoder.
 
-Example code (utf8 encoding):
 ```tsx
+// utf8 encoding
 const encoder = text => new TextEncoder().encode(text);
 const receipt = (
   <Printer type="epson" encoder={encoder}>
