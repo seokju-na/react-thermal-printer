@@ -11,8 +11,16 @@ type PrinterProps = ComponentProps<typeof Printer>;
  * Render the React element as printable binary data.
  */
 export async function render(elem: ReactElement<PrinterProps>): Promise<Uint8Array> {
-  const { type, characterSet, width = 48, initialize = true, debug = false, children } = elem.props;
-  const printer = getPrinter({ type, characterSet });
+  const {
+    type,
+    characterSet,
+    width = 48,
+    encoder,
+    initialize = true,
+    debug = false,
+    children,
+  } = elem.props;
+  const printer = getPrinter({ type, characterSet, encoder });
 
   if (characterSet != null) {
     printer.setCharacterSet(characterSet);
