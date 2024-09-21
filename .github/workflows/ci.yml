@@ -1,14 +1,17 @@
 name: ci
 on: pull_request
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - uses: actions/cache@v2
+          node-version-file: ".nvmrc"
+      - uses: actions/cache@v4
         with:
           path: |
             **/.eslintcache
@@ -20,11 +23,11 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - uses: actions/cache@v2
+          node-version-file: ".nvmrc"
+      - uses: actions/cache@v4
         with:
           path: |
             **/*.tsbuildinfo
@@ -36,20 +39,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version-file: ".nvmrc"
       - run: yarn install --immutable --immutable-cache
       - run: yarn test
   version-check:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v2
+     - uses: actions/checkout@v4
        with:
          fetch-depth: 0
-     - uses: actions/setup-node@v3
+     - uses: actions/setup-node@v4
        with:
-         node-version: 16
+         node-version-file: ".nvmrc"
      - run: yarn install --immutable --immutable-cache
      - run: yarn version check
