@@ -1,7 +1,7 @@
 {
   "name": "react-thermal-printer-sources",
   "private": true,
-  "packageManager": "yarn@3.2.2",
+  "packageManager": "yarn@4.5.0",
   "workspaces": [
     "packages/*",
     "example"
