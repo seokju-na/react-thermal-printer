@@ -11,6 +11,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+      - run: |
+          corepack enable
+          corepack prepare --activate
       - uses: actions/cache@v4
         with:
           path: |
@@ -27,6 +30,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+      - run: |
+          corepack enable
+          corepack prepare --activate
       - uses: actions/cache@v4
         with:
           path: |
@@ -43,6 +49,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+      - run: |
+          corepack enable
+          corepack prepare --activate
       - run: yarn install --immutable --immutable-cache
       - run: yarn test
   version-check:
@@ -54,5 +63,8 @@ jobs:
      - uses: actions/setup-node@v4
        with:
          node-version-file: ".nvmrc"
+     - run: |
+         corepack enable
+         corepack prepare --activate
      - run: yarn install --immutable --immutable-cache
      - run: yarn version check
