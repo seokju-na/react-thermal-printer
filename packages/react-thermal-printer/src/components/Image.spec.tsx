@@ -1,7 +1,7 @@
-import { Image as ImageData } from '@react-thermal-printer/image';
+import fs from 'node:fs';
+import type { Image as ImageData } from '@react-thermal-printer/image';
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render } from '@testing-library/react';
-import fs from 'node:fs';
 import { PNG } from 'pngjs';
 import { Image } from './Image';
 

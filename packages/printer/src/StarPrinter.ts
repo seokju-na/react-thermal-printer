@@ -1,6 +1,6 @@
 import { BasePrinter } from './BasePrinter';
-import { CharacterSet } from './CharacterSet';
-import { QRCodeOptions } from './Printer';
+import type { CharacterSet } from './CharacterSet';
+import type { QRCodeOptions } from './Printer';
 import { starQRCodeCellSize } from './commands/starQRCodeCellSize';
 import { starQRCodeCorrectionLevel } from './commands/starQRCodeCorrectionLevel';
 import { starQRCodeModel } from './commands/starQRCodeModel';
@@ -13,7 +13,7 @@ interface Options {
 }
 
 export class StarPrinter extends BasePrinter {
-  constructor(options?: Options) {
+  public constructor(options?: Options) {
     super(options);
   }
 

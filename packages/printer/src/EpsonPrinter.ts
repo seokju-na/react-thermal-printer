@@ -1,5 +1,5 @@
 import { BasePrinter } from './BasePrinter';
-import { CharacterSet } from './CharacterSet';
+import type { CharacterSet } from './CharacterSet';
 
 interface Options {
   characterSet?: CharacterSet;

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { ExtendHTMLProps } from '../types/HTMLProps';
-import { Printable } from '../types/Printable';
+import type { ExtendHTMLProps } from '../types/HTMLProps';
+import type { Printable } from '../types/Printable';
 
 type Props = ExtendHTMLProps<
   'hr',

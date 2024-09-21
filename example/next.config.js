@@ -1,46 +1,35 @@
-const { spawnSync } = require('child_process');
-const path = require('path');
+const { readdirSync, readFileSync } = require('node:fs');
+const path = require('node:path');
 
-const ROOT_PATH = path.resolve(__dirname, '../');
-
-function getBabelLoaderTargetLocations(currentServiceLocation) {
-  const { stdout } = spawnSync('yarn', ['workspaces', 'list', '--json'], {
-    cwd: ROOT_PATH,
-    encoding: 'utf8',
-  });
-
-  /**
-   * @type {{ location: string, name: string }[]}
-   */
-  const workspaces = stdout
-    .split('\n')
-    .filter(val => val !== '')
-    .map(val => JSON.parse(val));
-
-  return workspaces
-    .filter(workspace => workspace.location !== '.')
-    .filter(workspace => workspace.location !== currentServiceLocation)
-    .map(workspace => workspace.location);
+function findRootDir() {
+  let current = process.cwd();
+  while (true) {
+    const files = readdirSync(current);
+    if (files.some(x => x === 'yarn.lock')) {
+      break;
+    }
+    current = path.resolve(current, '../');
+  }
+  return current;
 }
 
-const currentServiceDir = process.cwd();
-const currentServiceLocation = path.relative(ROOT_PATH, currentServiceDir);
-const babelLoaderTargetLocations = getBabelLoaderTargetLocations(currentServiceLocation);
+const rootDir = findRootDir();
 
+function findInternalPackages() {
+  return readdirSync(path.join(rootDir, 'packages/')).map(name => {
+    const pkgJsonFilePath = path.join(rootDir, 'packages', name, 'package.json');
+    const pkgJson = readFileSync(pkgJsonFilePath, 'utf8');
+    return JSON.parse(pkgJson).name;
+  });
+}
+
+/** @type import('next').NextConfig */
 module.exports = {
-  webpack: config => {
-    config.module.rules.unshift({
-      test: /\.tsx?$/,
-      include: filePath => {
-        return babelLoaderTargetLocations.some(x => filePath.includes(x));
-      },
-      use: {
-        loader: require.resolve('babel-loader'),
-        options: {
-          rootMode: 'upward',
-        },
-      },
-    });
-    return config;
+  transpilePackages: [...findInternalPackages()],
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };

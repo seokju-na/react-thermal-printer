@@ -1,4 +1,4 @@
-import { TextSize } from '@react-thermal-printer/printer';
+import type { TextSize } from '@react-thermal-printer/printer';
 import { sum } from './sum';
 
 export function textLength(text: string, { size = 1 }: { size?: TextSize } = {}) {

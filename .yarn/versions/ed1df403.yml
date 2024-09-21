@@ -1,0 +1,4 @@
+releases:
+  "@react-thermal-printer/image": minor
+  "@react-thermal-printer/printer": minor
+  react-thermal-printer: minor

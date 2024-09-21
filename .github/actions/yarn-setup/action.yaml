@@ -1,0 +1,22 @@
+name: "yarn setup"
+description: "yarn setup"
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        corepack enable
+        corepack prepare --activate
+      shell: bash
+    - id: yarn-cache-dir
+      run: |
+        echo "YARN_CACHE_DIR=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      shell: bash
+    - uses: actions/cache@v4
+      with:
+        path: ${{ steps.yarn-cache-dir.outputs.YARN_CACHE_DIR }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+        save-always: true
+    - run: yarn install
+      shell: bash

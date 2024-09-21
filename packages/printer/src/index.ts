@@ -1,6 +1,6 @@
-import { CharacterSet } from './CharacterSet';
+import type { CharacterSet } from './CharacterSet';
 import { EpsonPrinter } from './EpsonPrinter';
-import { Printer } from './Printer';
+import type { Printer } from './Printer';
 import { StarPrinter } from './StarPrinter';
 
 export type PrinterType = 'epson' | 'star';

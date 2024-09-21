@@ -14,14 +14,7 @@ it('has ".rtp-text" css class', () => {
 
 it('data props', () => {
   render(
-    <Text
-      align="center"
-      bold={true}
-      font="B"
-      underline="2dot-thick"
-      invert={true}
-      size={{ width: 3, height: 4 }}
-    >
+    <Text align="center" bold={true} font="B" underline="2dot-thick" invert={true} size={{ width: 3, height: 4 }}>
       hello
     </Text>
   );
@@ -49,13 +42,7 @@ it('print text with configs', async () => {
   const expected = getPrinter({ type: 'epson', characterSet: 'korea' });
 
   Text.print(
-    <Text
-      align="center"
-      bold={true}
-      invert={true}
-      underline="2dot-thick"
-      size={{ width: 3, height: 3 }}
-    >
+    <Text align="center" bold={true} invert={true} underline="2dot-thick" size={{ width: 3, height: 3 }}>
       안녕하세요
     </Text>,
     { printer: actual, width: 44 }
@@ -78,12 +65,7 @@ it('print text with fragments', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Text.print(
-    <Text>
-      hello <>world</>
-    </Text>,
-    { printer: actual, width: 44 }
-  );
+  Text.print(<Text>hello world</Text>, { printer: actual, width: 44 });
 
   expect(actual.getData()).toEqual(expected.text('hello world').newLine().getData());
 });
@@ -96,8 +78,8 @@ it('print text with html special characters', async () => {
     <Text>
       {`'`}
       {`"`}
-      {`<`}
-      {`>`}
+      {'<'}
+      {'>'}
     </Text>,
     { printer: actual, width: 44 }
   );

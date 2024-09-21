@@ -1,8 +1,8 @@
-import { Printer } from '@react-thermal-printer/printer';
+import type { Printer } from '@react-thermal-printer/printer';
 import classNames from 'classnames';
-import { cloneElement, ComponentProps, ReactElement } from 'react';
-import { ExtendHTMLProps } from '../types/HTMLProps';
-import { Printable } from '../types/Printable';
+import { type ComponentProps, type ReactElement, cloneElement } from 'react';
+import type { ExtendHTMLProps } from '../types/HTMLProps';
+import type { Printable } from '../types/Printable';
 import { reactNodeToString } from '../utils/reactNodeToString';
 import { resetPrinter } from '../utils/resetPrinter';
 import { textLength } from '../utils/textLength';
@@ -52,8 +52,7 @@ Row.print = (elem, { printer, width }) => {
   const leftSize = leftElem.props.size?.width;
   const leftLength = textLength(leftString, { size: leftSize });
 
-  const centerString =
-    centerElem !== undefined ? reactNodeToString(centerElem.props.children) : undefined;
+  const centerString = centerElem !== undefined ? reactNodeToString(centerElem.props.children) : undefined;
   const centerSize = centerElem?.props.size?.width;
 
   const rightString = reactNodeToString(rightElem.props.children);
@@ -67,9 +66,7 @@ Row.print = (elem, { printer, width }) => {
   });
   const centerLineWidth = width - Math.max(gap * 2, 1) - leftLength - rightLength;
   const centerLines =
-    centerString !== undefined
-      ? wrapText(centerString, { size: centerSize, width: centerLineWidth })
-      : undefined;
+    centerString !== undefined ? wrapText(centerString, { size: centerSize, width: centerLineWidth }) : undefined;
   const rightLineWidth = rightLength;
   const rightLines = wrapText(rightString, {
     size: rightSize,

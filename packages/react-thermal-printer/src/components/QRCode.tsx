@@ -1,5 +1,5 @@
-import { Align, QRCodeOptions } from '@react-thermal-printer/printer';
-import { Printable } from '../types/Printable';
+import type { Align, QRCodeOptions } from '@react-thermal-printer/printer';
+import type { Printable } from '../types/Printable';
 
 interface Props extends QRCodeOptions {
   align?: Align;

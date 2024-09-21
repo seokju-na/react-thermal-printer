@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Image } from './Image';
+import type { Image } from './Image';
 
 export interface ImageToRasterOptions {
   /**
@@ -14,10 +13,7 @@ export interface ImageToRasterOptions {
 
 const defaultRgbToBlack = ({ r, g, b, a }: Pixel) => a > 0 && (r + g + b) / 3 < 230;
 
-export function imageToRaster(
-  image: Image,
-  { rgbToBlack = defaultRgbToBlack }: ImageToRasterOptions = {}
-): number[] {
+export function imageToRaster(image: Image, { rgbToBlack = defaultRgbToBlack }: ImageToRasterOptions = {}): number[] {
   const pixels = getPixels(image);
   const raster: number[] = [];
 
@@ -38,8 +34,7 @@ export function imageToRaster(
         }
 
         const color = rgbToBlack(pixel);
-        // eslint-disable-next-line no-extra-boolean-cast
-        if (Boolean(color)) {
+        if (color) {
           const mask = 1 << (7 - k);
           byte |= mask;
         }
