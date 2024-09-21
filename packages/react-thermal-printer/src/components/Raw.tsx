@@ -1,4 +1,4 @@
-import { Printable } from '../types/Printable';
+import type { Printable } from '../types/Printable';
 
 interface Props {
   data: Uint8Array | number[];

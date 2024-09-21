@@ -1,5 +1,5 @@
 import { encode as _encode } from 'iconv-lite';
-import { CharacterSet } from './CharacterSet';
+import type { CharacterSet } from './CharacterSet';
 
 export function encode(text: string, characterSet: CharacterSet): Uint8Array {
   return _encode(text, encoding[characterSet]);

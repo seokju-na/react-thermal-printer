@@ -1,21 +1,15 @@
 #!/usr/bin/env node
 
-import { build as esbuild } from 'esbuild';
-import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import path from 'node:path';
 import { readFile, rm, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+import { build as esbuild } from 'esbuild';
 import { execa } from 'execa';
 
-const pkgRaw = await readFile(
-  path.join(process.cwd(), 'package.json'),
-  'utf8'
-);
+const pkgRaw = await readFile(path.join(process.cwd(), 'package.json'), 'utf8');
 const { dependencies = {}, peerDependencies = {} } = JSON.parse(pkgRaw);
 
-const external = [
-  ...Object.keys(dependencies),
-  ...Object.keys(peerDependencies),
-];
+const external = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
 
 async function build(options = {}) {
   return esbuild({
@@ -45,29 +39,16 @@ async function types(outDir) {
       jsx: 'react-jsx',
     },
     include: ['src'],
-    exclude: [
-      '**/*.spec.ts',
-      '**/*.spec.tsx',
-      '**/*.test.ts',
-      '**/*.test.tsx',
-    ],
+    exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
   };
   const tscPath = path.join(process.cwd(), 'tsconfig.json');
 
   try {
     await writeFile(tscPath, JSON.stringify(tsc), 'utf8');
-    await execa('yarn', [
-      'run',
-      '-T',
-      'tsc',
-    ]);
+    await execa('yarn', ['run', '-T', 'tsc']);
   } finally {
     await rm(tscPath, { force: true });
   }
 }
 
-await Promise.all([
-  build({ format: 'cjs', outdir: 'dist' }),
-  build({ format: 'esm', outdir: 'esm' }),
-  types('dist'),
-]);
+await Promise.all([build({ format: 'cjs', outdir: 'dist' }), build({ format: 'esm', outdir: 'esm' }), types('dist')]);

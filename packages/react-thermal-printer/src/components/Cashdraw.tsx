@@ -1,5 +1,5 @@
-import { CashDrawerPin } from '@react-thermal-printer/printer/src/Printer';
-import { Printable } from '../types/Printable';
+import type { CashDrawerPin } from '@react-thermal-printer/printer/src/Printer';
+import type { Printable } from '../types/Printable';
 
 interface Props {
   /** pin to generate pulse */

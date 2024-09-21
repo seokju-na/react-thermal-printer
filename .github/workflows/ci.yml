@@ -4,35 +4,19 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: |
-          corepack enable
-          corepack prepare --activate
-      - uses: actions/cache@v4
-        with:
-          path: |
-            **/.eslintcache
-          key: lint-${{ hashFiles('**/.eslintcache') }}
-          restore-keys: |
-            lint-
-      - run: yarn install --immutable --immutable-cache
-      - run: yarn lint
+      - uses: ./.github/actions/node-setup
+      - uses: ./.github/actions/yarn-setup
+      - run: yarn check
   typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: |
-          corepack enable
-          corepack prepare --activate
+      - uses: ./.github/actions/node-setup
+      - uses: ./.github/actions/yarn-setup
       - uses: actions/cache@v4
         with:
           path: |
@@ -40,19 +24,13 @@ jobs:
           key: typecheck-${{ hashFiles('**/*.tsbuildinfo') }}
           restore-keys: |
             typecheck-
-      - run: yarn install --immutable --immutable-cache
       - run: yarn typecheck
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: |
-          corepack enable
-          corepack prepare --activate
-      - run: yarn install --immutable --immutable-cache
+      - uses: ./.github/actions/node-setup
+      - uses: ./.github/actions/yarn-setup
       - run: yarn test
   version-check:
     runs-on: ubuntu-latest
@@ -60,11 +38,6 @@ jobs:
      - uses: actions/checkout@v4
        with:
          fetch-depth: 0
-     - uses: actions/setup-node@v4
-       with:
-         node-version-file: ".nvmrc"
-     - run: |
-         corepack enable
-         corepack prepare --activate
-     - run: yarn install --immutable --immutable-cache
+     - uses: ./.github/actions/node-setup
+     - uses: ./.github/actions/yarn-setup
      - run: yarn version check

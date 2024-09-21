@@ -1,4 +1,4 @@
-import { TextSize } from '@react-thermal-printer/printer';
+import type { TextSize } from '@react-thermal-printer/printer';
 import { textLength } from './textLength';
 
 /** wrap text to multiple lines */
@@ -38,7 +38,6 @@ function adjustLine(line: string, size: TextSize | undefined, length: number) {
 
 function calcSpaceCount(line: string, size: TextSize | undefined, length: number) {
   let count = 0;
-  // eslint-disable-next-line no-constant-condition
   while (true) {
     const lineWithSpace = `${line}${' '.repeat(count)}`;
     const lineLength = textLength(lineWithSpace, { size });

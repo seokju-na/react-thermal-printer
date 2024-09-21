@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
-import { Br, Cut, Line, Printer, render, Row, Text } from 'react-thermal-printer';
+import { Br, Cut, Line, Printer, Row, Text, render } from 'react-thermal-printer';
 
 export function IndexPage() {
   const receipt = (
@@ -42,28 +42,30 @@ export function IndexPage() {
   );
 
   const [port, setPort] = useState<SerialPort>();
-  const { mutateAsync: print, isLoading: isPrinting } = useMutation(async () => {
-    let _port = port;
-    if (_port == null) {
-      _port = await navigator.serial.requestPort();
-      await _port.open({ baudRate: 9600 });
-      setPort(_port);
-    }
+  const { mutateAsync: print, isPending: isPrinting } = useMutation({
+    mutationFn: async () => {
+      let _port = port;
+      if (_port == null) {
+        _port = await navigator.serial.requestPort();
+        await _port.open({ baudRate: 9600 });
+        setPort(_port);
+      }
 
-    const writer = _port.writable?.getWriter();
-    if (writer != null) {
-      const data = await render(receipt);
+      const writer = _port.writable?.getWriter();
+      if (writer != null) {
+        const data = await render(receipt);
 
-      await writer.write(data);
-      writer.releaseLock();
-    }
+        await writer.write(data);
+        writer.releaseLock();
+      }
+    },
   });
 
   return (
     <main>
       <div>{receipt}</div>
       <div style={{ marginTop: 24 }}>
-        <button disabled={isPrinting} onClick={() => print()}>
+        <button type="button" disabled={isPrinting} onClick={() => print()}>
           {isPrinting ? '프린트 중...' : '프린트'}
         </button>
       </div>

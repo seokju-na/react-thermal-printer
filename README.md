@@ -6,18 +6,9 @@ React for thermal printing. It is used to print to a thermal printer that suppor
 
 ## Installation
 
-### yarn
 ```shell
 yarn add react-thermal-printer
-```
-
-### pnpm
-```shell
 pnpm add react-thermal-printer
-```
-
-### npm
-```shell
 npm install --save react-thermal-printer
 ```
 

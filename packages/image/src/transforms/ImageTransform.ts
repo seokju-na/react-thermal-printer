@@ -1,5 +1,3 @@
-import { Image } from '../Image';
+import type { Image } from '../Image';
 
-export interface ImageTransform {
-  (image: Image): Image;
-}
+export type ImageTransform = (image: Image) => Image;

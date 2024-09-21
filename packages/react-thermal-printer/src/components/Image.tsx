@@ -1,13 +1,9 @@
-import type {
-  Image as ImageData,
-  ImageTransform,
-  ImageToRasterOptions,
-} from '@react-thermal-printer/image';
-import { Align } from '@react-thermal-printer/printer';
+import type { Image as ImageData, ImageToRasterOptions, ImageTransform } from '@react-thermal-printer/image';
+import type { Align } from '@react-thermal-printer/printer';
 import classNames from 'classnames';
-import { ReactElement } from 'react';
-import { ExtendHTMLProps } from '../types/HTMLProps';
-import { Printable } from '../types/Printable';
+import type { ReactElement } from 'react';
+import type { ExtendHTMLProps } from '../types/HTMLProps';
+import type { Printable } from '../types/Printable';
 import { readImage } from '../utils/readImage';
 
 type Props = ExtendHTMLProps<
@@ -34,24 +30,11 @@ type Props = ExtendHTMLProps<
 >;
 
 export const Image: Printable<Props> = ({ align, src, reader: _, className, ...props }: Props) => {
-  return (
-    <img
-      data-align={align}
-      data-src={src}
-      src={src}
-      className={classNames('rtp-image', className)}
-      {...props}
-    />
-  );
+  return <img data-align={align} data-src={src} src={src} className={classNames('rtp-image', className)} {...props} />;
 };
 
 Image.print = async (elem, { printer }) => {
-  const {
-    align,
-    transforms = [],
-    rgbToBlack,
-    reader = ({ props: { src } }) => readImage(src),
-  } = elem.props;
+  const { align, transforms = [], rgbToBlack, reader = ({ props: { src } }) => readImage(src) } = elem.props;
   let image = await reader(elem);
   for (const transform of transforms) {
     image = transform(image);

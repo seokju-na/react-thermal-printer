@@ -1,6 +1,7 @@
-import { Image, imageToRaster, ImageToRasterOptions } from '@react-thermal-printer/image';
-import { CharacterSet } from './CharacterSet';
-import {
+import { type Image, type ImageToRasterOptions, imageToRaster } from '@react-thermal-printer/image';
+import type { PrinterEncoder } from '.';
+import type { CharacterSet } from './CharacterSet';
+import type {
   Align,
   BarcodeOptions,
   BarcodeType,
@@ -35,7 +36,6 @@ import { textMode } from './commands/textMode';
 import { textSize } from './commands/textSize';
 import { textUnderline } from './commands/textUnderline';
 import { encode } from './encode';
-import { PrinterEncoder } from '.';
 
 export interface BasePrinterOptions {
   characterSet?: CharacterSet;
@@ -423,7 +423,6 @@ export abstract class BasePrinter implements Printer {
   }
 
   debug(): this {
-    // eslint-disable-next-line no-console
     console.debug(this.cmds);
     return this;
   }

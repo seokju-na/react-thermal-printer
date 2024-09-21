@@ -22,8 +22,8 @@ import { textUnderline } from './commands/textUnderline';
 import { encode } from './encode';
 
 class TestPrinter extends BasePrinter {
-  constructor(options?: BasePrinterOptions) {
-    super(options);
+  constructor() {
+    super();
   }
 }
 
@@ -139,9 +139,7 @@ it('text with custom encoding', () => {
   const text = '안녕하세요!';
 
   printer.setCharacterSet('korea').text(text);
-  expect(printer.getData()).toEqual(
-    Uint8Array.from([...characterSet('korea'), ...encode(text, 'korea')])
-  );
+  expect(printer.getData()).toEqual(Uint8Array.from([...characterSet('korea'), ...encode(text, 'korea')]));
 });
 
 it('new line', () => {

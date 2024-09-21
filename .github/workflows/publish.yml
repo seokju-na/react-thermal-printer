@@ -4,18 +4,18 @@ on:
     branches:
       - main
 jobs:
-  publish:
+  npm:
     runs-on: ubuntu-latest
     environment: production
+    concurrency:
+      group: publish-npm
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-      - run: yarn install --immutable --immutable-cache
+      - uses: ./.github/actions/node-setup
+      - uses: ./.github/actions/yarn-setup
       - name: bump version
         run: |
           # git user config

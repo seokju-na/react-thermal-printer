@@ -10,14 +10,7 @@ import { GS } from './common';
  *
  * @see https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=94
  */
-export function image(
-  m: number,
-  xL: number,
-  xH: number,
-  yL: number,
-  yH: number,
-  data: ArrayLike<number>
-) {
+export function image(m: number, xL: number, xH: number, yL: number, yH: number, data: ArrayLike<number>) {
   const base = [GS, 0x76, 0x30, m, xL, xH, yL, yH];
   return base.concat(Array.from(data));
 }
