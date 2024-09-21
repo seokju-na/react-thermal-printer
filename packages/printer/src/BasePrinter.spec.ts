@@ -1,4 +1,4 @@
-import { BasePrinter, BasePrinterOptions } from './BasePrinter';
+import { BasePrinter } from './BasePrinter';
 import { alignment } from './commands/alignment';
 import { barcodeHRIFont } from './commands/barcodeHRIFont';
 import { barcodeHRIPosition } from './commands/barcodeHRIPosition';
