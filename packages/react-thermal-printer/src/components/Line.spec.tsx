@@ -1,5 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render } from '@testing-library/react';
+import { resetPrinter } from '../utils/resetPrinter';
 import { Line } from './Line';
 
 it('render <hr /> in DOM', () => {
@@ -16,7 +17,7 @@ it('print line', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Line.print(<Line />, { printer: actual, width: 5 });
+  Line.print(<Line />, { printer: actual, width: 5, reset: () => resetPrinter(actual) });
 
   expect(actual.getData()).toEqual(expected.text('-----').newLine().getData());
 });
@@ -25,7 +26,7 @@ it('print line with custom character', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Line.print(<Line character="=" />, { printer: actual, width: 5 });
+  Line.print(<Line character="=" />, { printer: actual, width: 5, reset: () => resetPrinter(actual) });
 
   expect(actual.getData()).toEqual(expected.text('=====').newLine().getData());
 });

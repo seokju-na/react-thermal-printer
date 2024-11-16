@@ -1,4 +1,5 @@
 import { getPrinter } from '@react-thermal-printer/printer';
+import { resetPrinter } from '../utils/resetPrinter';
 import { Barcode } from './Barcode';
 
 it('print barcode', () => {
@@ -15,7 +16,7 @@ it('print barcode', () => {
       width={4}
       height={170}
     />,
-    { printer: actual, width: 44 }
+    { printer: actual, width: 44, reset: () => resetPrinter(actual) }
   );
   expect(actual.getData()).toEqual(
     expected

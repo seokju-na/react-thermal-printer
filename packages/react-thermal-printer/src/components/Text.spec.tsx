@@ -1,5 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render, screen } from '@testing-library/react';
+import { resetPrinter } from '../utils/resetPrinter';
 import { Text } from './Text';
 
 it('render children in DOM', () => {
@@ -32,7 +33,7 @@ it('print text', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Text.print(<Text>i love pizza</Text>, { printer: actual, width: 44 });
+  Text.print(<Text>i love pizza</Text>, { printer: actual, width: 44, reset: () => resetPrinter(actual) });
 
   expect(actual.getData()).toEqual(expected.text('i love pizza').newLine().getData());
 });
@@ -45,7 +46,7 @@ it('print text with configs', async () => {
     <Text align="center" bold={true} invert={true} underline="2dot-thick" size={{ width: 3, height: 3 }}>
       안녕하세요
     </Text>,
-    { printer: actual, width: 44 }
+    { printer: actual, width: 44, reset: () => resetPrinter(actual) }
   );
 
   expect(actual.getData()).toEqual(
@@ -65,7 +66,7 @@ it('print text with fragments', async () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Text.print(<Text>hello world</Text>, { printer: actual, width: 44 });
+  Text.print(<Text>hello world</Text>, { printer: actual, width: 44, reset: () => resetPrinter(actual) });
 
   expect(actual.getData()).toEqual(expected.text('hello world').newLine().getData());
 });
@@ -81,7 +82,7 @@ it('print text with html special characters', async () => {
       {'<'}
       {'>'}
     </Text>,
-    { printer: actual, width: 44 }
+    { printer: actual, width: 44, reset: () => resetPrinter(actual) }
   );
 
   expect(actual.getData()).toEqual(expected.text(`'"<>`).newLine().getData());

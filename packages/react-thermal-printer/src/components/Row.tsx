@@ -42,7 +42,8 @@ export const Row: Printable<Props> = ({ left, center, right, gap, className, ...
   );
 };
 
-Row.print = (elem, { printer, width }) => {
+Row.print = (elem, context) => {
+  const { printer, width } = context;
   const { left, center, right, gap = 0 } = elem.props;
   const leftElem = typeof left === 'string' ? <Text>{left}</Text> : left;
   const centerElem = typeof center === 'string' ? <Text>{center}</Text> : center;
@@ -80,7 +81,7 @@ Row.print = (elem, { printer, width }) => {
     const rightLine = rightLines[i];
 
     if (leftLine != null) {
-      Text.print(lineText(leftElem, leftLine), { printer, width });
+      Text.print(lineText(leftElem, leftLine), context);
       resetPrinter(printer);
     } else {
       space(printer, leftLineWidth);
@@ -89,7 +90,7 @@ Row.print = (elem, { printer, width }) => {
     if (centerElem != null) {
       space(printer, gap);
       if (centerLine != null) {
-        Text.print(lineText(centerElem, centerLine), { printer, width });
+        Text.print(lineText(centerElem, centerLine), context);
         resetPrinter(printer);
       } else {
         space(printer, centerLineWidth);
@@ -98,7 +99,7 @@ Row.print = (elem, { printer, width }) => {
 
     space(printer, gap);
     if (rightLine != null) {
-      Text.print(lineText(rightElem, rightLine), { printer, width });
+      Text.print(lineText(rightElem, rightLine), context);
       resetPrinter(printer);
     } else {
       space(printer, rightLineWidth);
