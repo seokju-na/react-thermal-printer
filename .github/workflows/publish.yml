@@ -1,14 +1,12 @@
 name: publish
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+concurrency:
+  group: publish
+  cancel-in-progress: false
 jobs:
   npm:
     runs-on: ubuntu-latest
-    environment: production
-    concurrency:
-      group: publish-npm
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,4 +38,4 @@ jobs:
       - name: publish
         run: |
           echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" | tee $HOME/.yarnrc.yml
-          yarn workspaces foreach --no-private npm publish --access public --tolerate-republish
+          yarn workspaces foreach -At --no-private --include='packages/*' npm publish --access public --tolerate-republish
