@@ -8,3 +8,9 @@ it('wrap text to multiple lines', () => {
 
   expect(wrapText(text, { width: 8 })).toEqual(['안녕하세', '요반갑습', '니다자나', '깨나 불 ', '조심    ']);
 });
+
+it('fix invalid count value error for wrong input', () => {
+  const text = 'test';
+
+  expect(wrapText(text, { width: -1 })).toEqual(['', 't', 'e', 's', 't']);
+});

@@ -33,7 +33,8 @@ export function wrapText(
 
 function adjustLine(line: string, size: TextSize | undefined, length: number) {
   const spaceCount = calcSpaceCount(line, size, length);
-  return `${line}${' '.repeat(spaceCount)}`;
+  const safeCount = Math.max(spaceCount, 0);
+  return `${line}${' '.repeat(safeCount)}`;
 }
 
 function calcSpaceCount(line: string, size: TextSize | undefined, length: number) {

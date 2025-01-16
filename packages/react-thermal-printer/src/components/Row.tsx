@@ -31,13 +31,17 @@ export const Row: Printable<Props> = ({ left, center, right, gap, className, ...
 
   return (
     <div data-gap={gap} className={classNames('rtp-row', className)} {...props}>
-      {cloneElement(leftEl, { className: classNames('rtp-row-left', leftEl.props.className) })}
+      {cloneElement(leftEl, {
+        className: classNames('rtp-row-left', leftEl.props.className),
+      })}
       {centerEl !== undefined
         ? cloneElement(centerEl, {
             className: classNames('rtp-row-center', centerEl.props.className),
           })
         : null}
-      {cloneElement(rightEl, { className: classNames('rtp-row-right', rightEl.props.className) })}
+      {cloneElement(rightEl, {
+        className: classNames('rtp-row-right', rightEl.props.className),
+      })}
     </div>
   );
 };
@@ -109,7 +113,8 @@ Row.print = (elem, context) => {
 };
 
 function space(printer: Printer, length: number) {
-  printer.text(' '.repeat(length));
+  const safeLength = Math.max(length, 0);
+  printer.text(' '.repeat(safeLength));
 }
 
 function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string) {
