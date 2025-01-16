@@ -10,7 +10,7 @@ it('wrap text to multiple lines', () => {
 });
 
 it('fix invalid count value error for wrong input', () => {
-  const text = 'test'
+  const text = 'test';
 
   expect(wrapText(text, { width: -1 })).toEqual(['', 't', 'e', 's', 't']);
 });
