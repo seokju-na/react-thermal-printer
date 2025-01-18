@@ -1,12 +1,7 @@
 {
   "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "incremental": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
-  },
   "include": [
-    "next-env.d.ts",
+    "vite-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
