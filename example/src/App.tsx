@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Br, Cut, Line, Printer, render, Row, Text } from 'react-thermal-printer';
+import { Br, Cut, Line, Printer, Row, Text, render } from 'react-thermal-printer';
 
 export function App() {
   const receipt = (
