@@ -4,6 +4,9 @@ on:
 concurrency:
   group: publish
   cancel-in-progress: false
+permissions:
+  contents: write
+  id-token: write
 jobs:
   npm:
     runs-on: ubuntu-latest
