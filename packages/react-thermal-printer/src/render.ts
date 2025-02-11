@@ -59,6 +59,7 @@ async function print(node: ReactNode, context: PrinterContext) {
   if (isPrintable(node.type)) {
     await node.type.print(node, context);
     resetPrinter(context.printer);
+    return;
   }
   for (const child of renderReactElement(node)) {
     await print(child, context);
