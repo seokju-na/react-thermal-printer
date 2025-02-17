@@ -1,6 +1,6 @@
 {
   "name": "@react-thermal-printer/printer",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Printer interface provides ESC/POS commands.",
   "sideEffects": false,
   "license": "MIT",
