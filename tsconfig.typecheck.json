@@ -4,6 +4,7 @@
     ".yarn/",
     "**/node_modules",
     "**/dist/",
-    "**/esm/"
+    "**/esm/",
+    "e2e-tests/**"
   ]
 }

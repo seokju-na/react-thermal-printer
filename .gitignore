@@ -16,3 +16,4 @@ esm/
 *.tsbuildinfo
 .next
 .DS_Store*
+*.tgz

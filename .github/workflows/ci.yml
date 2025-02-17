@@ -41,3 +41,31 @@ jobs:
      - uses: ./.github/actions/node-setup
      - uses: ./.github/actions/yarn-setup
      - run: yarn version check
+  e2e-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ["next", "vite"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/node-setup
+      - uses: ./.github/actions/yarn-setup
+      - run: node install.mjs
+        working-directory: ./e2e-tests
+      - run: yarn install
+        working-directory: ./e2e-tests
+      - run: yarn playwright install --with-deps
+        working-directory: ./e2e-tests
+      - run: yarn test
+        working-directory: ./e2e-tests
+        env:
+          TEST_TARGET: ${{ matrix.target }}
+      - name: Upload blob report to GitHub Actions Artifacts
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}-report-${{ github.run_attempt }}
+          path: ./e2e-tests/playwright-report
+          retention-days: 7
