@@ -54,8 +54,8 @@ jobs:
       - uses: ./.github/actions/yarn-setup
       - run: node install.mjs
         working-directory: ./e2e-tests
-      - run: yarn install
-        working-directory: ./e2e-tests
+        env:
+          YARN_ENABLE_HARDENED_MODE: 0
       - run: yarn playwright install --with-deps
         working-directory: ./e2e-tests
       - run: yarn test

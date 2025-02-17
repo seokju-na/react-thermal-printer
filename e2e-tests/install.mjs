@@ -28,6 +28,8 @@ for (const pkg of packages) {
   await fs.copyFile(path.join(pkgPath, 'package.tgz'), path.join(rootDir, 'e2e-tests', 'packages', `${pkg}.tgz`));
 }
 
+await fs.rm(path.join(rootDir, 'e2e-tests', 'yarn.lock'), { force: true });
+await fs.writeFile(path.join(rootDir, 'e2e-tests', 'yarn.lock'), '');
 await run('yarn', ['install', '--refresh-lockfile'], {
   cwd: path.join(rootDir, 'e2e-tests'),
 });
