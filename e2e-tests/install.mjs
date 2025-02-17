@@ -33,6 +33,7 @@ await fs.writeFile(path.join(rootDir, 'e2e-tests', 'yarn.lock'), '');
 await run('yarn', ['install'], {
   cwd: path.join(rootDir, 'e2e-tests'),
   env: {
+    ...process.env,
     YARN_ENABLE_HARDENED_MODE: '0',
   },
 });
