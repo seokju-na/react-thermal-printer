@@ -30,6 +30,9 @@ for (const pkg of packages) {
 
 await fs.rm(path.join(rootDir, 'e2e-tests', 'yarn.lock'), { force: true });
 await fs.writeFile(path.join(rootDir, 'e2e-tests', 'yarn.lock'), '');
-await run('yarn', ['install', '--refresh-lockfile'], {
+await run('yarn', ['install'], {
   cwd: path.join(rootDir, 'e2e-tests'),
+  env: {
+    YARN_ENABLE_HARDENED_MODE: '0',
+  },
 });
