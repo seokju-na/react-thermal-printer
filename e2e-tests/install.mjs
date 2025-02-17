@@ -27,3 +27,7 @@ for (const pkg of packages) {
   console.log(`[${pkg}] copy package tgz`);
   await fs.copyFile(path.join(pkgPath, 'package.tgz'), path.join(rootDir, 'e2e-tests', 'packages', `${pkg}.tgz`));
 }
+
+await run('yarn', ['install', '--refresh-lockfile'], {
+  cwd: path.join(rootDir, 'e2e-tests'),
+});

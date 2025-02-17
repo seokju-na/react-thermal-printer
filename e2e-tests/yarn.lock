@@ -534,21 +534,21 @@ __metadata:
 
 "@react-thermal-printer/image@file:./packages/image.tgz::locator=e2e-tests%40workspace%3A.":
   version: 0.12.0
-  resolution: "@react-thermal-printer/image@file:./packages/image.tgz#./packages/image.tgz::hash=1051be&locator=e2e-tests%40workspace%3A."
+  resolution: "@react-thermal-printer/image@file:./packages/image.tgz#./packages/image.tgz::hash=cfd43b&locator=e2e-tests%40workspace%3A."
   dependencies:
     floyd-steinberg: "npm:^1.0.6"
-  checksum: 10/4581e62d21aa263065c385ce6dda7527475bc35436cf310b31691f0fbcc205264d7609e51d032952879cf5db8123f0d830f3d3ea8e703edd1bf71312e7511d42
+  checksum: 10/ef8820ba450486287f402b9e2a3a5ac599159bbbb7f10bfe2541558f0c5ed833effa643874eee83a266f81ce931d5184912126d4f6cac26662d7fe3012e5e7fa
   languageName: node
   linkType: hard
 
 "@react-thermal-printer/printer@file:./packages/printer.tgz::locator=e2e-tests%40workspace%3A.":
   version: 0.16.0
-  resolution: "@react-thermal-printer/printer@file:./packages/printer.tgz#./packages/printer.tgz::hash=3284e1&locator=e2e-tests%40workspace%3A."
+  resolution: "@react-thermal-printer/printer@file:./packages/printer.tgz#./packages/printer.tgz::hash=b4ca6f&locator=e2e-tests%40workspace%3A."
   dependencies:
     "@react-thermal-printer/image": "npm:^0.12.0"
     iconv-lite: "npm:^0.6.3"
     tsup: "npm:^8.3.0"
-  checksum: 10/2fe172858b39903074c29c2009d46e6f0fcf6115afaec1b14f48f5286890cbbdfcf7aed644f9b00a1cbd1d09d649c358000054bc32406947f61a52903ec91bb3
+  checksum: 10/f3caec845f82e1c1ca982552276dc5944ab6fff26ccc35ba4ef2beea355c016e47ce3809080474f0c72320e2a0370057d99235dcae594876d6baa897df02a463
   languageName: node
   linkType: hard
 
