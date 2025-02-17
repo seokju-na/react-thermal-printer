@@ -34,6 +34,7 @@ await run('yarn', ['install'], {
   cwd: path.join(rootDir, 'e2e-tests'),
   env: {
     ...process.env,
+    YARN_ENABLE_IMMUTABLE_INSTALLS: 'false',
     YARN_ENABLE_HARDENED_MODE: '0',
   },
 });
