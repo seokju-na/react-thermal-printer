@@ -1,0 +1,37 @@
+{
+  "name": "e2e-tests",
+  "private": true,
+  "packageManager": "yarn@4.5.0",
+  "scripts": {
+    "dev:next": "cd next && next dev -p 3001",
+    "dev:vite": "cd vite && vite dev --port 3002",
+    "start:next": "cd next && next build && next start -p 3001",
+    "start:vite": "cd vite && vite build && vite preview --port 3002",
+    "test": "playwright test",
+    "test:next": "TEST_TARGET=next playwright test",
+    "test:vite": "TEST_TARGET=vite playwright test"
+  },
+  "resolutions": {
+    "@react-thermal-printer/image": "file:./packages/image.tgz",
+    "@react-thermal-printer/printer": "file:./packages/printer.tgz",
+    "react-thermal-printer": "file:./packages/react-thermal-printer.tgz"
+  },
+  "dependencies": {
+    "@react-thermal-printer/image": "file:./packages/image.tgz",
+    "@react-thermal-printer/printer": "file:./packages/printer.tgz",
+    "next": "^15.1.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-thermal-printer": "file:./packages/react-thermal-printer.tgz",
+    "ts-pattern": "^5.6.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react-swc": "^3.7.2",
+    "typescript": "5.6.2",
+    "vite": "^6.0.7"
+  }
+}

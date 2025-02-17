@@ -8,6 +8,7 @@
 # Swap the comments on the following lines if you don't wish to use zero-installs
 # Documentation here: https://yarnpkg.com/features/zero-installs
 .pnp.*
+yarn.lock
 
 .idea/
 node_modules/
@@ -17,3 +18,10 @@ esm/
 .next
 .DS_Store*
 *.tgz
+packages/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
