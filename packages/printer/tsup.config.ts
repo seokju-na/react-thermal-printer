@@ -9,4 +9,5 @@ export default defineConfig({
   target: 'es2020',
   platform: 'neutral',
   bundle: true,
+  noExternal: ['iconv-lite'],
 });
