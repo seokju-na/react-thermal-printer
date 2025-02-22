@@ -22,6 +22,10 @@ async function run(command, args, options) {
 const packages = await fs.readdir(path.join(rootDir, 'packages'));
 for (const pkg of packages) {
   const pkgPath = path.join(rootDir, 'packages', pkg);
+  const stat = await fs.stat(pkgPath);
+  if (!stat.isDirectory()) {
+    continue;
+  }
   console.log(`[${pkg}] yarn pack`);
   await run('yarn', ['pack'], { cwd: pkgPath });
   console.log(`[${pkg}] copy package tgz`);
