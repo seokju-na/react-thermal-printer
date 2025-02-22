@@ -1,7 +1,7 @@
 {
   "name": "e2e-tests",
   "private": true,
-  "packageManager": "yarn@4.5.0",
+  "packageManager": "yarn@4.6.0",
   "scripts": {
     "dev:next": "cd next && next dev -p 3001",
     "dev:vite": "cd vite && vite dev --port 3002",
