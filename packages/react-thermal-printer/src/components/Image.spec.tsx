@@ -12,7 +12,7 @@ function readPNG(filename: string) {
       .pipe(new PNG())
       .on('parsed', function onParsed(data) {
         resolve({
-          data,
+          data: new Uint8Array(data.buffer),
           width: this.width,
           height: this.height,
         });

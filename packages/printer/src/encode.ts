@@ -2,7 +2,7 @@ import iconv from 'iconv-lite';
 import type { CharacterSet } from './CharacterSet';
 
 export function encode(text: string, characterSet: CharacterSet): Uint8Array {
-  return iconv.encode(text, encoding[characterSet]);
+  return iconv.encode(text, encoding[characterSet]) as Uint8Array;
 }
 
 const encoding: Record<CharacterSet, string> = {
