@@ -42,6 +42,8 @@ export function App() {
 
   const [port, setPort] = useState<SerialPort>();
   const print = async () => {
+    const data = await render(receipt);
+
     let _port = port;
     if (_port == null) {
       _port = await navigator.serial.requestPort();
@@ -51,7 +53,6 @@ export function App() {
 
     const writer = _port.writable?.getWriter();
     if (writer != null) {
-      const data = await render(receipt);
       await writer.write(data);
       writer.releaseLock();
     }
