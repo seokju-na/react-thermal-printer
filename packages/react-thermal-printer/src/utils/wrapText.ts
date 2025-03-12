@@ -1,4 +1,4 @@
-import type { TextSize } from '@react-thermal-printer/printer';
+import type { TextSize, TextWordBreak } from '@react-thermal-printer/printer';
 import { textLength } from './textLength';
 
 /** wrap text to multiple lines */
@@ -7,9 +7,60 @@ export function wrapText(
   options: {
     size?: TextSize;
     width: number;
+    wordBreak?: TextWordBreak;
   }
 ): string[] {
-  const { size, width } = options;
+  const { size, width, wordBreak } = options;
+
+  // Choose function based on word break mode
+  return wordBreak === 'break-word' ? processBreakWordMode(text, size, width) : processBreakAllMode(text, size, width);
+}
+
+function processBreakWordMode(text: string, size: TextSize | undefined, width: number): string[] {
+  const lines: string[] = [];
+  let line = '';
+
+  const words = text.split(' ');
+
+  for (const word of words) {
+    if (word === '') continue;
+
+    const testLine = line ? `${line} ${word}` : word;
+    const lengthOfLine = textLength(testLine, { size });
+
+    if (lengthOfLine <= width) {
+      line = testLine;
+    } else {
+      if (line) {
+        lines.push(adjustLine(line, size, width));
+        line = '';
+      }
+
+      // Cut big words into small parts
+      let charGroup = '';
+      for (const char of word) {
+        charGroup += char;
+        const charGroupLength = textLength(charGroup, { size });
+
+        if (charGroupLength > width) {
+          const partToAdd = charGroup.slice(0, -1);
+          lines.push(adjustLine(partToAdd, size, width));
+          charGroup = charGroup.slice(-1);
+        }
+      }
+
+      line = charGroup;
+    }
+  }
+
+  if (line) {
+    lines.push(adjustLine(line, size, width));
+  }
+
+  return lines;
+}
+
+function processBreakAllMode(text: string, size: TextSize | undefined, width: number): string[] {
   const lines: string[] = [];
   const chars = text.split('');
   let line = '';
@@ -28,6 +79,7 @@ export function wrapText(
       lines.push(adjustLine(line, size, width));
     }
   });
+
   return lines;
 }
 
