@@ -37,19 +37,16 @@ function processBreakWordMode(text: string, size: TextSize | undefined, width: n
       }
 
       // Cut big words into small parts
-      let charGroup = '';
-      for (const char of word) {
-        charGroup += char;
-        const charGroupLength = textLength(charGroup, { size });
+      if (textLength(word, { size }) > width) {
+        const wordChunks = splitWordEfficiently(word, size, width);
 
-        if (charGroupLength > width) {
-          const partToAdd = charGroup.slice(0, -1);
-          lines.push(adjustLine(partToAdd, size, width));
-          charGroup = charGroup.slice(-1);
+        for (let i = 0; i < wordChunks.length - 1; i++) {
+          lines.push(adjustLine(wordChunks[i]!, size, width));
         }
+        line = wordChunks[wordChunks.length - 1] || '';
+      } else {
+        line = word;
       }
-
-      line = charGroup;
     }
   }
 
@@ -99,4 +96,38 @@ function calcSpaceCount(line: string, size: TextSize | undefined, length: number
     }
     count += 1;
   }
+}
+
+function splitWordEfficiently(word: string, size: TextSize | undefined, width: number): string[] {
+  const chunks: string[] = [];
+  let remainingWord = word;
+
+  while (remainingWord.length > 0) {
+    if (textLength(remainingWord, { size }) <= width) {
+      chunks.push(remainingWord);
+      break;
+    }
+
+    let low = 1;
+    let high = remainingWord.length;
+    let bestFit = 0;
+
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      const chunk = remainingWord.substring(0, mid);
+      const chunkLength = textLength(chunk, { size });
+
+      if (chunkLength <= width) {
+        bestFit = mid;
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+
+    chunks.push(remainingWord.substring(0, bestFit));
+    remainingWord = remainingWord.substring(bestFit);
+  }
+
+  return chunks;
 }
