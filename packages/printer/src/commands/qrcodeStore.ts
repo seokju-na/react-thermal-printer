@@ -8,7 +8,7 @@ import { GS } from './common';
  * | Hex     | 1D  28  6B  pL  pH  31  50  30  d1...dk |
  * | Decimal | 29  40 107  pL  pH  49  80  48  d1...dk |
  *
- * @see https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=143
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lparen_lk_fn180.html
  */
 export function qrcodeStore(pL: number, pH: number, data: ArrayLike<number>) {
   const base = [GS, 0x28, 0x6b, pL, pH, 0x31, 0x50, 0x30];

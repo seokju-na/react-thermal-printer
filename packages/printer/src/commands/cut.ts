@@ -16,7 +16,7 @@ import { GS } from './common';
  * | Hex     | 1D 56 m n |
  * | Decimal | 29 86 m n |
  *
- * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=87
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_cv.html
  */
 export function cut(m: number, n?: number) {
   const cmd = [GS, 0x56, m];

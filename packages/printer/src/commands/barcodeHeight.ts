@@ -8,7 +8,7 @@ import { GS } from './common';
  * | Hex     | 1D  68   n |
  * | Decimal | 29 104   n |
  *
- * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=127
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lh.html
  */
 export function barcodeHeight(n: number) {
   return [GS, 0x68, n];
