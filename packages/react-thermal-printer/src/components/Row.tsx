@@ -56,6 +56,7 @@ Row.print = (elem, context) => {
   const leftString = reactNodeToString(leftElem.props.children);
   const leftSize = leftElem.props.size?.width;
   const leftLength = textLength(leftString, { size: leftSize });
+  const leftWordBreak = leftElem.props.wordBreak;
 
   const centerString = centerElem !== undefined ? reactNodeToString(centerElem.props.children) : undefined;
   const centerSize = centerElem?.props.size?.width;
@@ -63,11 +64,13 @@ Row.print = (elem, context) => {
   const rightString = reactNodeToString(rightElem.props.children);
   const rightSize = rightElem.props.size?.width;
   const rightLength = textLength(rightString, { size: rightSize });
+  const rightWordBreak = rightElem.props.wordBreak;
 
   const leftLineWidth = centerElem !== undefined ? leftLength : width - gap - rightLength;
   const leftLines = wrapText(leftString, {
     size: leftSize,
     width: leftLineWidth,
+    wordBreak: leftWordBreak,
   });
   const centerLineWidth = width - Math.max(gap * 2, 1) - leftLength - rightLength;
   const centerLines =
@@ -76,6 +79,7 @@ Row.print = (elem, context) => {
   const rightLines = wrapText(rightString, {
     size: rightSize,
     width: rightLineWidth,
+    wordBreak: rightWordBreak,
   });
 
   const maxLines = Math.max(leftLines.length, centerLines?.length ?? 0, rightLines.length);

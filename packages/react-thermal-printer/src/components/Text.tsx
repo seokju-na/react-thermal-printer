@@ -14,6 +14,7 @@ type Props = ExtendHTMLProps<
     underline?: TextUnderline;
     invert?: boolean;
     size?: { width: TextSize; height: TextSize };
+    wordBreak?: 'break-all' | 'break-word';
     /** if true, don't feed line after print text */
     inline?: boolean;
     children?: ReactNode;
@@ -28,6 +29,7 @@ export const Text: Printable<Props> = ({
   invert,
   size,
   inline,
+  wordBreak,
   className,
   children,
   ...props
@@ -42,6 +44,7 @@ export const Text: Printable<Props> = ({
       data-size-width={size?.width}
       data-size-height={size?.height}
       data-inline={inline}
+      data-word-break={wordBreak}
       className={classNames('rtp-text', className)}
       {...props}
     >
