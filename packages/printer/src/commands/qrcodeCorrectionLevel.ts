@@ -9,7 +9,7 @@ import { GS } from './common';
  * | Decimal | 29  40 107   0   0  49  69  n |
  *
  * @default n = 48
- * @see https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=142
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lparen_lk_fn169.html
  */
 export function qrcodeCorrectionLevel(n = 48) {
   return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x45, n];

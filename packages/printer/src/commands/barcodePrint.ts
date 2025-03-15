@@ -8,7 +8,7 @@ import { GS } from './common';
  * | Hex     | 1D  6B   m   n   d1...dn |
  * | Decimal | 29 107   m   n   d1...dn |
  *
- * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=128
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lk.html
  */
 export function barcodePrint(m: number, n: number, data: ArrayLike<number>) {
   const base = [GS, 0x6b, m, n];

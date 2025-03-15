@@ -18,7 +18,7 @@ import { GS } from './common';
  * | 97    | Special A                        |
  * | 98    | Special B                        |
  *
- * @see https://www.epson-biz.com/modules/ref_escpos/index.php?content_id=126
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lf.html
  */
 export function barcodeHRIFont(n: number) {
   return [GS, 0x66, n];

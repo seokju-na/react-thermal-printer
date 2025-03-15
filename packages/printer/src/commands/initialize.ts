@@ -8,7 +8,7 @@ import { ESC } from './common';
  * | Hex     | 1B 40   |
  * | Decimal | 27 64   |
  *
- * @see https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=192
+ * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/esc_atsign.html
  */
 export function initialize() {
   return [ESC, 0x40];
