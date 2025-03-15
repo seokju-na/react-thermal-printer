@@ -19,6 +19,7 @@ const characterSetValues: Record<CharacterSet, number> = {
   pc852_latin2: 18,
   slovenia: 18,
   pc858_euro: 19,
+  pc874_thai: 21,
   pc720_arabic: 32,
   wpc775_baltic_rim: 33,
   pc855_cyrillic: 34,

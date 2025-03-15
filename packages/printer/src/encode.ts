@@ -21,6 +21,7 @@ const encoding: Record<CharacterSet, string> = {
   pc852_latin2: 'CP852',
   slovenia: 'CP852',
   pc858_euro: 'CP858',
+  pc874_thai: 'CP874',
   pc720_arabic: 'CP720',
   wpc775_baltic_rim: 'CP775',
   pc855_cyrillic: 'CP855',

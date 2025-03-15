@@ -14,6 +14,7 @@ export type CharacterSet =
   | 'pc852_latin2'
   | 'slovenia'
   | 'pc858_euro'
+  | 'pc874_thai'
   | 'pc720_arabic'
   | 'wpc775_baltic_rim'
   | 'pc855_cyrillic'
