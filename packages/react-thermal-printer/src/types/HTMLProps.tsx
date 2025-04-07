@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 export type JSXElement = keyof JSX.IntrinsicElements;
 export type JSXElementProps<E extends JSXElement> = JSX.IntrinsicElements[E];
 

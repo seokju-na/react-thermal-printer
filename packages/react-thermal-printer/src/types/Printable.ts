@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { JSX, ReactElement } from 'react';
 import type { PrinterContext } from './PrinterContext';
 
 export interface Printable<Props = any> {

@@ -66,8 +66,8 @@ async function print(node: ReactNode, context: PrinterContext) {
   }
 }
 
-function renderReactElement(elem: ReactElement) {
-  let rendered: ReactNode | ReactNode[] = [];
+function renderReactElement(elem: ReactElement<any>) {
+  let rendered: any = [];
   if (typeof elem.type === 'function') {
     const isClassComp = !!elem.type.prototype && !!elem.type.prototype.isReactComponent;
     rendered = isClassComp
