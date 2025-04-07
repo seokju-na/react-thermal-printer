@@ -3,9 +3,10 @@ import { getPrinter } from './index';
 
 describe('deserialize', () => {
   it('deserialize correctly', () => {
-    const printer = getPrinter({ type: 'epson' });
+    const printer = getPrinter({ type: 'epson', characterSet: 'korea' });
     const data = printer
       .initialize()
+      .setCharacterSet('korea')
       .newLine()
       .barcode('1234567890', 'CODE128')
       .newLine()
@@ -13,12 +14,16 @@ describe('deserialize', () => {
       .text('Hello World')
       .setAlign('left')
       .newLine()
+      .text('안녕하세요')
+      .newLine()
       .qrcode('https://seokju.me')
       .cut(true)
       .getData();
     const parsed = deserialize(data);
+    console.log(parsed);
     expect(parsed).toEqual([
       { name: 'initialize', data: [27, 64] },
+      { name: 'internationalCharacterSet', data: [27, 82, 13] },
       { name: 'lf' },
       { name: 'barcodeHRIPosition', data: [29, 72, 0] },
       { name: 'barcodeHRIFont', data: [29, 102, 0] },
@@ -42,6 +47,17 @@ describe('deserialize', () => {
       { name: 'char', data: 108 },
       { name: 'char', data: 100 },
       { name: 'alignment', data: [27, 97, 0] },
+      { name: 'lf' },
+      { name: 'char', data: 190 },
+      { name: 'char', data: 200 },
+      { name: 'char', data: 179 },
+      { name: 'char', data: 231 },
+      { name: 'char', data: 199 },
+      { name: 'char', data: 207 },
+      { name: 'char', data: 188 },
+      { name: 'char', data: 188 },
+      { name: 'char', data: 191 },
+      { name: 'char', data: 228 },
       { name: 'lf' },
       {
         name: 'qrcodeModel',
