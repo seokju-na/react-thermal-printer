@@ -1,5 +1,10 @@
 # Changelog
 
+## react-thermal-printer v0.21.0
+
+- feat: add deserialize function (#105)
+- feat: supports react 19 (#106)
+
 ## react-thermal-printer v0.20.0
 
 - fix: add character sets (#103)
