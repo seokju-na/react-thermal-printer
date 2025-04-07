@@ -1,3 +1,4 @@
+import { createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lparen_lk_fn181.html
  */
-export function qrcodePrint() {
-  return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x51, 48];
-}
+export const qrcodePrint = createCommand('qrcodePrint', {
+  format: [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x51, 48],
+  write() {
+    return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x51, 48];
+  },
+});

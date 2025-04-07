@@ -1,3 +1,4 @@
+import { createCommand } from './Command';
 import { ESC, GS } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { ESC, GS } from './common';
  *
  * @see https://www.starmicronics.com/support/Mannualfolder/escpos_cm_en.pdf
  */
-export function starQRCodePrint() {
-  return [ESC, GS, 0x79, 0x50];
-}
+export const starQRCodePrint = createCommand('starQRCodePrint', {
+  format: [ESC, GS, 0x79, 0x50],
+  write() {
+    return [ESC, GS, 0x79, 0x50];
+  },
+});

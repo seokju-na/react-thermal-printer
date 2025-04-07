@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lh.html
  */
-export function barcodeHeight(n: number) {
-  return [GS, 0x68, n];
-}
+export const barcodeHeight = createCommand('barcodeHeight', {
+  format: [GS, 0x68, VAR],
+  write(n: number) {
+    return [GS, 0x68, n];
+  },
+});

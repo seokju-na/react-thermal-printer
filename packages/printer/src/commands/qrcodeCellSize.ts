@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lparen_lk_fn167.html
  */
-export function qrcodeCellSize(n: number) {
-  return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x43, n];
-}
+export const qrcodeCellSize = createCommand('qrcodeCellSize', {
+  format: [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x43, VAR],
+  write(n: number) {
+    return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x43, n];
+  },
+});

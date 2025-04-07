@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC, GS } from './common';
 
 /**
@@ -11,6 +12,9 @@ import { ESC, GS } from './common';
  * @default n=3
  * @see https://www.starmicronics.com/support/Mannualfolder/escpos_cm_en.pdf
  */
-export function starQRCodeCellSize(n = 3) {
-  return [ESC, GS, 0x79, 0x53, 0x32, n];
-}
+export const starQRCodeCellSize = createCommand('starQRCodeCellSize', {
+  format: [ESC, GS, 0x79, 0x53, 0x32, VAR],
+  write(n = 3) {
+    return [ESC, GS, 0x79, 0x53, 0x32, n];
+  },
+});

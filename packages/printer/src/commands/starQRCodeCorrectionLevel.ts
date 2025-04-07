@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC, GS } from './common';
 
 /**
@@ -18,6 +19,9 @@ import { ESC, GS } from './common';
  * @default n=0
  * @see https://www.starmicronics.com/support/Mannualfolder/escpos_cm_en.pdf
  */
-export function starQRCodeCorrectionLevel(n = 0) {
-  return [ESC, GS, 0x79, 0x53, 0x31, n];
-}
+export const starQRCodeCorrectionLevel = createCommand('starQRCodeCorrectionLevel', {
+  format: [ESC, GS, 0x79, 0x53, 0x31, VAR],
+  write(n = 0) {
+    return [ESC, GS, 0x79, 0x53, 0x31, n];
+  },
+});

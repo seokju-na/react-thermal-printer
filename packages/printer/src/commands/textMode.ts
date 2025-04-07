@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { ESC } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/esc_exclamation.html
  */
-export function textMode(n: number) {
-  return [ESC, 0x21, n];
-}
+export const textMode = createCommand('textMode', {
+  format: [ESC, 0x21, VAR],
+  write(n: number) {
+    return [ESC, 0x21, n];
+  },
+});

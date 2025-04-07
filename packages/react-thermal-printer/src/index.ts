@@ -24,4 +24,11 @@ export type {
   CashDrawerPin,
   CharacterSet,
   PrinterType,
+  DeserializedCommand,
+  DeserializedCommandName,
+} from '@react-thermal-printer/printer';
+export {
+  encode,
+  decode,
+  deserialize,
 } from '@react-thermal-printer/printer';
