@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,7 +11,13 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lk.html
  */
-export function barcodePrint(m: number, n: number, data: ArrayLike<number>) {
-  const base = [GS, 0x6b, m, n];
-  return base.concat(Array.from(data));
-}
+export const barcodePrint = createCommand('barcodePrint', {
+  format: [GS, 0x6b, VAR, VAR],
+  dynamic(data) {
+    return data[3]!;
+  },
+  write(m: number, n: number, data: ArrayLike<number>) {
+    const base = [GS, 0x6b, m, n];
+    return base.concat(Array.from(data));
+  },
+});

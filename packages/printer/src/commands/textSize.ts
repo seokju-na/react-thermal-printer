@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_exclamation.html
  */
-export function textSize(n: number) {
-  return [GS, 0x21, n];
-}
+export const textSize = createCommand('textSize', {
+  format: [GS, 0x21, VAR],
+  write(n: number) {
+    return [GS, 0x21, n];
+  },
+});

@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { ESC } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/esc_cm.html
  */
-export function textFont(n: number) {
-  return [ESC, 0x4d, n];
-}
+export const textFont = createCommand('textFont', {
+  format: [ESC, 0x4d, VAR],
+  write(n: number) {
+    return [ESC, 0x4d, n];
+  },
+});

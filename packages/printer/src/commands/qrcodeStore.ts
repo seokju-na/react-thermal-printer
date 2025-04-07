@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,7 +11,13 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lparen_lk_fn180.html
  */
-export function qrcodeStore(pL: number, pH: number, data: ArrayLike<number>) {
-  const base = [GS, 0x28, 0x6b, pL, pH, 0x31, 0x50, 0x30];
-  return base.concat(Array.from(data));
-}
+export const qrcodeStore = createCommand('qrcodeStore', {
+  format: [GS, 0x28, 0x6b, VAR, VAR, 0x31, 0x50, 0x30],
+  write(pL: number, pH: number, data: ArrayLike<number>) {
+    const base = [GS, 0x28, 0x6b, pL, pH, 0x31, 0x50, 0x30];
+    return base.concat(Array.from(data));
+  },
+  dynamic: data => {
+    return data[3]! + data[4]! - 3;
+  },
+});

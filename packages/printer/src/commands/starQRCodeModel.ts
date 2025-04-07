@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC, GS } from './common';
 
 /**
@@ -16,6 +17,9 @@ import { ESC, GS } from './common';
  * @default n=2
  * @see https://www.starmicronics.com/support/Mannualfolder/escpos_cm_en.pdf
  */
-export function starQRCodeModel(n = 2) {
-  return [ESC, GS, 0x79, 0x53, 0x30, n];
-}
+export const starQRCodeModel = createCommand('starQRCodeModel', {
+  format: [ESC, GS, 0x79, 0x53, 0x30, VAR],
+  write(n = 2) {
+    return [ESC, GS, 0x79, 0x53, 0x30, n];
+  },
+});

@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { ESC } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/esc_lt.html
  */
-export function characterCodeTable(n: number) {
-  return [ESC, 0x74, n];
-}
+export const characterCodeTable = createCommand('characterCodeTable', {
+  format: [ESC, 0x74, VAR],
+  write(n: number) {
+    return [ESC, 0x74, n];
+  },
+});

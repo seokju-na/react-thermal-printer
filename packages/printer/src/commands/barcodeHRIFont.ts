@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -20,6 +21,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lf.html
  */
-export function barcodeHRIFont(n: number) {
-  return [GS, 0x66, n];
-}
+export const barcodeHRIFont = createCommand('barcodeHRIFont', {
+  format: [GS, 0x66, VAR],
+  write(n: number) {
+    return [GS, 0x66, n];
+  },
+});

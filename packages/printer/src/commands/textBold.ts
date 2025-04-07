@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { ESC } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/esc_ce.html
  */
-export function textBold(n: number) {
-  return [ESC, 0x45, n];
-}
+export const textBold = createCommand('textBold', {
+  format: [ESC, 0x45, VAR],
+  write(n: number) {
+    return [ESC, 0x45, n];
+  },
+});

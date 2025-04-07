@@ -29,3 +29,7 @@ export type { CharacterSet } from './CharacterSet';
 export * from './Printer';
 export { EpsonPrinter } from './EpsonPrinter';
 export { StarPrinter } from './StarPrinter';
+export * from './commands';
+export type { DeserializedCommand, DeserializedCommandName } from './deserialize';
+export { deserialize } from './deserialize';
+export { encode, decode } from './iconv';

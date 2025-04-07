@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -18,10 +19,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_cv.html
  */
-export function cut(m: number, n?: number) {
-  const cmd = [GS, 0x56, m];
-  if (n != null) {
-    cmd.push(n);
-  }
-  return cmd;
-}
+export const cut = createCommand('cut', {
+  format: [GS, 0x56, VAR],
+  write(m: number) {
+    return [GS, 0x56, m];
+  },
+});

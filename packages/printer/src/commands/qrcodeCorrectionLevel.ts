@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -11,6 +12,9 @@ import { GS } from './common';
  * @default n = 48
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_lparen_lk_fn169.html
  */
-export function qrcodeCorrectionLevel(n = 48) {
-  return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x45, n];
-}
+export const qrcodeCorrectionLevel = createCommand('qrcodeCorrectionLevel', {
+  format: [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x45, VAR],
+  write(n = 48) {
+    return [GS, 0x28, 0x6b, 0x03, 0x00, 0x31, 0x45, n];
+  },
+});
