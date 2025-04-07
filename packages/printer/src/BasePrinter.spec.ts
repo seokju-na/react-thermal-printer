@@ -1,24 +1,26 @@
 import { BasePrinter } from './BasePrinter';
-import { alignment } from './commands/alignment';
-import { barcodeHRIFont } from './commands/barcodeHRIFont';
-import { barcodeHRIPosition } from './commands/barcodeHRIPosition';
-import { barcodeHeight } from './commands/barcodeHeight';
-import { barcodePrint } from './commands/barcodePrint';
-import { barcodeWidth } from './commands/barcodeWidth';
-import { characterSet } from './commands/characterSet';
-import { LF } from './commands/common';
-import { cut } from './commands/cut';
-import { invert } from './commands/invert';
-import { qrcodeCellSize } from './commands/qrcodeCellSize';
-import { qrcodeCorrectionLevel } from './commands/qrcodeCorrectionLevel';
-import { qrcodeModel } from './commands/qrcodeModel';
-import { qrcodePrint } from './commands/qrcodePrint';
-import { qrcodeStore } from './commands/qrcodeStore';
-import { textBold } from './commands/textBold';
-import { textFont } from './commands/textFont';
-import { textMode } from './commands/textMode';
-import { textSize } from './commands/textSize';
-import { textUnderline } from './commands/textUnderline';
+import {
+  alignment,
+  barcodeHRIFont,
+  barcodeHRIPosition,
+  barcodeHeight,
+  barcodePrint,
+  barcodeWidth,
+  characterSet,
+  LF,
+  cut,
+  invert,
+  qrcodeCellSize,
+  qrcodeCorrectionLevel,
+  qrcodeModel,
+  qrcodePrint,
+  qrcodeStore,
+  textBold,
+  textFont,
+  textMode,
+  textSize,
+  textUnderline,
+} from './commands';
 import { encode } from './encode';
 
 class TestPrinter extends BasePrinter {

@@ -1,9 +1,11 @@
 import { StarPrinter } from './StarPrinter';
-import { starQRCodeCellSize } from './commands/starQRCodeCellSize';
-import { starQRCodeCorrectionLevel } from './commands/starQRCodeCorrectionLevel';
-import { starQRCodeModel } from './commands/starQRCodeModel';
-import { starQRCodePrint } from './commands/starQRCodePrint';
-import { starQRCodeStore } from './commands/starQRCodeStore';
+import {
+  starQRCodeCellSize,
+  starQRCodeCorrectionLevel,
+  starQRCodeModel,
+  starQRCodePrint,
+  starQRCodeStore,
+} from './commands';
 import { encode } from './encode';
 
 it('qrcode', () => {
