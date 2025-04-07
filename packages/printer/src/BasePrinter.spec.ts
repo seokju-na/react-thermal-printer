@@ -1,5 +1,6 @@
 import { BasePrinter } from './BasePrinter';
 import {
+  LF,
   alignment,
   barcodeHRIFont,
   barcodeHRIPosition,
@@ -7,7 +8,6 @@ import {
   barcodePrint,
   barcodeWidth,
   characterSet,
-  LF,
   cut,
   invert,
   qrcodeCellSize,
@@ -21,7 +21,7 @@ import {
   textSize,
   textUnderline,
 } from './commands';
-import { encode } from './encode';
+import { encode } from './iconv';
 
 class TestPrinter extends BasePrinter {
   constructor() {
@@ -50,82 +50,82 @@ it('set text font', () => {
   const printer = new TestPrinter();
 
   printer.setTextFont('A');
-  expect(printer.getData()).toEqual(Uint8Array.from(textFont(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textFont.write(0)));
 
   printer.clear().setTextFont('B');
-  expect(printer.getData()).toEqual(Uint8Array.from(textFont(1)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textFont.write(1)));
 
   printer.clear().setTextFont('C');
-  expect(printer.getData()).toEqual(Uint8Array.from(textFont(2)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textFont.write(2)));
 
   printer.clear().setTextFont('D');
-  expect(printer.getData()).toEqual(Uint8Array.from(textFont(3)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textFont.write(3)));
 });
 
 it('set text bold', () => {
   const printer = new TestPrinter();
 
   printer.setTextBold(false);
-  expect(printer.getData()).toEqual(Uint8Array.from(textBold(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textBold.write(0)));
 
   printer.clear().setTextBold(true);
-  expect(printer.getData()).toEqual(Uint8Array.from(textBold(1)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textBold.write(1)));
 });
 
 it('set text underline', () => {
   const printer = new TestPrinter();
 
   printer.setTextUnderline('none');
-  expect(printer.getData()).toEqual(Uint8Array.from(textUnderline(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textUnderline.write(0)));
 
   printer.clear().setTextUnderline('1dot-thick');
-  expect(printer.getData()).toEqual(Uint8Array.from(textUnderline(1)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textUnderline.write(1)));
 
   printer.clear().setTextUnderline('2dot-thick');
-  expect(printer.getData()).toEqual(Uint8Array.from(textUnderline(2)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textUnderline.write(2)));
 });
 
 it('set text size', () => {
   const printer = new TestPrinter();
 
   printer.setTextSize(1, 1);
-  expect(printer.getData()).toEqual(Uint8Array.from(textSize(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textSize.write(0)));
 
   printer.clear().setTextSize(2, 2);
-  expect(printer.getData()).toEqual(Uint8Array.from(textSize(17)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textSize.write(17)));
 
   printer.clear().setTextSize(3, 4);
-  expect(printer.getData()).toEqual(Uint8Array.from(textSize(0x23)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textSize.write(0x23)));
 });
 
 it('set text normal', () => {
   const printer = new TestPrinter();
   printer.setTextNormal();
 
-  expect(printer.getData()).toEqual(Uint8Array.from(textMode(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(textMode.write(0)));
 });
 
 it('set align', () => {
   const printer = new TestPrinter();
 
   printer.setAlign('left');
-  expect(printer.getData()).toEqual(Uint8Array.from(alignment(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(alignment.write(0)));
 
   printer.clear().setAlign('center');
-  expect(printer.getData()).toEqual(Uint8Array.from(alignment(1)));
+  expect(printer.getData()).toEqual(Uint8Array.from(alignment.write(1)));
 
   printer.clear().setAlign('right');
-  expect(printer.getData()).toEqual(Uint8Array.from(alignment(2)));
+  expect(printer.getData()).toEqual(Uint8Array.from(alignment.write(2)));
 });
 
 it('invert', () => {
   const printer = new TestPrinter();
 
   printer.invert(false);
-  expect(printer.getData()).toEqual(Uint8Array.from(invert(0)));
+  expect(printer.getData()).toEqual(Uint8Array.from(invert.write(0)));
 
   printer.clear().invert(true);
-  expect(printer.getData()).toEqual(Uint8Array.from(invert(1)));
+  expect(printer.getData()).toEqual(Uint8Array.from(invert.write(1)));
 });
 
 it('text with default encoding (pc437_usa)', () => {
@@ -155,7 +155,7 @@ it('cut', () => {
   const printer = new TestPrinter();
 
   printer.cut();
-  expect(printer.getData()).toEqual(Uint8Array.from(cut(48)));
+  expect(printer.getData()).toEqual(Uint8Array.from(cut.write(48)));
 });
 
 it('qrcode', () => {
@@ -168,11 +168,11 @@ it('qrcode', () => {
   });
   expect(printer.getData()).toEqual(
     Uint8Array.from([
-      ...qrcodeModel(50),
-      ...qrcodeCellSize(6),
-      ...qrcodeCorrectionLevel(50),
-      ...qrcodeStore(20, 0, encode('https://seokju.me', 'pc437_usa')),
-      ...qrcodePrint(),
+      ...qrcodeModel.write(50),
+      ...qrcodeCellSize.write(6),
+      ...qrcodeCorrectionLevel.write(50),
+      ...qrcodeStore.write(20, 0, encode('https://seokju.me', 'pc437_usa')),
+      ...qrcodePrint.write(),
     ])
   );
 });
@@ -190,11 +190,11 @@ it('barcode', () => {
   });
   expect(printer.getData()).toEqual(
     Uint8Array.from([
-      ...barcodeHRIPosition(3),
-      ...barcodeHRIFont(1),
-      ...barcodeWidth(4),
-      ...barcodeHeight(170),
-      ...barcodePrint(69, encoded.byteLength, encoded),
+      ...barcodeHRIPosition.write(3),
+      ...barcodeHRIFont.write(1),
+      ...barcodeWidth.write(4),
+      ...barcodeHeight.write(170),
+      ...barcodePrint.write(69, encoded.byteLength, encoded),
     ])
   );
 });

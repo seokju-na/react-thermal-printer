@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { ESC } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/esc_minus.html
  */
-export function textUnderline(n: number) {
-  return [ESC, 0x2d, n];
-}
+export const textUnderline = createCommand('textUnderline', {
+  format: [ESC, 0x2d, VAR],
+  write(n: number) {
+    return [ESC, 0x2d, n];
+  },
+});

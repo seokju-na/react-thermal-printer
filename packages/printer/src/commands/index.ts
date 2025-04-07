@@ -1,3 +1,5 @@
+export { VAR, createCommand } from './Command';
+export type { CommandFormatItem, CommandFormat, Command, CommandWrite } from './Command';
 export { alignment } from './alignment';
 export { barcodeHRIFont } from './barcodeHRIFont';
 export { barcodeHRIPosition } from './barcodeHRIPosition';

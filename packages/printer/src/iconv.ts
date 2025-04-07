@@ -5,6 +5,10 @@ export function encode(text: string, characterSet: CharacterSet): Uint8Array {
   return iconv.encode(text, encoding[characterSet]) as Uint8Array;
 }
 
+export function decode(encoded: Uint8Array, characterSet: CharacterSet): string {
+  return iconv.decode(encoded as any, encoding[characterSet]);
+}
+
 const encoding: Record<CharacterSet, string> = {
   pc437_usa: 'CP437',
   pc850_multilingual: 'CP850',

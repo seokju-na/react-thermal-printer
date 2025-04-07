@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -18,6 +19,9 @@ import { GS } from './common';
  * @default n = 0
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_ch.html
  */
-export function barcodeHRIPosition(n = 0) {
-  return [GS, 0x48, n];
-}
+export const barcodeHRIPosition = createCommand('barcodeHRIPosition', {
+  format: [GS, 0x48, VAR],
+  write(n: number) {
+    return [GS, 0x48, n];
+  },
+});

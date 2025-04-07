@@ -53,7 +53,7 @@ export function characterSet(set: CharacterSet) {
   const n = characterSetValues[set];
 
   if (set === 'japan' || set === 'korea' || set === 'china' || set === 'hk_tw') {
-    return internationalCharacterSet(n);
+    return internationalCharacterSet.write(n);
   }
-  return characterCodeTable(n);
+  return characterCodeTable.write(n);
 }

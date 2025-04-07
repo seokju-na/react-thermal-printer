@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { ESC, GS } from './common';
 
 /**
@@ -11,7 +12,13 @@ import { ESC, GS } from './common';
  * m = 0
  * @see https://www.starmicronics.com/support/Mannualfolder/escpos_cm_en.pdf
  */
-export function starQRCodeStore(nL: number, nH: number, data: ArrayLike<number>) {
-  const base = [ESC, GS, 0x79, 0x44, 0x31, 0, nL, nH];
-  return base.concat(Array.from(data));
-}
+export const starQRCodeStore = createCommand('starQRCodeStore', {
+  format: [ESC, GS, 0x79, 0x44, 0x31, 0, VAR, VAR],
+  write(nL: number, nH: number, data: ArrayLike<number>) {
+    const base = [ESC, GS, 0x79, 0x44, 0x31, 0, nL, nH];
+    return base.concat(Array.from(data));
+  },
+  dynamic: data => {
+    return data[6]! + data[7]!;
+  },
+});

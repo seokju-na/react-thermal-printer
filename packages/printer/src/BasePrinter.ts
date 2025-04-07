@@ -13,6 +13,7 @@ import type {
   TextUnderline,
 } from './Printer';
 import {
+  LF,
   alignment,
   barcodeHRIFont,
   barcodeHRIPosition,
@@ -21,7 +22,6 @@ import {
   barcodeWidth,
   cashdraw,
   characterSet,
-  LF,
   cut,
   image,
   initialize,
@@ -37,7 +37,7 @@ import {
   textSize,
   textUnderline,
 } from './commands';
-import { encode } from './encode';
+import { encode } from './iconv';
 
 export interface BasePrinterOptions {
   characterSet?: CharacterSet;
@@ -93,7 +93,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'setTextFont',
       args: [font],
-      data: textFont(n),
+      data: textFont.write(n),
     });
     return this;
   }
@@ -102,7 +102,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'setTextBold',
       args: [bold],
-      data: textBold(bold ? 1 : 0),
+      data: textBold.write(bold ? 1 : 0),
     });
     return this;
   }
@@ -122,7 +122,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'setTextUnderline',
       args: [underline],
-      data: textUnderline(n),
+      data: textUnderline.write(n),
     });
     return this;
   }
@@ -135,7 +135,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'setTextSize',
       args: [width, height],
-      data: textSize(n),
+      data: textSize.write(n),
     });
     return this;
   }
@@ -143,7 +143,7 @@ export abstract class BasePrinter implements Printer {
   setTextNormal(): this {
     this.cmds.push({
       name: 'setTextNormal',
-      data: textMode(0),
+      data: textMode.write(0),
     });
     return this;
   }
@@ -163,7 +163,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'setAlign',
       args: [align],
-      data: alignment(n),
+      data: alignment.write(n),
     });
     return this;
   }
@@ -172,7 +172,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'invert',
       args: [enabled],
-      data: invert(enabled ? 1 : 0),
+      data: invert.write(enabled ? 1 : 0),
     });
     return this;
   }
@@ -206,7 +206,7 @@ export abstract class BasePrinter implements Printer {
   cut(partial = false): this {
     this.cmds.push({
       name: 'cut',
-      data: cut(partial ? 49 : 48),
+      data: cut.write(partial ? 49 : 48),
     });
     return this;
   }
@@ -222,7 +222,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'image',
       args: [img.data.byteLength, img.width, img.height],
-      data: image(0, xL, xH, yL, yH, imageToRaster(img, options)),
+      data: image.write(0, xL, xH, yL, yH, imageToRaster(img, options)),
     });
     return this;
   }
@@ -242,13 +242,13 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'qrcodeModel',
       args: [model],
-      data: qrcodeModel(modelValue),
+      data: qrcodeModel.write(modelValue),
     });
 
     this.cmds.push({
       name: 'qrcodeCellSize',
       args: [cellSize],
-      data: qrcodeCellSize(cellSize),
+      data: qrcodeCellSize.write(cellSize),
     });
 
     const correctionValue = (() => {
@@ -266,7 +266,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'qrcodeCorrection',
       args: [correction],
-      data: qrcodeCorrectionLevel(correctionValue),
+      data: qrcodeCorrectionLevel.write(correctionValue),
     });
 
     const encoded = encode(data, 'pc437_usa'); // ascii
@@ -280,11 +280,11 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'qrcodeStore',
       args: [data],
-      data: qrcodeStore(pL, pH, encoded),
+      data: qrcodeStore.write(pL, pH, encoded),
     });
     this.cmds.push({
       name: 'qrcodePrint',
-      data: qrcodePrint(),
+      data: qrcodePrint.write(),
     });
 
     return this;
@@ -307,7 +307,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'barcodeHRIPosition',
       args: [hriPosition],
-      data: barcodeHRIPosition(hriPositionValue),
+      data: barcodeHRIPosition.write(hriPositionValue),
     });
 
     const hriFontValue = (() => {
@@ -331,18 +331,18 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'barcodeHRIFont',
       args: [hriFont],
-      data: barcodeHRIFont(hriFontValue),
+      data: barcodeHRIFont.write(hriFontValue),
     });
 
     this.cmds.push({
       name: 'barcodeWidth',
       args: [width],
-      data: barcodeWidth(width),
+      data: barcodeWidth.write(width),
     });
     this.cmds.push({
       name: 'barcodeHeight',
       args: [height],
-      data: barcodeHeight(height),
+      data: barcodeHeight.write(height),
     });
 
     const typeValue = (() => {
@@ -381,7 +381,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'barcodePrint',
       args: [data, type],
-      data: barcodePrint(typeValue, encoded.byteLength, encoded),
+      data: barcodePrint.write(typeValue, encoded.byteLength, encoded),
     });
 
     return this;
@@ -400,7 +400,7 @@ export abstract class BasePrinter implements Printer {
     this.cmds.push({
       name: 'cashdraw',
       args: [pin],
-      data: cashdraw(m, 0x19, 0x78),
+      data: cashdraw.write(m, 0x19, 0x78),
     });
 
     return this;
@@ -409,7 +409,7 @@ export abstract class BasePrinter implements Printer {
   initialize(): this {
     this.cmds.push({
       name: 'initialize',
-      data: initialize(),
+      data: initialize.write(),
     });
     return this;
   }

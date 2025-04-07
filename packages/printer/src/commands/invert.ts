@@ -1,3 +1,4 @@
+import { VAR, createCommand } from './Command';
 import { GS } from './common';
 
 /**
@@ -10,6 +11,9 @@ import { GS } from './common';
  *
  * @see https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_cb.html
  */
-export function invert(n: number) {
-  return [GS, 0x42, n];
-}
+export const invert = createCommand('invert', {
+  format: [GS, 0x42, VAR],
+  write(n: number) {
+    return [GS, 0x42, n];
+  },
+});
