@@ -183,7 +183,7 @@ function myCustomImageReader(
 
 Apply greyscale([Floyd-Steinberg dithering](https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering)):
 ```tsx
-import { transforms } from '@react-therma-printer/image';
+import { transforms } from '@react-thermal-printer/image';
 
 <Image src="https://my-cdn.com/image.png" transforms={[transforms.floydSteinberg]} />
 ```
