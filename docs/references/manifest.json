@@ -1,0 +1,18 @@
+[
+  {
+    "text": "react-thermal-printer",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "function",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "render",
+            "link": "references/react-thermal-printer/function/render.md"
+          }
+        ]
+      }
+    ]
+  }
+]

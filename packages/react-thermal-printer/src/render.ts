@@ -20,7 +20,20 @@ export interface RenderOptions {
 }
 
 /**
+ * @public
+ * @kind function
+ * @name render
+ * @signature
+ * ```typescript
+ * function render(elem: ReactElement<PrinterProps>, options?: RenderOptions): Promise<Uint8Array>;
+ * ```
+ *
+ * @description
  * Render the React element as printable binary data.
+ *
+ * @param {ReactElement<PrinterProps>} elem - The React element to render.
+ * @param {RenderOptions} [options] - Optional rendering options.
+ * @returns {Promise<Uint8Array>} The printable binary data.
  */
 export async function render(elem: ReactElement<PrinterProps>, options?: RenderOptions): Promise<Uint8Array> {
   const { type, characterSet, width = 48, encoder, initialize = true, debug = false } = elem.props;
