@@ -25,6 +25,13 @@ jobs:
           restore-keys: |
             typecheck-
       - run: yarn typecheck
+  attw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/node-setup
+      - uses: ./.github/actions/yarn-setup
+      - run: yarn attw
   test:
     runs-on: ubuntu-latest
     steps:

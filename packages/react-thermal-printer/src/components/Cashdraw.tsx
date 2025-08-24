@@ -1,5 +1,5 @@
-import type { CashDrawerPin } from '@react-thermal-printer/printer/src/Printer';
-import type { Printable } from '../types/Printable';
+import type { CashDrawerPin } from '@react-thermal-printer/printer';
+import type { Printable } from '../types/Printable.js';
 
 interface Props {
   /** pin to generate pulse */
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Cashdraw: Printable<Props> = () => {
-  return <></>;
+  return null;
 };
 
 Cashdraw.print = (elem, { printer }) => {

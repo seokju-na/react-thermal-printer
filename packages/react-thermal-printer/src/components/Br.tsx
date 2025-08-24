@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import type { ExtendHTMLProps } from '../types/HTMLProps';
-import type { Printable } from '../types/Printable';
+import type { ExtendHTMLProps } from '../types/HTMLProps.js';
+import type { Printable } from '../types/Printable.js';
+import { classNames } from '../utils/classnames.js';
 
 type Props = ExtendHTMLProps<'br'>;
 

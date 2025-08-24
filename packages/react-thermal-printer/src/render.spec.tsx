@@ -1,11 +1,11 @@
 import { Component } from 'react';
-import { Br } from './components/Br';
-import { Cut } from './components/Cut';
-import { Line } from './components/Line';
-import { Printer } from './components/Printer';
-import { Row } from './components/Row';
-import { Text } from './components/Text';
-import { render } from './render';
+import { Br } from './components/Br.js';
+import { Cut } from './components/Cut.js';
+import { Line } from './components/Line.js';
+import { Printer } from './components/Printer.js';
+import { Row } from './components/Row.js';
+import { Text } from './components/Text.js';
+import { render } from './render.js';
 
 it('render react node as printable data', async () => {
   const data = await render(

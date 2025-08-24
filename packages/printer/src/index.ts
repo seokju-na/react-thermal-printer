@@ -1,7 +1,7 @@
-import type { CharacterSet } from './CharacterSet';
-import { EpsonPrinter } from './EpsonPrinter';
-import type { Printer } from './Printer';
-import { StarPrinter } from './StarPrinter';
+import type { CharacterSet } from './CharacterSet.js';
+import { EpsonPrinter } from './EpsonPrinter.js';
+import type { Printer } from './Printer.js';
+import { StarPrinter } from './StarPrinter.js';
 
 export type PrinterType = 'epson' | 'star';
 export type PrinterEncoder = (text: string, characterSet: CharacterSet) => Uint8Array;
@@ -25,11 +25,11 @@ export function getPrinter({ type, ...options }: PrinterOptions): Printer {
   }
 }
 
-export type { CharacterSet } from './CharacterSet';
-export * from './Printer';
-export { EpsonPrinter } from './EpsonPrinter';
-export { StarPrinter } from './StarPrinter';
-export * from './commands';
-export type { DeserializedCommand, DeserializedCommandName } from './deserialize';
-export { deserialize } from './deserialize';
-export { encode, decode } from './iconv';
+export type { CharacterSet } from './CharacterSet.js';
+export * from './commands/index.js';
+export type { DeserializedCommand, DeserializedCommandName } from './deserialize.js';
+export { deserialize } from './deserialize.js';
+export { EpsonPrinter } from './EpsonPrinter.js';
+export { decode, encode } from './iconv.js';
+export * from './Printer.js';
+export { StarPrinter } from './StarPrinter.js';

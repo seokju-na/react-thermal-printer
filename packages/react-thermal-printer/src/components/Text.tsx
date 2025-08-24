@@ -1,9 +1,9 @@
 import type { Align, TextFont, TextSize, TextUnderline } from '@react-thermal-printer/printer';
-import classNames from 'classnames';
 import type { ReactNode } from 'react';
-import type { ExtendHTMLProps } from '../types/HTMLProps';
-import type { Printable } from '../types/Printable';
-import { reactNodeToString } from '../utils/reactNodeToString';
+import type { ExtendHTMLProps } from '../types/HTMLProps.js';
+import type { Printable } from '../types/Printable.js';
+import { classNames } from '../utils/classnames.js';
+import { reactNodeToString } from '../utils/reactNodeToString.js';
 
 type Props = ExtendHTMLProps<
   'div',

@@ -1,6 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
-import { resetPrinter } from '../utils/resetPrinter';
-import { Cashdraw } from './Cashdraw';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { Cashdraw } from './Cashdraw.js';
 
 it('kick cash drawer', async () => {
   const actual = getPrinter({ type: 'epson' });

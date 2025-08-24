@@ -1,34 +1,33 @@
-export * from './components/Printer';
-export * from './components/Br';
-export * from './components/Cashdraw';
-export * from './components/Cut';
-export * from './components/Line';
-export * from './components/Text';
-export * from './components/Raw';
-export * from './components/Image';
-export * from './components/QRCode';
-export * from './components/Barcode';
-export * from './components/Row';
-export * from './render';
-export * from './utils/textLength';
-export * from './utils/wrapText';
-
 export type {
   Align,
+  BarcodeOptions,
+  BarcodeType,
+  CashDrawerPin,
+  CharacterSet,
+  DeserializedCommand,
+  DeserializedCommandName,
+  PrinterType,
+  QRCodeOptions,
   TextFont,
   TextSize,
   TextUnderline,
-  QRCodeOptions,
-  BarcodeType,
-  BarcodeOptions,
-  CashDrawerPin,
-  CharacterSet,
-  PrinterType,
-  DeserializedCommand,
-  DeserializedCommandName,
 } from '@react-thermal-printer/printer';
 export {
-  encode,
   decode,
   deserialize,
+  encode,
 } from '@react-thermal-printer/printer';
+export * from './components/Barcode.js';
+export * from './components/Br.js';
+export * from './components/Cashdraw.js';
+export * from './components/Cut.js';
+export * from './components/Image.js';
+export * from './components/Line.js';
+export * from './components/Printer.js';
+export * from './components/QRCode.js';
+export * from './components/Raw.js';
+export * from './components/Row.js';
+export * from './components/Text.js';
+export * from './render.js';
+export * from './utils/textLength.js';
+export * from './utils/wrapText.js';

@@ -1,5 +1,5 @@
-import { createCommand } from './Command';
-import { GS } from './common';
+import { createCommand } from './Command.js';
+import { GS } from './common.js';
 
 /**
  * QR Code: Print the symbol data in the symbol storage area

@@ -1,5 +1,5 @@
-import { VAR, createCommand } from './Command';
-import { ESC, GS } from './common';
+import { createCommand, VAR } from './Command.js';
+import { ESC, GS } from './common.js';
 
 /**
  * Set QR code cell

@@ -1,4 +1,4 @@
-import type { Printable } from '../types/Printable';
+import type { Printable } from '../types/Printable.js';
 
 interface Props {
   /**
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Cut: Printable<Props> = () => {
-  return <></>;
+  return null;
 };
 
 Cut.print = (elem, { printer }) => {

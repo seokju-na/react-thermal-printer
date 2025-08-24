@@ -1,5 +1,5 @@
 import type { Image, ImageToRasterOptions } from '@react-thermal-printer/image';
-import type { CharacterSet } from './CharacterSet';
+import type { CharacterSet } from './CharacterSet.js';
 
 export type Align = 'left' | 'center' | 'right';
 export type TextFont = 'A' | 'B' | 'C' | 'D' | 'E' | 'special-A' | 'special-B';

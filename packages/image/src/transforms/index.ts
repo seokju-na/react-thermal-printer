@@ -1,4 +1,4 @@
-import { floydSteinberg } from './floydSteinberg';
+import { floydSteinberg } from './floydSteinberg.js';
 
-export type { ImageTransform } from './ImageTransform';
+export type { ImageTransform } from './ImageTransform.js';
 export const transforms = { floydSteinberg };

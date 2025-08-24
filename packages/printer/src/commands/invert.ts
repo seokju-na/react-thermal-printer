@@ -1,5 +1,5 @@
-import { VAR, createCommand } from './Command';
-import { GS } from './common';
+import { createCommand, VAR } from './Command.js';
+import { GS } from './common.js';
 
 /**
  * Turn white/black reverse print mode on/off

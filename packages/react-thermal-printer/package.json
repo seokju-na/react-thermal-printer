@@ -1,28 +1,30 @@
 {
   "name": "react-thermal-printer",
+  "type": "module",
   "version": "0.21.0",
   "description": "A React component to thermal printing",
   "license": "MIT",
   "main": "./src/index.ts",
-  "module": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "publishConfig": {
-    "access": "public",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "module": "./dist/index.mjs",
-    "import": "./dist/index.mjs",
     "exports": {
       ".": {
-        "types": "./dist/index.d.ts",
-        "require": "./dist/index.js",
-        "import": "./dist/index.mjs"
-      }
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      },
+      "./package.json": "./package.json"
     }
   },
   "files": [
-    "package.json",
     "dist"
   ],
+  "engines": {
+    "ndoe": ">= 16"
+  },
   "author": {
     "name": "Seokju Na",
     "email": "seokju.me@gmail.com",
@@ -39,8 +41,9 @@
     "url": "https://github.com/seokju-na/react-thermal-printer/issues"
   },
   "scripts": {
+    "attw": "yarn pack && attw package.tgz",
     "prepack": "yarn build",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "peerDependencies": {
     "react": "^18 || ^19",
@@ -48,17 +51,16 @@
   },
   "dependencies": {
     "@react-thermal-printer/image": "workspace:^",
-    "@react-thermal-printer/printer": "workspace:^",
-    "classnames": "^2.3.1",
-    "es-toolkit": "^1.27.0"
+    "@react-thermal-printer/printer": "workspace:^"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
     "@types/pngjs": "^6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "pngjs": "^6.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "tsup": "^8.3.0"
+    "tsdown": "0.14.1"
   }
 }

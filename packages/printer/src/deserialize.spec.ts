@@ -1,5 +1,5 @@
-import { deserialize } from './deserialize';
-import { getPrinter } from './index';
+import { deserialize } from './deserialize.js';
+import { getPrinter } from './index.js';
 
 describe('deserialize', () => {
   it('deserialize correctly', () => {
@@ -20,7 +20,6 @@ describe('deserialize', () => {
       .cut(true)
       .getData();
     const parsed = deserialize(data);
-    console.log(parsed);
     expect(parsed).toEqual([
       { name: 'initialize', data: [27, 64] },
       { name: 'internationalCharacterSet', data: [27, 82, 13] },

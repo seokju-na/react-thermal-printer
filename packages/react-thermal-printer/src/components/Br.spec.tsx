@@ -1,7 +1,7 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render as renderToDOM } from '@testing-library/react';
-import { resetPrinter } from '../utils/resetPrinter';
-import { Br } from './Br';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { Br } from './Br.js';
 
 it('render <br /> in DOM', () => {
   const { container } = renderToDOM(<Br />);

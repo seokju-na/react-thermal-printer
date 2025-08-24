@@ -1,15 +1,15 @@
-import { BasePrinter } from './BasePrinter';
+import { BasePrinter } from './BasePrinter.js';
 import {
-  LF,
   alignment,
+  barcodeHeight,
   barcodeHRIFont,
   barcodeHRIPosition,
-  barcodeHeight,
   barcodePrint,
   barcodeWidth,
   characterSet,
   cut,
   invert,
+  LF,
   qrcodeCellSize,
   qrcodeCorrectionLevel,
   qrcodeModel,
@@ -20,8 +20,8 @@ import {
   textMode,
   textSize,
   textUnderline,
-} from './commands';
-import { encode } from './iconv';
+} from './commands/index.js';
+import { encode } from './iconv.js';
 
 class TestPrinter extends BasePrinter {
   constructor() {

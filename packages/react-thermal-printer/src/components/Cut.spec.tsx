@@ -1,6 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
-import { resetPrinter } from '../utils/resetPrinter';
-import { Cut } from './Cut';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { Cut } from './Cut.js';
 
 it('feed lines and cut', async () => {
   const actual = getPrinter({ type: 'epson' });

@@ -1,6 +1,6 @@
 import { getPrinter } from '@react-thermal-printer/printer';
-import { resetPrinter } from '../utils/resetPrinter';
-import { Barcode } from './Barcode';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { Barcode } from './Barcode.js';
 
 it('print barcode', () => {
   const actual = getPrinter({ type: 'epson' });

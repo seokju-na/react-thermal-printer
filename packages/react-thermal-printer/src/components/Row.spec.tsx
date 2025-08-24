@@ -1,6 +1,6 @@
-import { render } from '../render';
-import { Printer } from './Printer';
-import { Row } from './Row';
+import { render } from '../render.js';
+import { Printer } from './Printer.js';
+import { Row } from './Row.js';
 
 it('fix invalid count value error for long text', async () => {
   await render(

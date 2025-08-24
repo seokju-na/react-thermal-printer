@@ -1,5 +1,5 @@
-import { BasePrinter } from './BasePrinter';
-import type { CharacterSet } from './CharacterSet';
+import { BasePrinter } from './BasePrinter.js';
+import type { CharacterSet } from './CharacterSet.js';
 
 interface Options {
   characterSet?: CharacterSet;
