@@ -1,0 +1,71 @@
+:root {
+  --vp-c-brand-1: rgb(27, 109, 225);
+  --vp-c-brand-2: rgb(55, 113, 212);
+  --vp-nav-logo-height: 16px;
+  --vp-font-family-base:
+    "Toss Product Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+:root[lang="ko"] {
+  word-break: keep-all;
+}
+
+ul.post-parameters-ul {
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+
+  & > li.post-parameters-li {
+    position: relative;
+    padding-left: 16px;
+    margin-left: 12px;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  & > li.post-parameters-li-root {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  & li.post-parameters-li::before {
+    position: absolute;
+    left: 0;
+    display: block;
+    content: "";
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid #5c6064;
+    border-bottom: 2px solid #5c6064;
+  }
+
+  & li.post-parameters-li-root::before {
+    display: none;
+  }
+}
+
+span.post-parameters--name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-right: 6px;
+  font-family: Menlo, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+span.post-parameters--required {
+  font-size: 14px;
+  color: #f5645a;
+}
+
+span.post-parameters--type {
+  font-size: 14px;
+  color: #38cc8e;
+}
+
+p.post-parameters--description {
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  margin: 0;
+}
