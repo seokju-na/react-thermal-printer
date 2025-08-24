@@ -1,5 +1,5 @@
 import type { Align, QRCodeOptions } from '@react-thermal-printer/printer';
-import type { Printable } from '../types/Printable';
+import type { Printable } from '../types/Printable.js';
 
 interface Props extends QRCodeOptions {
   align?: Align;
@@ -8,7 +8,7 @@ interface Props extends QRCodeOptions {
 
 export const QRCode: Printable<Props> = () => {
   // TODO: render qr code in DOM
-  return <></>;
+  return null;
 };
 
 QRCode.print = (elem, { printer }) => {

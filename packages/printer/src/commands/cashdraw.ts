@@ -1,5 +1,5 @@
-import { VAR, createCommand } from './Command';
-import { ESC } from './common';
+import { createCommand, VAR } from './Command.js';
+import { ESC } from './common.js';
 
 /**
  * Generate pulse

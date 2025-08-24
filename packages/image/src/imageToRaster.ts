@@ -1,4 +1,4 @@
-import type { Image } from './Image';
+import type { Image } from './Image.js';
 
 export interface ImageToRasterOptions {
   /**

@@ -1,4 +1,4 @@
-import { wrapText } from './wrapText';
+import { wrapText } from './wrapText.js';
 
 it('wrap text to multiple lines', () => {
   const text =

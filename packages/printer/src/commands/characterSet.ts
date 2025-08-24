@@ -1,6 +1,6 @@
-import type { CharacterSet } from '../CharacterSet';
-import { characterCodeTable } from './characterCodeTable';
-import { internationalCharacterSet } from './internationalCharacterSet';
+import type { CharacterSet } from '../CharacterSet.js';
+import { characterCodeTable } from './characterCodeTable.js';
+import { internationalCharacterSet } from './internationalCharacterSet.js';
 
 const characterSetValues: Record<CharacterSet, number> = {
   // code table

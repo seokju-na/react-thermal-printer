@@ -1,13 +1,12 @@
+import type { InferCommandName } from './commands/Command.js';
 import {
-  type Command,
-  LF,
-  VAR,
   alignment,
+  barcodeHeight,
   barcodeHRIFont,
   barcodeHRIPosition,
-  barcodeHeight,
   barcodePrint,
   barcodeWidth,
+  type Command,
   cashdraw,
   characterCodeTable,
   cut,
@@ -15,6 +14,7 @@ import {
   initialize,
   internationalCharacterSet,
   invert,
+  LF,
   qrcodeCellSize,
   qrcodeCorrectionLevel,
   qrcodeModel,
@@ -30,8 +30,8 @@ import {
   textMode,
   textSize,
   textUnderline,
-} from './commands';
-import type { InferCommandName } from './commands/Command';
+  VAR,
+} from './commands/index.js';
 
 const commands = [
   alignment,

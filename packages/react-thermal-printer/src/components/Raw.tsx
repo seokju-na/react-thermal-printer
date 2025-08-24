@@ -1,11 +1,11 @@
-import type { Printable } from '../types/Printable';
+import type { Printable } from '../types/Printable.js';
 
 interface Props {
   data: Uint8Array | number[];
 }
 
 export const Raw: Printable<Props> = () => {
-  return <></>;
+  return null;
 };
 
 Raw.print = (elem, { printer }) => {

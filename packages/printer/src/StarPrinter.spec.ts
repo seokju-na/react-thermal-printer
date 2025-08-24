@@ -1,12 +1,12 @@
-import { StarPrinter } from './StarPrinter';
 import {
   starQRCodeCellSize,
   starQRCodeCorrectionLevel,
   starQRCodeModel,
   starQRCodePrint,
   starQRCodeStore,
-} from './commands';
-import { encode } from './iconv';
+} from './commands/index.js';
+import { encode } from './iconv.js';
+import { StarPrinter } from './StarPrinter.js';
 
 it('qrcode', () => {
   const printer = new StarPrinter();

@@ -1,5 +1,5 @@
 import iconv from 'iconv-lite';
-import type { CharacterSet } from './CharacterSet';
+import type { CharacterSet } from './CharacterSet.js';
 
 export function encode(text: string, characterSet: CharacterSet): Uint8Array {
   return iconv.encode(text, encoding[characterSet]) as Uint8Array;

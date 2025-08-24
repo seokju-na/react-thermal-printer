@@ -1,23 +1,10 @@
 import { type Image, type ImageToRasterOptions, imageToRaster } from '@react-thermal-printer/image';
-import type { PrinterEncoder } from '.';
-import type { CharacterSet } from './CharacterSet';
-import type {
-  Align,
-  BarcodeOptions,
-  BarcodeType,
-  CashDrawerPin,
-  Printer,
-  QRCodeOptions,
-  TextFont,
-  TextSize,
-  TextUnderline,
-} from './Printer';
+import type { CharacterSet } from './CharacterSet.js';
 import {
-  LF,
   alignment,
+  barcodeHeight,
   barcodeHRIFont,
   barcodeHRIPosition,
-  barcodeHeight,
   barcodePrint,
   barcodeWidth,
   cashdraw,
@@ -26,6 +13,7 @@ import {
   image,
   initialize,
   invert,
+  LF,
   qrcodeCellSize,
   qrcodeCorrectionLevel,
   qrcodeModel,
@@ -36,8 +24,20 @@ import {
   textMode,
   textSize,
   textUnderline,
-} from './commands';
-import { encode } from './iconv';
+} from './commands/index.js';
+import { encode } from './iconv.js';
+import type { PrinterEncoder } from './index.js';
+import type {
+  Align,
+  BarcodeOptions,
+  BarcodeType,
+  CashDrawerPin,
+  Printer,
+  QRCodeOptions,
+  TextFont,
+  TextSize,
+  TextUnderline,
+} from './Printer.js';
 
 export interface BasePrinterOptions {
   characterSet?: CharacterSet;

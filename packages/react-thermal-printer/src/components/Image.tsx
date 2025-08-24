@@ -1,10 +1,10 @@
 import type { Image as ImageData, ImageToRasterOptions, ImageTransform } from '@react-thermal-printer/image';
 import type { Align } from '@react-thermal-printer/printer';
-import classNames from 'classnames';
 import type { ReactElement } from 'react';
-import type { ExtendHTMLProps } from '../types/HTMLProps';
-import type { Printable } from '../types/Printable';
-import { readImage } from '../utils/readImage';
+import type { ExtendHTMLProps } from '../types/HTMLProps.js';
+import type { Printable } from '../types/Printable.js';
+import { classNames } from '../utils/classnames.js';
+import { readImage } from '../utils/readImage.js';
 
 type Props = ExtendHTMLProps<
   'img',

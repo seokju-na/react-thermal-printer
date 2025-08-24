@@ -1,13 +1,13 @@
 import type { Printer } from '@react-thermal-printer/printer';
-import classNames from 'classnames';
-import { type ComponentProps, type ReactElement, cloneElement } from 'react';
-import type { ExtendHTMLProps } from '../types/HTMLProps';
-import type { Printable } from '../types/Printable';
-import { reactNodeToString } from '../utils/reactNodeToString';
-import { resetPrinter } from '../utils/resetPrinter';
-import { textLength } from '../utils/textLength';
-import { wrapText } from '../utils/wrapText';
-import { Text } from './Text';
+import { type ComponentProps, cloneElement, type ReactElement } from 'react';
+import type { ExtendHTMLProps } from '../types/HTMLProps.js';
+import type { Printable } from '../types/Printable.js';
+import { classNames } from '../utils/classnames.js';
+import { reactNodeToString } from '../utils/reactNodeToString.js';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { textLength } from '../utils/textLength.js';
+import { wrapText } from '../utils/wrapText.js';
+import { Text } from './Text.js';
 
 type Props = ExtendHTMLProps<
   'div',

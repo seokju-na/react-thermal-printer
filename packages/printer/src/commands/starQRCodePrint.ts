@@ -1,5 +1,5 @@
-import { createCommand } from './Command';
-import { ESC, GS } from './common';
+import { createCommand } from './Command.js';
+import { ESC, GS } from './common.js';
 
 /**
  * Print QR code

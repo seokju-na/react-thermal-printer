@@ -1,7 +1,7 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render } from '@testing-library/react';
-import { resetPrinter } from '../utils/resetPrinter';
-import { Line } from './Line';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { Line } from './Line.js';
 
 it('render <hr /> in DOM', () => {
   const { container } = render(<Line />);

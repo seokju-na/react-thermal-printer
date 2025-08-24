@@ -1,5 +1,5 @@
-import { createCommand } from './Command';
-import { ESC } from './common';
+import { createCommand } from './Command.js';
+import { ESC } from './common.js';
 
 /**
  * Initialize printer

@@ -1,15 +1,13 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
   "files": {
-    "ignore": ["./.yarn/**", "**/*.json"]
+    "includes": ["**", "!.yarn", "!**/*.json", "!e2e-tests/**/*"]
   },
   "formatter": {
     "enabled": true,
@@ -38,6 +36,15 @@
       "complexity": {
         "noUselessConstructor": "off",
         "noBannedTypes": "off"
+      },
+      "correctness": {
+        "useUniqueElementIds": "off",
+        "useImportExtensions": {
+          "level": "error",
+          "options": {
+            "forceJsExtensions": true
+          }
+        }
       }
     }
   },
@@ -47,5 +54,17 @@
       "trailingCommas": "es5",
       "arrowParentheses": "asNeeded"
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["example/**/*"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useImportExtensions": "off"
+          }
+        }
+      }
+    }
+  ]
 }

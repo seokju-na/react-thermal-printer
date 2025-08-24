@@ -1,7 +1,7 @@
 import type { PrinterOptions } from '@react-thermal-printer/printer';
-import classNames from 'classnames';
 import type { ReactNode } from 'react';
-import type { ExtendHTMLProps } from '../types/HTMLProps';
+import type { ExtendHTMLProps } from '../types/HTMLProps.js';
+import { classNames } from '../utils/classnames.js';
 
 interface PrinterProps extends PrinterOptions {
   /**

@@ -1,5 +1,5 @@
 import type { TextSize, TextWordBreak } from '@react-thermal-printer/printer';
-import { textLength } from './textLength';
+import { textLength } from './textLength.js';
 
 /** wrap text to multiple lines */
 export function wrapText(

@@ -1,17 +1,17 @@
-import { type Printer as PrinterType, getPrinter } from '@react-thermal-printer/printer';
+import { getPrinter, type Printer as PrinterType } from '@react-thermal-printer/printer';
 import {
   Children,
   type ComponentClass,
   type ComponentProps,
   type FunctionComponent,
+  isValidElement,
   type ReactElement,
   type ReactNode,
-  isValidElement,
 } from 'react';
-import type { Printer } from './components/Printer';
-import { isPrintable } from './types/Printable';
-import type { PrinterContext } from './types/PrinterContext';
-import { resetPrinter } from './utils/resetPrinter';
+import type { Printer } from './components/Printer.js';
+import { isPrintable } from './types/Printable.js';
+import type { PrinterContext } from './types/PrinterContext.js';
+import { resetPrinter } from './utils/resetPrinter.js';
 
 type PrinterProps = ComponentProps<typeof Printer>;
 

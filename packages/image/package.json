@@ -1,38 +1,39 @@
 {
   "name": "@react-thermal-printer/image",
+  "type": "module",
   "version": "0.13.0",
   "description": "Image interface for printing",
   "sideEffects": false,
   "license": "MIT",
   "main": "./src/index.ts",
-  "module": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "publishConfig": {
-    "access": "public",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "module": "./dist/index.mjs",
-    "import": "./dist/index.mjs",
     "exports": {
       ".": {
-        "types": "./dist/index.d.ts",
-        "require": "./dist/index.js",
-        "import": "./dist/index.mjs"
-      }
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      },
+      "./package.json": "./package.json"
     }
   },
   "files": [
-    "package.json",
     "dist"
   ],
   "scripts": {
+    "attw": "yarn pack && attw package.tgz",
     "prepack": "yarn build",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "dependencies": {
     "floyd-steinberg": "^1.0.6"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
     "@types/floyd-steinberg": "^1.0.0",
-    "tsup": "^8.3.0"
+    "tsdown": "0.14.1"
   }
 }

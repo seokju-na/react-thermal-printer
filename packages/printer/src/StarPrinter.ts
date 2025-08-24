@@ -1,14 +1,14 @@
-import { BasePrinter } from './BasePrinter';
-import type { CharacterSet } from './CharacterSet';
-import type { QRCodeOptions } from './Printer';
+import { BasePrinter } from './BasePrinter.js';
+import type { CharacterSet } from './CharacterSet.js';
 import {
   starQRCodeCellSize,
   starQRCodeCorrectionLevel,
   starQRCodeModel,
   starQRCodePrint,
   starQRCodeStore,
-} from './commands';
-import { encode } from './iconv';
+} from './commands/index.js';
+import { encode } from './iconv.js';
+import type { QRCodeOptions } from './Printer.js';
 
 interface Options {
   characterSet?: CharacterSet;

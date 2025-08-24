@@ -1,7 +1,7 @@
 import { getPrinter } from '@react-thermal-printer/printer';
 import { render, screen } from '@testing-library/react';
-import { resetPrinter } from '../utils/resetPrinter';
-import { Text } from './Text';
+import { resetPrinter } from '../utils/resetPrinter.js';
+import { Text } from './Text.js';
 
 it('render children in DOM', () => {
   render(<Text>abc</Text>);
