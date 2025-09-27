@@ -1,6 +1,6 @@
 import type { Printable } from '../types/Printable.js';
 
-interface Props {
+export interface CutProps {
   /**
    * cut after line feeds
    * @default 6
@@ -13,7 +13,28 @@ interface Props {
   partial?: boolean;
 }
 
-export const Cut: Printable<Props> = () => {
+/**
+ * @public
+ * @name Cut
+ * @category components
+ * @signature
+ * ```tsx
+ * function Cut(props: CutProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Cut the paper.
+ *
+ * Perform full/partial cutting, and feeds lines after cutting.
+ *
+ * ```tsx
+ * <Cut />
+ * <Cut lineFeeds={6} />
+ * // partial cut
+ * <Cut partial={true} />
+ * ```
+ */
+export const Cut: Printable<CutProps> = () => {
   return null;
 };
 

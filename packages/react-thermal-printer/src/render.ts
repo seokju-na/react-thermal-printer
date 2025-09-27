@@ -8,7 +8,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import type { Printer } from './components/Printer.js';
+import type { PrinterComp as Printer } from './components/Printer.js';
 import { isPrintable } from './types/Printable.js';
 import type { PrinterContext } from './types/PrinterContext.js';
 import { resetPrinter } from './utils/resetPrinter.js';
@@ -21,8 +21,8 @@ export interface RenderOptions {
 
 /**
  * @public
- * @kind function
  * @name render
+ * @category functions
  * @signature
  * ```typescript
  * function render(elem: ReactElement<PrinterProps>, options?: RenderOptions): Promise<Uint8Array>;
@@ -34,6 +34,25 @@ export interface RenderOptions {
  * @param {ReactElement<PrinterProps>} elem - The React element to render.
  * @param {RenderOptions} [options] - Optional rendering options.
  * @returns {Promise<Uint8Array>} The printable binary data.
+ *
+ * @example
+ * ```tsx
+ * import { Printer, Text, render } from 'react-thermal-printer';
+ *
+ * const receipt = (
+ *   <Printer type="epson">
+ *     <Text>$5.00</Text>
+ *   </Printer>
+ * );
+ * const data = await render(receipt);
+ *
+ * // Prints receipt data via serial port.
+ * const port = await navigator.serial.requestPort();
+ * await port.open({ baudRate: 9600 });
+ * const writer = port.writable.getWriter();
+ * await writer.write(data);
+ * writer.releaseLock();
+ * ```
  */
 export async function render(elem: ReactElement<PrinterProps>, options?: RenderOptions): Promise<Uint8Array> {
   const { type, characterSet, width = 48, encoder, initialize = true, debug = false } = elem.props;

@@ -1,12 +1,29 @@
 import type { CashDrawerPin } from '@react-thermal-printer/printer';
 import type { Printable } from '../types/Printable.js';
 
-interface Props {
+export interface CashdrawProps {
   /** pin to generate pulse */
   pin: CashDrawerPin;
 }
 
-export const Cashdraw: Printable<Props> = () => {
+/**
+ * @public
+ * @name Cashdraw
+ * @category components
+ * @signature
+ * ```tsx
+ * function Cashdraw(props: CashdrawProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Open cash drawer.
+ *
+ * ```tsx
+ * <Cashdraw pin="2pin" />
+ * <Cashdraw pin="5pin" />
+ * ```
+ */
+export const Cashdraw: Printable<CashdrawProps> = () => {
   return null;
 };
 

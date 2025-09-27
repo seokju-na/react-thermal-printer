@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitepress';
 import references from '../references/manifest.json' with { type: 'json' };
 
+const items = references[0]!.items;
+
 export default defineConfig({
   title: 'react-thermal-printer',
   lastUpdated: true,
@@ -11,8 +13,26 @@ export default defineConfig({
     },
     sidebar: [
       {
+        text: 'Guides',
+        items: [
+          {
+            text: 'Getting Started',
+            link: 'getting-started.md',
+          },
+          {
+            text: 'Usage',
+            link: 'usage.md',
+          },
+        ],
+      },
+      {
         text: 'References',
-        items: references,
+        items: items.map(item => {
+          return {
+            ...item,
+            collapsed: false,
+          };
+        }),
       },
     ],
     socialLinks: [

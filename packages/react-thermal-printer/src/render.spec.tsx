@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Br } from './components/Br.js';
 import { Cut } from './components/Cut.js';
 import { Line } from './components/Line.js';
-import { Printer } from './components/Printer.js';
+import { PrinterComp as Printer } from './components/Printer.js';
 import { Row } from './components/Row.js';
 import { Text } from './components/Text.js';
 import { render } from './render.js';

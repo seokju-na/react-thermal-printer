@@ -2,9 +2,25 @@ import type { ExtendHTMLProps } from '../types/HTMLProps.js';
 import type { Printable } from '../types/Printable.js';
 import { classNames } from '../utils/classnames.js';
 
-type Props = ExtendHTMLProps<'br'>;
+export type BrProps = ExtendHTMLProps<'br'>;
 
-export const Br: Printable = ({ className, ...props }: Props) => {
+/**
+ * @public
+ * @name Br
+ * @category components
+ * @signature
+ * ```tsx
+ * function Br(props: BrProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Feed line.
+ *
+ * ```tsx
+ * <Br />
+ * ```
+ */
+export const Br: Printable = ({ className, ...props }: BrProps) => {
   return <br className={classNames('rtp-br', className)} {...props} />;
 };
 

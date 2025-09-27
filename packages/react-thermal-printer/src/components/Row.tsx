@@ -9,7 +9,7 @@ import { textLength } from '../utils/textLength.js';
 import { wrapText } from '../utils/wrapText.js';
 import { Text } from './Text.js';
 
-type Props = ExtendHTMLProps<
+export type RowProps = ExtendHTMLProps<
   'div',
   {
     left: string | ReactElement<ComponentProps<typeof Text>>;
@@ -24,7 +24,33 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Row: Printable<Props> = ({ left, center, right, gap, className, ...props }) => {
+/**
+ * @public
+ * @name Row
+ * @category components
+ * @signature
+ * ```tsx
+ * function Row(props: RowProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Display `<Text>` on the left, center and right sides.
+ *
+ * ```tsx
+ * <Row left="left" right="right" />
+ * <Row left="left" right="right" gap={2} />
+ * <Row left="left" center="center" right="right" />
+ * <Row
+ *   left={<Text>left</Text>}
+ *   right="right"
+ * />
+ * <Row
+ *   left={<Text>left</Text>}
+ *   right="very very long text will be multi line placed."
+ * />
+ * ```
+ */
+export const Row: Printable<RowProps> = ({ left, center, right, gap, className, ...props }) => {
   const leftEl = typeof left === 'string' ? <Text>{left}</Text> : left;
   const centerEl = typeof center === 'string' ? <Text>{center}</Text> : center;
   const rightEl = typeof right === 'string' ? <Text>{right}</Text> : right;

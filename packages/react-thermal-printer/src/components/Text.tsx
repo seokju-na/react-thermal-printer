@@ -5,7 +5,7 @@ import type { Printable } from '../types/Printable.js';
 import { classNames } from '../utils/classnames.js';
 import { reactNodeToString } from '../utils/reactNodeToString.js';
 
-type Props = ExtendHTMLProps<
+export type TextProps = ExtendHTMLProps<
   'div',
   {
     align?: Align;
@@ -21,7 +21,34 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Text: Printable<Props> = ({
+/**
+ * @public
+ * @name Text
+ * @category components
+ * @signature
+ * ```tsx
+ * function Text(props: TextProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Display text, and change text size or style to make it bold, underline, etc.
+ *
+ * `<Text>` component also allows `<div>` element props.
+ *
+ * **Note**: `<Text>` allows only string nodes.
+ *
+ * ```tsx
+ * <Text>text</Text>
+ * <Text>fragment is {'allowed'}</Text>
+ * <Text align="center">center text</Text>
+ * <Text align="right">right text</Text>
+ * <Text bold={true}>bold text</Text>
+ * <Text underline="1dot-thick">underline text</Text>
+ * <Text invert={true}>invert text</Text>
+ * <Text size={{ width: 2, height: 2 }}>big size text</Text>
+ * ```
+ */
+export const Text: Printable<TextProps> = ({
   align,
   bold,
   font,

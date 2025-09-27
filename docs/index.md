@@ -11,8 +11,8 @@ hero:
       link: /getting-started
     - theme: alt
       text: Usage
-      link: /usage/repository
+      link: /usage
     - theme: alt
       text: References
-      link: /references/react-thermal-printer/function/render
+      link: /references/react-thermal-printer/functions/render
 ---
