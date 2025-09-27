@@ -2,7 +2,7 @@ import type { ExtendHTMLProps } from '../types/HTMLProps.js';
 import type { Printable } from '../types/Printable.js';
 import { classNames } from '../utils/classnames.js';
 
-type Props = ExtendHTMLProps<
+export type LineProps = ExtendHTMLProps<
   'hr',
   {
     /**
@@ -13,7 +13,24 @@ type Props = ExtendHTMLProps<
   }
 >;
 
-export const Line: Printable<Props> = ({ character, className, ...props }: Props) => {
+/**
+ * @public
+ * @name Line
+ * @category components
+ * @signature
+ * ```tsx
+ * function Line(props: LineProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Draw line. Prints the character as much as the `width` which from `<Printer>`.
+ *
+ * ```tsx
+ * <Line />
+ * <Line character="=" />
+ * ```
+ */
+export const Line: Printable<LineProps> = ({ character, className, ...props }: LineProps) => {
   return <hr data-character={character} className={classNames('rtp-line', className)} {...props} />;
 };
 

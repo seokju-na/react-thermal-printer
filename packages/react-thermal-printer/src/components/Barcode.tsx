@@ -1,13 +1,31 @@
 import type { Align, BarcodeOptions, BarcodeType } from '@react-thermal-printer/printer';
 import type { Printable } from '../types/Printable.js';
 
-interface Props extends BarcodeOptions {
+export interface BarcodeProps extends BarcodeOptions {
   type: BarcodeType;
   align?: Align;
   content: string;
 }
 
-export const Barcode: Printable<Props> = () => {
+/**
+ * @public
+ * @name Barcode
+ * @category components
+ * @signature
+ * ```tsx
+ * function Barcode(props: BarcodeProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Print barcode.
+ *
+ * ```tsx
+ * <Barcode type="UPC-A" content="111111111111" />
+ * <Barcode type="CODE39" content="A000$" />
+ * <Barcode align="center" type="UPC-A" content="111111111111" />
+ * ```
+ */
+export const Barcode: Printable<BarcodeProps> = () => {
   // TODO: render barcode in DOM
   return null;
 };

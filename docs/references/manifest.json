@@ -4,12 +4,62 @@
     "collapsed": true,
     "items": [
       {
-        "text": "function",
+        "text": "components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Barcode",
+            "link": "references/react-thermal-printer/components/Barcode.md"
+          },
+          {
+            "text": "Br",
+            "link": "references/react-thermal-printer/components/Br.md"
+          },
+          {
+            "text": "Cashdraw",
+            "link": "references/react-thermal-printer/components/Cashdraw.md"
+          },
+          {
+            "text": "Cut",
+            "link": "references/react-thermal-printer/components/Cut.md"
+          },
+          {
+            "text": "Image",
+            "link": "references/react-thermal-printer/components/Image.md"
+          },
+          {
+            "text": "Line",
+            "link": "references/react-thermal-printer/components/Line.md"
+          },
+          {
+            "text": "Printer",
+            "link": "references/react-thermal-printer/components/Printer.md"
+          },
+          {
+            "text": "QRCode",
+            "link": "references/react-thermal-printer/components/QRCode.md"
+          },
+          {
+            "text": "Raw",
+            "link": "references/react-thermal-printer/components/Raw.md"
+          },
+          {
+            "text": "Row",
+            "link": "references/react-thermal-printer/components/Row.md"
+          },
+          {
+            "text": "Text",
+            "link": "references/react-thermal-printer/components/Text.md"
+          }
+        ]
+      },
+      {
+        "text": "functions",
         "collapsed": true,
         "items": [
           {
             "text": "render",
-            "link": "references/react-thermal-printer/function/render.md"
+            "link": "references/react-thermal-printer/functions/render.md"
           }
         ]
       }

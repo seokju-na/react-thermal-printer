@@ -1,10 +1,26 @@
 import type { Printable } from '../types/Printable.js';
 
-interface Props {
+export interface RawProps {
   data: Uint8Array | number[];
 }
 
-export const Raw: Printable<Props> = () => {
+/**
+ * @public
+ * @name Raw
+ * @category components
+ * @signature
+ * ```tsx
+ * function Raw(props: RawProps): JSX.Element;
+ * ```
+ *
+ * @description
+ * Print raw data.
+ *
+ * ```tsx
+ * <Raw data={Uint8Array.from([0x00, 0x01, ...])} />
+ * ```
+ */
+export const Raw: Printable<RawProps> = () => {
   return null;
 };
 

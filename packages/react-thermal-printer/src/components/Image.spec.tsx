@@ -4,7 +4,7 @@ import { getPrinter } from '@react-thermal-printer/printer';
 import { render } from '@testing-library/react';
 import { PNG } from 'pngjs';
 import { resetPrinter } from '../utils/resetPrinter.js';
-import { Image } from './Image.js';
+import { ImageComp as Image } from './Image.js';
 
 function readPNG(filename: string) {
   return new Promise<ImageData>((resolve, reject) => {
