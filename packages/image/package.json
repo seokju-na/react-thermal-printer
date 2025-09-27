@@ -1,7 +1,7 @@
 {
   "name": "@react-thermal-printer/image",
   "type": "module",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Image interface for printing",
   "sideEffects": false,
   "license": "MIT",

@@ -1,5 +1,13 @@
 # Changelog
 
+## react-thermal-printer v0.22.0
+
+- feat(all): make package as "type: module", upgrade biome 2.2.2, typescript 5.9.2 (#112)
+- docs: add docs site with vitepress, docflow (#113)
+- chore: upgrade yarn 4.10.3 (#115)
+- docs: add documentations (#116)
+
+
 ## react-thermal-printer v0.21.0
 
 - feat: add deserialize function (#105)
