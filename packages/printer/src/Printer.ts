@@ -103,5 +103,5 @@ export interface Printer {
    * In the Row component, the align prop of each text element should be set according to its position under the Zebra, but in ESC/POS it must always use left alignment.
    * To handle this difference, this method is added to convert the position values accordingly.
    */
-  convertTextAlignInRow(align: Align): Align;
+  convertTextAlignInRow?(align: Align): Align;
 }

@@ -436,8 +436,4 @@ export abstract class BasePrinter implements Printer {
     console.debug(this.cmds);
     return this;
   }
-
-  convertTextAlignInRow(_align: Align): Align {
-    return 'left'; // align cannot be affect inside the <Row />
-  }
 }

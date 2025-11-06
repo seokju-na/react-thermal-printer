@@ -89,7 +89,7 @@ Row.print = (elem, context) => {
     const rightLine = rightLines[i];
 
     if (leftLine != null) {
-      Text.print(lineText(leftElem, leftLine, printer.convertTextAlignInRow('left')), context);
+      Text.print(lineText(leftElem, leftLine, printer.convertTextAlignInRow?.('left')), context);
       resetPrinter(printer);
     } else {
       space(printer, leftLineWidth);
@@ -98,7 +98,7 @@ Row.print = (elem, context) => {
     if (centerElem != null) {
       space(printer, gap);
       if (centerLine != null) {
-        Text.print(lineText(centerElem, centerLine, printer.convertTextAlignInRow('center')), context);
+        Text.print(lineText(centerElem, centerLine, printer.convertTextAlignInRow?.('center')), context);
         resetPrinter(printer);
       } else {
         space(printer, centerLineWidth);
@@ -107,7 +107,7 @@ Row.print = (elem, context) => {
 
     space(printer, gap);
     if (rightLine != null) {
-      Text.print(lineText(rightElem, rightLine, printer.convertTextAlignInRow('right')), context);
+      Text.print(lineText(rightElem, rightLine, printer.convertTextAlignInRow?.('right')), context);
       resetPrinter(printer);
     } else {
       space(printer, rightLineWidth);
@@ -121,6 +121,6 @@ function space(printer: Printer, length: number) {
   printer.text(' '.repeat(safeLength));
 }
 
-function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string, align: Align) {
+function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string, align: Align = 'left') {
   return cloneElement(textElem, { align, inline: true, children: text });
 }
