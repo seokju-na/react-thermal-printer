@@ -186,6 +186,14 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
+  line(width: number, character: string = '-'): this {
+    for (let i = 0; i < width; i++) {
+      this.text(character);
+    }
+
+    return this;
+  }
+
   raw(data: Uint8Array): this {
     this.cmds.push({
       name: 'raw',
@@ -427,5 +435,9 @@ export abstract class BasePrinter implements Printer {
   debug(): this {
     console.debug(this.cmds);
     return this;
+  }
+
+  convertTextAlignInRow(_align: Align): Align {
+    return 'left'; // align cannot be affect inside the <Row />
   }
 }

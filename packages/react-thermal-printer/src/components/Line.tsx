@@ -19,8 +19,6 @@ export const Line: Printable<Props> = ({ character, className, ...props }: Props
 
 Line.print = (elem, { printer, width }) => {
   const { character = '-' } = elem.props;
-  for (let i = 0; i < width; i++) {
-    printer.text(character);
-  }
+  printer.line(width, character);
   printer.newLine();
 };

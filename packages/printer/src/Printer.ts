@@ -86,6 +86,7 @@ export interface Printer {
   setAlign(align: Align): this;
   invert(enabled: boolean): this;
   text(data: string): this;
+  line(width: number, character?: string): this;
   raw(data: Uint8Array): this;
   newLine(): this;
   cut(partial?: boolean): this;
@@ -97,4 +98,10 @@ export interface Printer {
   getData(): Uint8Array;
   clear(): this;
   debug(): this;
+
+  /**
+   * In the Row component, the align prop of each text element should be set according to its position under the Zebra, but in ESC/POS it must always use left alignment.
+   * To handle this difference, this method is added to convert the position values accordingly.
+   */
+  convertTextAlignInRow(align: Align): Align;
 }

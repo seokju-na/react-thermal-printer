@@ -37,7 +37,7 @@ export interface RenderOptions {
  */
 export async function render(elem: ReactElement<PrinterProps>, options?: RenderOptions): Promise<Uint8Array> {
   const { type, characterSet, width = 48, encoder, initialize = true, debug = false } = elem.props;
-  const printer = getPrinter({ type, characterSet, encoder });
+  const printer = getPrinter({ type, width, characterSet, encoder });
 
   if (characterSet != null) {
     printer.setCharacterSet(characterSet);

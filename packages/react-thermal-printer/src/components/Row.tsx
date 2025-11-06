@@ -1,4 +1,4 @@
-import type { Printer } from '@react-thermal-printer/printer';
+import type { Align, Printer } from '@react-thermal-printer/printer';
 import { type ComponentProps, cloneElement, type ReactElement } from 'react';
 import type { ExtendHTMLProps } from '../types/HTMLProps.js';
 import type { Printable } from '../types/Printable.js';
@@ -89,7 +89,7 @@ Row.print = (elem, context) => {
     const rightLine = rightLines[i];
 
     if (leftLine != null) {
-      Text.print(lineText(leftElem, leftLine), context);
+      Text.print(lineText(leftElem, leftLine, printer.convertTextAlignInRow('left')), context);
       resetPrinter(printer);
     } else {
       space(printer, leftLineWidth);
@@ -98,7 +98,7 @@ Row.print = (elem, context) => {
     if (centerElem != null) {
       space(printer, gap);
       if (centerLine != null) {
-        Text.print(lineText(centerElem, centerLine), context);
+        Text.print(lineText(centerElem, centerLine, printer.convertTextAlignInRow('center')), context);
         resetPrinter(printer);
       } else {
         space(printer, centerLineWidth);
@@ -107,7 +107,7 @@ Row.print = (elem, context) => {
 
     space(printer, gap);
     if (rightLine != null) {
-      Text.print(lineText(rightElem, rightLine), context);
+      Text.print(lineText(rightElem, rightLine, printer.convertTextAlignInRow('right')), context);
       resetPrinter(printer);
     } else {
       space(printer, rightLineWidth);
@@ -121,10 +121,6 @@ function space(printer: Printer, length: number) {
   printer.text(' '.repeat(safeLength));
 }
 
-function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string) {
-  return cloneElement(textElem, {
-    align: 'left', // align cannot be affect inside the <Row />
-    inline: true,
-    children: text,
-  });
+function lineText(textElem: ReactElement<ComponentProps<typeof Text>>, text: string, align: Align) {
+  return cloneElement(textElem, { align, inline: true, children: text });
 }
