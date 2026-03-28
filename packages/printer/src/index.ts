@@ -2,12 +2,14 @@ import type { CharacterSet } from './CharacterSet.js';
 import { EpsonPrinter } from './EpsonPrinter.js';
 import type { Printer } from './Printer.js';
 import { StarPrinter } from './StarPrinter.js';
+import { ZebraPrinter } from './ZebraPrinter.js';
 
-export type PrinterType = 'epson' | 'star';
+export type PrinterType = 'epson' | 'star' | 'zebra';
 export type PrinterEncoder = (text: string, characterSet: CharacterSet) => Uint8Array;
 
 export interface PrinterOptions {
   type: PrinterType;
+  width?: number;
   characterSet?: CharacterSet;
   /**
    * Encoder for text
@@ -22,6 +24,8 @@ export function getPrinter({ type, ...options }: PrinterOptions): Printer {
       return new EpsonPrinter(options);
     case 'star':
       return new StarPrinter(options);
+    case 'zebra':
+      return new ZebraPrinter({ widthDots: options.width });
   }
 }
 
@@ -33,3 +37,4 @@ export { EpsonPrinter } from './EpsonPrinter.js';
 export { decode, encode } from './iconv.js';
 export * from './Printer.js';
 export { StarPrinter } from './StarPrinter.js';
+export { ZebraPrinter } from './ZebraPrinter.js';
