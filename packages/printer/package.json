@@ -34,6 +34,6 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "iconv-lite": "^0.6.3",
-    "tsdown": "0.14.1"
+    "tsdown": "0.22.2"
   }
 }

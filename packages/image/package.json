@@ -34,6 +34,6 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "@types/floyd-steinberg": "^1.0.0",
-    "tsdown": "0.14.1"
+    "tsdown": "0.22.2"
   }
 }

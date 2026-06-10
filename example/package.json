@@ -12,10 +12,10 @@
     "react-thermal-printer": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vitejs/plugin-react-swc": "^3.7.2",
+    "@vitejs/plugin-react": "^6.0.2",
     "typescript": "5.9.2",
     "vite": "^8.0.5"
   }
