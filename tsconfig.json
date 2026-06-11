@@ -19,5 +19,5 @@
     "skipLibCheck": true,
     "types": ["vitest/globals", "vitest/importMeta"]
   },
-  "exclude": ["e2e-tests/**/*"]
+  "exclude": ["e2e-tests/**/*", "docs/**/*"]
 }

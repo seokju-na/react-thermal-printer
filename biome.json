@@ -65,6 +65,16 @@
           }
         }
       }
+    },
+    {
+      "includes": ["docs/**/*"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useImportExtensions": "off"
+          }
+        }
+      }
     }
   ]
 }
