@@ -9,6 +9,7 @@
 # Documentation here: https://yarnpkg.com/features/zero-installs
 .pnp.*
 yarn.lock
+package-lock.json
 
 .idea/
 node_modules/

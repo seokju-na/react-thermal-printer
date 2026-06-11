@@ -52,9 +52,9 @@ jobs:
       - uses: ./.github/actions/yarn-setup
       - run: node install.mjs
         working-directory: ./e2e-tests
-      - run: yarn playwright install --with-deps
+      - run: npx playwright install --with-deps
         working-directory: ./e2e-tests
-      - run: yarn test
+      - run: npm test
         working-directory: ./e2e-tests
         env:
           TEST_TARGET: ${{ matrix.target }}

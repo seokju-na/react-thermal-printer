@@ -2,7 +2,7 @@
   "name": "react-thermal-printer-sources",
   "private": true,
   "type": "module",
-  "packageManager": "yarn@4.10.3",
+  "packageManager": "yarn@4.16.0",
   "workspaces": [
     "packages/*",
     "example",
@@ -20,13 +20,13 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
-    "@types/node": "^22",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "jsdom": "26.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "typescript": "5.9.2",
-    "vitest": "3.0.6"
+    "vitest": "4.1.8"
   }
 }

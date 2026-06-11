@@ -34,7 +34,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `yarn start:${target}`,
+    command: `npm run start:${target}`,
     url: `http://localhost:${getPort(target)}`,
     reuseExistingServer: !process.env.CI,
   },
