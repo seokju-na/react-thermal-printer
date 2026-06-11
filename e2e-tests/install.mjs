@@ -14,7 +14,13 @@ async function run(command, args, options) {
       ...options,
       stdio: 'inherit',
     });
-    ps.on('close', () => resolve());
+    ps.on('close', code => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`"${command} ${args.join(' ')}" exited with code ${code}`));
+      }
+    });
     ps.on('error', e => reject(e));
   });
 }
@@ -33,12 +39,9 @@ for (const pkg of packages) {
 }
 
 await fs.rm(path.join(rootDir, 'e2e-tests', 'yarn.lock'), { force: true });
-await fs.writeFile(path.join(rootDir, 'e2e-tests', 'yarn.lock'), '');
-await run('yarn', ['install'], {
+await fs.rm(path.join(rootDir, 'e2e-tests', 'package-lock.json'), { force: true });
+await fs.rm(path.join(rootDir, 'e2e-tests', 'node_modules'), { recursive: true, force: true });
+await run('npm', ['install', '--no-audit', '--no-fund'], {
   cwd: path.join(rootDir, 'e2e-tests'),
-  env: {
-    ...process.env,
-    YARN_ENABLE_IMMUTABLE_INSTALLS: 'false',
-    YARN_ENABLE_HARDENED_MODE: '0',
-  },
 });
+w

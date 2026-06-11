@@ -1,7 +1,6 @@
 {
   "name": "e2e-tests",
   "private": true,
-  "packageManager": "yarn@4.6.0",
   "scripts": {
     "dev:next": "cd next && next dev -p 3001",
     "dev:vite": "cd vite && vite dev --port 3002",
@@ -11,7 +10,7 @@
     "test:next": "TEST_TARGET=next playwright test",
     "test:vite": "TEST_TARGET=vite playwright test"
   },
-  "resolutions": {
+  "overrides": {
     "@react-thermal-printer/image": "file:./packages/image.tgz",
     "@react-thermal-printer/printer": "file:./packages/printer.tgz",
     "react-thermal-printer": "file:./packages/react-thermal-printer.tgz"
