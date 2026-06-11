@@ -44,4 +44,4 @@ await fs.rm(path.join(rootDir, 'e2e-tests', 'node_modules'), { recursive: true, 
 await run('npm', ['install', '--no-audit', '--no-fund'], {
   cwd: path.join(rootDir, 'e2e-tests'),
 });
-w
+
