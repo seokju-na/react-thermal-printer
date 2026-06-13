@@ -1,5 +1,6 @@
 # react-thermal-printer
 
+
 [![npm version](https://badge.fury.io/js/react-thermal-printer.svg)](https://www.npmjs.com/package/react-thermal-printer)
 
 React for thermal printing. It is used to print to a thermal printer that supports [ESC/POS commands](https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=2) using React. It provides a custom renderer to convert React elements to Uint8Array, you can easily markup the printing stuffs using React components.

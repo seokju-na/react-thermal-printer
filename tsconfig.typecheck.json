@@ -5,6 +5,7 @@
     "**/node_modules",
     "**/dist/",
     "**/esm/",
-    "e2e-tests/**"
+    "e2e-tests/**",
+    "docs/**"
   ]
 }

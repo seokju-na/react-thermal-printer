@@ -1,0 +1,39 @@
+---
+title: render
+description: Render the React element as printable binary data.
+---
+
+## Signature
+
+```typescript
+function render(elem: ReactElement<PrinterProps>, options?: RenderOptions): Promise<Uint8Array>;
+```
+
+### Parameters
+
+- **`elem`** (`ReactElement<PrinterProps>`, required) — The React element to render.
+- **`options`** (`RenderOptions`) — Optional rendering options.
+
+### Returns
+
+`Promise<Uint8Array>` — The printable binary data.
+
+## Examples
+
+```tsx
+import { Printer, Text, render } from 'react-thermal-printer';
+
+const receipt = (
+  <Printer type="epson">
+    <Text>$5.00</Text>
+  </Printer>
+);
+const data = await render(receipt);
+
+// Prints receipt data via serial port.
+const port = await navigator.serial.requestPort();
+await port.open({ baudRate: 9600 });
+const writer = port.writable.getWriter();
+await writer.write(data);
+writer.releaseLock();
+```

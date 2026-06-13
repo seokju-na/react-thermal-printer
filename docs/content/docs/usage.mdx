@@ -1,4 +1,7 @@
-# Usage
+---
+title: Usage
+description: Learn how to build receipts and print them over serial port or network.
+---
 
 ## Basic usage
 
@@ -41,11 +44,16 @@ const data: Uint8Array = await render(receipt);
 
 Above printer data will prints like:
 
-<img alt="receipt" width="360" src="https://user-images.githubusercontent.com/13250888/190206825-e54d2d4f-c4e7-45e0-ba8f-eff5cd2b06ff.png">
+<img
+  alt="receipt"
+  width={360}
+  src="https://user-images.githubusercontent.com/13250888/190206825-e54d2d4f-c4e7-45e0-ba8f-eff5cd2b06ff.png"
+/>
 
 ## Transports
 
 Print via serial port (Web):
+
 ```tsx
 import { render, Printer, Text } from 'react-thermal-printer';
 
@@ -66,6 +74,7 @@ if (writer != null) {
 ```
 
 Print via network (Nodejs):
+
 ```tsx
 import { render, Printer, Text } from 'react-thermal-printer';
 import { connect } from 'node:net';

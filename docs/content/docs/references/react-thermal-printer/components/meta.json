@@ -1,0 +1,16 @@
+{
+  "title": "components",
+  "pages": [
+    "Barcode",
+    "Br",
+    "Cashdraw",
+    "Cut",
+    "Image",
+    "Line",
+    "Printer",
+    "QRCode",
+    "Raw",
+    "Row",
+    "Text"
+  ]
+}
