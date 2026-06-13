@@ -3651,7 +3651,7 @@ __metadata:
     fumadocs-mdx: "npm:15.0.11"
     fumadocs-ui: "npm:16.9.3"
     lucide-react: "npm:^1.17.0"
-    next: "npm:^16.2.7"
+    next: "npm:16.2.9"
     postcss: "npm:^8.5.15"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
@@ -6230,7 +6230,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^16.2.7":
+"next@npm:16.2.9":
   version: 16.2.9
   resolution: "next@npm:16.2.9"
   dependencies:
