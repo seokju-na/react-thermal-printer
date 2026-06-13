@@ -13,10 +13,12 @@ import { getMDXComponents } from '@/components/mdx';
 import { gitConfig } from '@/lib/shared';
 import { getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
 
-export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
+export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  if (!page) notFound();
+  if (!page) {
+    notFound();
+  }
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
@@ -48,7 +50,7 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): Promise<Metadata> {
+export async function generateMetadata(props: PageProps<'/[[...slug]]'>): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
