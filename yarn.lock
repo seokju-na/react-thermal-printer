@@ -2406,6 +2406,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ts-morph/common@npm:~0.29.0":
+  version: 0.29.0
+  resolution: "@ts-morph/common@npm:0.29.0"
+  dependencies:
+    minimatch: "npm:^10.0.1"
+    path-browserify: "npm:^1.0.1"
+    tinyglobby: "npm:^0.2.14"
+  checksum: 10/d23cfb6c81110235a79cf5fbeb7efed04f4c8d560391a45184470b2363661f8da42f76572808be213f1e30d148117cb6dd57cac84a1c2a236839de986d2c27b8
+  languageName: node
+  linkType: hard
+
 "@tybys/wasm-util@npm:^0.10.1":
   version: 0.10.1
   resolution: "@tybys/wasm-util@npm:0.10.1"
@@ -2976,6 +2987,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"balanced-match@npm:^4.0.2":
+  version: 4.0.4
+  resolution: "balanced-match@npm:4.0.4"
+  checksum: 10/fb07bb66a0959c2843fc055838047e2a95ccebb837c519614afb067ebfdf2fa967ca8d712c35ced07f2cd26fc6f07964230b094891315ad74f11eba3d53178a0
+  languageName: node
+  linkType: hard
+
 "base64-js@npm:^1.3.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
@@ -3031,6 +3049,15 @@ __metadata:
   dependencies:
     balanced-match: "npm:^1.0.0"
   checksum: 10/a61e7cd2e8a8505e9f0036b3b6108ba5e926b4b55089eeb5550cd04a471fe216c96d4fe7e4c7f995c728c554ae20ddfc4244cad10aef255e72b62930afd233d1
+  languageName: node
+  linkType: hard
+
+"brace-expansion@npm:^5.0.5":
+  version: 5.0.6
+  resolution: "brace-expansion@npm:5.0.6"
+  dependencies:
+    balanced-match: "npm:^4.0.2"
+  checksum: 10/a7acf120fefa79e9d7c9c92898114f57c07596a3920197f3c5917e6a628b04220a5f7f9618c30bdd973a6576a32113b99f9c3f1c8245ccc399dd2a9a718d81d8
   languageName: node
   linkType: hard
 
@@ -3333,6 +3360,13 @@ __metadata:
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10/cdfb57fa6c7649bbff98d9028c2f0de2f91c86f551179541cf784b1cfdc1562dcb951955f46d54d930a3879931a980e32a46b598acaea274728dbe068deca919
+  languageName: node
+  linkType: hard
+
+"code-block-writer@npm:^13.0.3":
+  version: 13.0.3
+  resolution: "code-block-writer@npm:13.0.3"
+  checksum: 10/771546224f38610eecee0598e83c9e0f86dcd600ea316dbf27c2cfebaab4fed51b042325aa460b8e0f131fac5c1de208f6610a1ddbffe4b22e76f9b5256707cb
   languageName: node
   linkType: hard
 
@@ -3642,6 +3676,7 @@ __metadata:
   resolution: "docs@workspace:docs"
   dependencies:
     "@orama/orama": "npm:^3.1.18"
+    "@react-thermal-printer/image": "workspace:^"
     "@tailwindcss/postcss": "npm:^4.3.0"
     "@types/mdx": "npm:^2.0.13"
     "@types/node": "npm:^25"
@@ -3649,12 +3684,14 @@ __metadata:
     "@types/react-dom": "npm:^19"
     fumadocs-core: "npm:16.9.3"
     fumadocs-mdx: "npm:15.0.11"
+    fumadocs-typescript: "npm:5.2.6"
     fumadocs-ui: "npm:16.9.3"
     lucide-react: "npm:^1.17.0"
     next: "npm:16.2.9"
     postcss: "npm:^8.5.15"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
+    react-thermal-printer: "workspace:^"
     serve: "npm:^14.2.6"
     tailwind-merge: "npm:^3.6.0"
     tailwindcss: "npm:^4.3.0"
@@ -4313,6 +4350,43 @@ __metadata:
   bin:
     fumadocs-mdx: ./bin.js
   checksum: 10/28f424fe9eb87890ff6ca3265e2744ddb440139426b956901878337a9ed43f466c5df5e565decc75b21a76ed25f60ec4ef1a4cb65305bd9bf10e999c5ddbb541
+  languageName: node
+  linkType: hard
+
+"fumadocs-typescript@npm:5.2.6":
+  version: 5.2.6
+  resolution: "fumadocs-typescript@npm:5.2.6"
+  dependencies:
+    estree-util-value-to-estree: "npm:^3.5.0"
+    hast-util-to-estree: "npm:^3.1.3"
+    hast-util-to-jsx-runtime: "npm:^2.3.6"
+    remark: "npm:^15.0.1"
+    remark-rehype: "npm:^11.1.2"
+    shiki: "npm:^4.0.2"
+    ts-morph: "npm:^28.0.0"
+    unified: "npm:^11.0.5"
+    unist-util-visit: "npm:^5.1.0"
+  peerDependencies:
+    "@types/estree": "*"
+    "@types/hast": "*"
+    "@types/mdast": "*"
+    "@types/react": "*"
+    fumadocs-core: ^16.7.0
+    fumadocs-ui: ^16.7.0
+    react: ^19.2.0
+    react-dom: ^19.2.0
+  peerDependenciesMeta:
+    "@types/estree":
+      optional: true
+    "@types/hast":
+      optional: true
+    "@types/mdast":
+      optional: true
+    "@types/react":
+      optional: true
+    fumadocs-ui:
+      optional: true
+  checksum: 10/85449ebbba8b703e658676212b6e03841b43872ad3a6d24f9fd1c0a495ad54ce309d3efe8657f4df491a20592deac63d5abe19e29de83948b0dd6f4ab226a953
   languageName: node
   linkType: hard
 
@@ -6026,6 +6100,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:^10.0.1":
+  version: 10.2.5
+  resolution: "minimatch@npm:10.2.5"
+  dependencies:
+    brace-expansion: "npm:^5.0.5"
+  checksum: 10/19e87a931aff60ee7b9d80f39f817b8bfc54f61f8356ee3549fbf636dbccacacfec8d803eac73293955c4527cd085247dfc064bce4a5e349f8f3b85e2bf5da0f
+  languageName: node
+  linkType: hard
+
 "minimatch@npm:^5.0.1":
   version: 5.1.0
   resolution: "minimatch@npm:5.1.0"
@@ -6480,6 +6563,13 @@ __metadata:
   dependencies:
     entities: "npm:^4.5.0"
   checksum: 10/fd1a8ad1540d871e1ad6ca9bf5b67e30280886f1ce4a28052c0cb885723aa984d8cb1ec3da998349a6146960c8a84aa87b1a42600eb3b94495c7303476f2f88e
+  languageName: node
+  linkType: hard
+
+"path-browserify@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "path-browserify@npm:1.0.1"
+  checksum: 10/7e7368a5207e7c6b9051ef045711d0dc3c2b6203e96057e408e6e74d09f383061010d2be95cb8593fe6258a767c3e9fc6b2bfc7ce8d48ae8c3d9f6994cca9ad8
   languageName: node
   linkType: hard
 
@@ -7468,7 +7558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^4.1.0":
+"shiki@npm:^4.0.2, shiki@npm:^4.1.0":
   version: 4.2.0
   resolution: "shiki@npm:4.2.0"
   dependencies:
@@ -7797,6 +7887,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tinyglobby@npm:^0.2.14, tinyglobby@npm:^0.2.16, tinyglobby@npm:^0.2.17":
+  version: 0.2.17
+  resolution: "tinyglobby@npm:0.2.17"
+  dependencies:
+    fdir: "npm:^6.5.0"
+    picomatch: "npm:^4.0.4"
+  checksum: 10/f85e8a217d675c3f78d5f0ad25ea4557e7e023ed13ddc2b014da10bd0312eea53a34cd52356af07ccdff777f1243012547656282a4ca70936f68bf5065fbaa71
+  languageName: node
+  linkType: hard
+
 "tinyglobby@npm:^0.2.15":
   version: 0.2.16
   resolution: "tinyglobby@npm:0.2.16"
@@ -7804,16 +7904,6 @@ __metadata:
     fdir: "npm:^6.5.0"
     picomatch: "npm:^4.0.4"
   checksum: 10/5c2c41b572ada38449e7c86a5fe034f204a1dbba577225a761a14f29f48dc3f2fc0d81a6c56fcc67c5a742cc3aa9fb5e2ca18dbf22b610b0bc0e549b34d5a0f8
-  languageName: node
-  linkType: hard
-
-"tinyglobby@npm:^0.2.16, tinyglobby@npm:^0.2.17":
-  version: 0.2.17
-  resolution: "tinyglobby@npm:0.2.17"
-  dependencies:
-    fdir: "npm:^6.5.0"
-    picomatch: "npm:^4.0.4"
-  checksum: 10/f85e8a217d675c3f78d5f0ad25ea4557e7e023ed13ddc2b014da10bd0312eea53a34cd52356af07ccdff777f1243012547656282a4ca70936f68bf5065fbaa71
   languageName: node
   linkType: hard
 
@@ -7880,6 +7970,16 @@ __metadata:
   version: 2.2.0
   resolution: "trough@npm:2.2.0"
   checksum: 10/999c1cb3db6ec63e1663f911146a90125065da37f66ba342b031d53edb22a62f56c1f934bbc61a55b2b29dd74207544cfd78875b414665c1ffadcd9a9a009eeb
+  languageName: node
+  linkType: hard
+
+"ts-morph@npm:^28.0.0":
+  version: 28.0.0
+  resolution: "ts-morph@npm:28.0.0"
+  dependencies:
+    "@ts-morph/common": "npm:~0.29.0"
+    code-block-writer: "npm:^13.0.3"
+  checksum: 10/fb5541c2c5b25386ae85346203046cc136d4afa2821a9b7b5ea9ffdbcff6d8867eccf98a3d7d50dd86f64428f80cf4ae9e609bd8f02f99cef902ba2760ecd5d9
   languageName: node
   linkType: hard
 

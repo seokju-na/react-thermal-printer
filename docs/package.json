@@ -11,6 +11,7 @@
     "@orama/orama": "^3.1.18",
     "fumadocs-core": "16.9.3",
     "fumadocs-mdx": "15.0.11",
+    "fumadocs-typescript": "5.2.6",
     "fumadocs-ui": "16.9.3",
     "lucide-react": "^1.17.0",
     "next": "16.2.9",
@@ -19,12 +20,14 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@react-thermal-printer/image": "workspace:^",
     "@tailwindcss/postcss": "^4.3.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8.5.15",
+    "react-thermal-printer": "workspace:^",
     "serve": "^14.2.6",
     "tailwindcss": "^4.3.0",
     "typescript": "5.9.2"
