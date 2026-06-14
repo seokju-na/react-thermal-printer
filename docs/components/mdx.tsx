@@ -1,4 +1,4 @@
-import { createGenerator, createFileSystemGeneratorCache } from 'fumadocs-typescript';
+import { createFileSystemGeneratorCache, createGenerator } from 'fumadocs-typescript';
 import { AutoTypeTable, type AutoTypeTableProps } from 'fumadocs-typescript/ui';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';

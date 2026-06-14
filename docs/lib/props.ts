@@ -14,13 +14,13 @@ import type { Image, ImageToRasterOptions, ImageTransform } from '@react-thermal
 import type { ComponentProps, ReactElement } from 'react';
 // Imported as a value purely so `typeof Printer` resolves below. This file is never bundled
 // into the app — it is only read by the AutoTypeTable generator (ts-morph) at build time.
-import { Printer } from 'react-thermal-printer';
 import type {
   Align,
   BarcodeProps as BarcodeFullProps,
   CashdrawProps as CashdrawFullProps,
   CutProps as CutFullProps,
   LineProps as LineFullProps,
+  Printer,
   QRCodeProps as QRCodeFullProps,
   RawProps as RawFullProps,
   RenderOptions as RenderFullOptions,
