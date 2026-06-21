@@ -14,6 +14,11 @@ export function baseOptions(): BaseLayoutProps {
         url: 'https://www.npmjs.com/package/react-thermal-printer',
         external: true,
       },
+      {
+        text: 'vprinter',
+        url: 'https://vprinter.dev',
+        external: true,
+      },
     ],
   };
 }
