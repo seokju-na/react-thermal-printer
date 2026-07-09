@@ -26,7 +26,7 @@
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.16",
     "react-thermal-printer": "workspace:^",
     "serve": "^14.2.6",
     "tailwindcss": "^4.3.0",
