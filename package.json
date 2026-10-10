@@ -2,7 +2,7 @@
   "name": "react-thermal-printer-sources",
   "private": true,
   "type": "module",
-  "packageManager": "yarn@4.16.0",
+  "packageManager": "yarn@4.18.1",
   "workspaces": [
     "packages/*",
     "example",
@@ -16,9 +16,9 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.2",
+    "@biomejs/biome": "2.5.15",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "^16.2.0",
     "@types/node": "^25",
     "@types/react": "^19",
@@ -27,6 +27,10 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "typescript": "5.9.2",
+    "vite": "^8.0.16",
     "vitest": "5.0.3"
+  },
+  "engines": {
+    "node": "^24"
   }
 }
