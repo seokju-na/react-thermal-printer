@@ -1,0 +1,14 @@
+{
+  "name": "thermal-printer-iconv-comparison",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "benchmark": "node compare.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "iconv-lite": "0.6.3",
+    "iconv-nano": "0.0.9",
+    "playwright": "1.64.0"
+  }
+}

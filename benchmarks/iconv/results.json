@@ -1,0 +1,448 @@
+{
+  "node": "v24.15.0",
+  "chromium": "156.0.8078.4",
+  "versions": {
+    "esbuild": "0.28.2",
+    "iconvLite": "0.6.3",
+    "iconvNano": "0.0.9",
+    "playwright": "1.64.0"
+  },
+  "sizes": {
+    "currentCodec": {
+      "minifiedBytes": 527192,
+      "gzipBytes": 201559,
+      "retainedInputModules": 29
+    },
+    "nanoSupportedSubset": {
+      "minifiedBytes": 820464,
+      "gzipBytes": 320663,
+      "retainedInputModules": 42
+    },
+    "liteSingleEncoding": {
+      "minifiedBytes": 526136,
+      "gzipBytes": 201043,
+      "retainedInputModules": 29
+    },
+    "nanoSingleEncoding": {
+      "minifiedBytes": 2490,
+      "gzipBytes": 1287,
+      "retainedInputModules": 7
+    }
+  },
+  "supportedCharacterSets": [
+    "iso8859_7_greek",
+    "wpc1252",
+    "pc866_cyrillic2",
+    "pc874_thai",
+    "iso8859_2_latin2",
+    "iso8859_15_latin9",
+    "wpc1250_latin2",
+    "wpc1251_cyrillic",
+    "wpc1253_greek",
+    "wpc1254_turkish",
+    "wpc1255_hebrew",
+    "wpc1256_arabic",
+    "wpc1257_baltic_rim",
+    "wpc1258_vietnamese",
+    "japan",
+    "korea",
+    "china",
+    "hk_tw"
+  ],
+  "missingCharacterSets": {
+    "pc437_usa": "CP437",
+    "pc850_multilingual": "CP850",
+    "pc860_portuguese": "CP860",
+    "pc863_canadian_french": "CP863",
+    "pc865_nordic": "CP865",
+    "pc851_greek": "CP860",
+    "pc857_turkish": "CP857",
+    "pc737_greek": "CP737",
+    "pc852_latin2": "CP852",
+    "slovenia": "CP852",
+    "pc858_euro": "CP858",
+    "pc720_arabic": "CP720",
+    "wpc775_baltic_rim": "CP775",
+    "pc855_cyrillic": "CP855",
+    "pc861_icelandic": "CP861",
+    "pc862_hebrew": "CP862",
+    "pc864_arabic": "CP864",
+    "pc869_greek": "CP869",
+    "pc1125_ukrainian": "CP1125",
+    "kz1048_kazakhstan": "RK1048"
+  },
+  "alreadyUnsupportedCharacterSets": {
+    "pc853_turkish": "CP853",
+    "pc1098_farsi": "CP1098",
+    "pc1118_lithuanian": "CP1118",
+    "pc1119_lithuanian": "CP1119"
+  },
+  "browser": {
+    "globals": {
+      "Buffer": "undefined",
+      "process": "undefined",
+      "require": "undefined"
+    },
+    "roundTrips": [
+      {
+        "characterSet": "wpc1252",
+        "text": "Café €",
+        "passed": true
+      },
+      {
+        "characterSet": "japan",
+        "text": "日本語",
+        "passed": true
+      },
+      {
+        "characterSet": "korea",
+        "text": "안녕하세요",
+        "passed": true
+      },
+      {
+        "characterSet": "china",
+        "text": "中文",
+        "passed": true
+      },
+      {
+        "characterSet": "hk_tw",
+        "text": "繁體中文",
+        "passed": true
+      }
+    ],
+    "encodeDifferences": [
+      {
+        "characterSet": "iso8859_7_greek",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "iso8859_7_greek",
+        "text": "�",
+        "current": "ff",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1252",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1252",
+        "text": "�",
+        "current": "9d",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "pc866_cyrillic2",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "pc874_thai",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "pc874_thai",
+        "text": "�",
+        "current": "ff",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "iso8859_2_latin2",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "iso8859_15_latin9",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1250_latin2",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1250_latin2",
+        "text": "�",
+        "current": "98",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1251_cyrillic",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1251_cyrillic",
+        "text": "�",
+        "current": "98",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1253_greek",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1253_greek",
+        "text": "�",
+        "current": "ff",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1254_turkish",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1254_turkish",
+        "text": "�",
+        "current": "9e",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1255_hebrew",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1255_hebrew",
+        "text": "�",
+        "current": "ff",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1256_arabic",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1257_baltic_rim",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1257_baltic_rim",
+        "text": "�",
+        "current": "a5",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1258_vietnamese",
+        "text": "😀",
+        "current": "3f3f",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "wpc1258_vietnamese",
+        "text": "�",
+        "current": "9e",
+        "nano": "3f"
+      },
+      {
+        "characterSet": "china",
+        "text": "\ud800",
+        "current": "3f",
+        "nano": "8336c739"
+      }
+    ],
+    "decodeDifferences": [
+      {
+        "characterSet": "wpc1252",
+        "mismatches": 5,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 141,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 143,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "pc874_thai",
+        "mismatches": 23,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 130,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 131,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1250_latin2",
+        "mismatches": 5,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 131,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 136,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1251_cyrillic",
+        "mismatches": 1,
+        "examples": [
+          {
+            "byte": 152,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1253_greek",
+        "mismatches": 14,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 136,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 138,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1254_turkish",
+        "mismatches": 7,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 141,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 142,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1255_hebrew",
+        "mismatches": 12,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 138,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 140,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1257_baltic_rim",
+        "mismatches": 10,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 131,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 136,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      },
+      {
+        "characterSet": "wpc1258_vietnamese",
+        "mismatches": 9,
+        "examples": [
+          {
+            "byte": 129,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 138,
+            "current": "�",
+            "nano": ""
+          },
+          {
+            "byte": 141,
+            "current": "�",
+            "nano": ""
+          }
+        ]
+      }
+    ],
+    "unsupportedDefault": true
+  }
+}
