@@ -14,7 +14,7 @@
     "fumadocs-typescript": "5.2.6",
     "fumadocs-ui": "16.9.3",
     "lucide-react": "^1.17.0",
-    "next": "16.2.9",
+    "next": "16.3.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.6.0"
@@ -26,7 +26,7 @@
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.23",
     "react-thermal-printer": "workspace:^",
     "serve": "^14.2.6",
     "tailwindcss": "^4.3.0",
