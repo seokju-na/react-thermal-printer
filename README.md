@@ -266,5 +266,15 @@ const conn = connect({
 });
 ```
 
+## Development
+
+Run `yarn typecheck` to check the library and example sources with TypeScript 7.0.2.
+The native compiler is installed as `@typescript/native` (an npm alias for
+`typescript`) and invoked explicitly to avoid Yarn 4.16's legacy TypeScript patch
+and executable-name collisions. TypeScript 5 remains installed for tools that
+consume its JavaScript compiler API, including declaration generation and Next.js.
+The docs and standalone E2E application's compiler dependencies remain on their
+existing versions until those tools support the native compiler API.
+
 ## License
 MIT License
