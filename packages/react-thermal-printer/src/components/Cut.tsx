@@ -40,7 +40,7 @@ export interface CutProps {
  * // partial cut
  * <Cut partial={true} />
  * // feed paper to the cutter before cutting
- * <Cut partial lineFeeds={2} feedToCutter />
+ * <Cut partial lineFeeds={2} feedToCutter={true} />
  * ```
  */
 export const Cut: Printable<CutProps> = () => {

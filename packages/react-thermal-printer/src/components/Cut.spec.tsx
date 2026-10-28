@@ -14,7 +14,7 @@ it('feed lines, feed paper to cutter and cut', () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Cut.print(<Cut partial lineFeeds={2} feedToCutter />, {
+  Cut.print(<Cut partial lineFeeds={2} feedToCutter={true} />, {
     printer: actual,
     width: 44,
     reset: () => resetPrinter(actual),
@@ -26,7 +26,7 @@ it('feed paper to cutter without line feeds', () => {
   const actual = getPrinter({ type: 'epson' });
   const expected = getPrinter({ type: 'epson' });
 
-  Cut.print(<Cut lineFeeds={0} feedToCutter />, {
+  Cut.print(<Cut lineFeeds={0} feedToCutter={true} />, {
     printer: actual,
     width: 44,
     reset: () => resetPrinter(actual),
