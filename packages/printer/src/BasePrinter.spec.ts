@@ -158,6 +158,27 @@ it('cut', () => {
   expect(printer.getData()).toEqual(Uint8Array.from(cut.write(48)));
 });
 
+it('partial cut', () => {
+  const printer = new TestPrinter();
+
+  printer.cut(true);
+  expect(printer.getData()).toEqual(Uint8Array.from(cut.write(49)));
+});
+
+it('feed paper and cut', () => {
+  const printer = new TestPrinter();
+
+  printer.cut(false, true);
+  expect(printer.getData()).toEqual(Uint8Array.from(cut.write(65)));
+});
+
+it('feed paper and partial cut', () => {
+  const printer = new TestPrinter();
+
+  printer.cut(true, true);
+  expect(printer.getData()).toEqual(Uint8Array.from(cut.write(66)));
+});
+
 it('qrcode', () => {
   const printer = new TestPrinter();
 
