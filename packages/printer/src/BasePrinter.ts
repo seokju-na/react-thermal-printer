@@ -203,10 +203,12 @@ export abstract class BasePrinter implements Printer {
     return this;
   }
 
-  cut(partial = false): this {
+  cut(partial = false, feedToCutter = false): this {
+    const fullCutMode = feedToCutter ? 0x41 : 0x30;
+    const partialCutMode = feedToCutter ? 0x42 : 0x31;
     this.cmds.push({
       name: 'cut',
-      data: cut.write(partial ? 49 : 48),
+      data: cut.write(partial ? partialCutMode : fullCutMode),
     });
     return this;
   }

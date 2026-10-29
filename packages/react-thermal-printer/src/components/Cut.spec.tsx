@@ -9,3 +9,27 @@ it('feed lines and cut', async () => {
   Cut.print(<Cut lineFeeds={3} />, { printer: actual, width: 44, reset: () => resetPrinter(actual) });
   expect(actual.getData()).toEqual(expected.newLine().newLine().newLine().cut().getData());
 });
+
+it('feed lines, feed paper to cutter and cut', () => {
+  const actual = getPrinter({ type: 'epson' });
+  const expected = getPrinter({ type: 'epson' });
+
+  Cut.print(<Cut partial lineFeeds={2} feedToCutter={true} />, {
+    printer: actual,
+    width: 44,
+    reset: () => resetPrinter(actual),
+  });
+  expect(actual.getData()).toEqual(expected.newLine().newLine().cut(true, true).getData());
+});
+
+it('feed paper to cutter without line feeds', () => {
+  const actual = getPrinter({ type: 'epson' });
+  const expected = getPrinter({ type: 'epson' });
+
+  Cut.print(<Cut lineFeeds={0} feedToCutter={true} />, {
+    printer: actual,
+    width: 44,
+    reset: () => resetPrinter(actual),
+  });
+  expect(actual.getData()).toEqual(expected.cut(false, true).getData());
+});

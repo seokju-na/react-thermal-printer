@@ -192,13 +192,17 @@ import { transforms } from '@react-thermal-printer/image';
 ### `<Cut>`
 Cut the paper.
 
-Perform full/partial cutting, and feeds lines after cutting.
+Perform full/partial cutting after feeding the specified number of lines.
+
+Set `feedToCutter` to advance paper to the cutter before cutting. It defaults to `false` and does not replace `lineFeeds`.
 
 ```tsx
 <Cut />
 <Cut lineFeeds={6} />
 // partial cut
 <Cut partial={true} />
+// feed paper to the cutter before cutting
+<Cut partial lineFeeds={2} feedToCutter={true} />
 ```
 
 ### `<Raw>`
