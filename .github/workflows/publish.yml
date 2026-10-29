@@ -19,5 +19,21 @@ jobs:
       - name: publish
         env:
           YARN_NPM_REGISTRY_SERVER: https://registry.npmjs.org
+        shell: bash
         run: |
-          yarn workspaces foreach -At --no-private --include='packages/*' npm publish --provenance --access=public --tolerate-republish
+          for attempt in 1 2 3; do
+            if yarn workspaces foreach -At --no-private --include='packages/*' npm publish --provenance --access=public --tolerate-republish 2>&1 | tee "$RUNNER_TEMP/npm-publish.log"; then
+              exit 0
+            else
+              status=$?
+            fi
+
+            # A Rekor conflict does not mean the package was published to npm.
+            # Retry with a fresh provenance signature; keep other failures fatal.
+            if [ "$attempt" -eq 3 ] || ! grep -Eq 'error creating tlog entry - \(409\).*an equivalent entry already exists' "$RUNNER_TEMP/npm-publish.log"; then
+              exit "$status"
+            fi
+
+            echo "::warning::Sigstore transparency log conflict; retrying publish ($attempt/3)."
+            sleep 5
+          done
