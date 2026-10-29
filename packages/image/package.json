@@ -23,6 +23,21 @@
   "files": [
     "dist"
   ],
+  "author": {
+    "name": "Seokju Na",
+    "email": "seokju.me@gmail.com",
+    "url": "https://github.com/seokju-na"
+  },
+  "readme": "https://github.com/seokju-na/react-thermal-printer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seokju-na/react-thermal-printer",
+    "directory": "packages/image"
+  },
+  "homepage": "https://github.com/seokju-na/react-thermal-printer",
+  "bugs": {
+    "url": "https://github.com/seokju-na/react-thermal-printer/issues"
+  },
   "scripts": {
     "attw": "yarn pack && attw package.tgz",
     "prepack": "yarn build",
