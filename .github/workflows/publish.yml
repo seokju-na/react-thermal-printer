@@ -17,6 +17,7 @@ jobs:
       - uses: ./.github/actions/node-setup
       - uses: ./.github/actions/yarn-setup
       - name: publish
+        env:
+          YARN_NPM_REGISTRY_SERVER: https://registry.npmjs.org
         run: |
-          echo "npmAuthToken: ${{ secrets.NPM_TOKEN }}" | tee $HOME/.yarnrc.yml
           yarn workspaces foreach -At --no-private --include='packages/*' npm publish --provenance --access=public --tolerate-republish
