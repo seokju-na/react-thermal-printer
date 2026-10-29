@@ -1,5 +1,9 @@
 # Changelog
 
+## react-thermal-printer v0.23.0
+
+- feat: add opt-in feedToCutter support (#143)
+
 ## react-thermal-printer v0.22.0
 
 - feat(all): make package as "type: module", upgrade biome 2.2.2, typescript 5.9.2 (#112)

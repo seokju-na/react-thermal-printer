@@ -1,7 +1,7 @@
 {
   "name": "@react-thermal-printer/printer",
   "type": "module",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "Printer interface provides ESC/POS commands.",
   "sideEffects": false,
   "license": "MIT",
@@ -29,7 +29,7 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "@react-thermal-printer/image": "workspace:^"
+    "@react-thermal-printer/image": "workspace:*"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
