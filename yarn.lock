@@ -1689,7 +1689,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-thermal-printer/image@workspace:^, @react-thermal-printer/image@workspace:packages/image":
+"@react-thermal-printer/image@workspace:*, @react-thermal-printer/image@workspace:^, @react-thermal-printer/image@workspace:packages/image":
   version: 0.0.0-use.local
   resolution: "@react-thermal-printer/image@workspace:packages/image"
   dependencies:
@@ -1700,12 +1700,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@react-thermal-printer/printer@workspace:^, @react-thermal-printer/printer@workspace:packages/printer":
+"@react-thermal-printer/printer@workspace:*, @react-thermal-printer/printer@workspace:packages/printer":
   version: 0.0.0-use.local
   resolution: "@react-thermal-printer/printer@workspace:packages/printer"
   dependencies:
     "@arethetypeswrong/cli": "npm:^0.18.2"
-    "@react-thermal-printer/image": "workspace:^"
+    "@react-thermal-printer/image": "workspace:*"
     iconv-lite: "npm:^0.6.3"
     tsdown: "npm:0.23.0"
   languageName: unknown
@@ -6825,8 +6825,8 @@ __metadata:
   resolution: "react-thermal-printer@workspace:packages/react-thermal-printer"
   dependencies:
     "@arethetypeswrong/cli": "npm:^0.18.2"
-    "@react-thermal-printer/image": "workspace:^"
-    "@react-thermal-printer/printer": "workspace:^"
+    "@react-thermal-printer/image": "workspace:*"
+    "@react-thermal-printer/printer": "workspace:*"
     "@types/pngjs": "npm:^6"
     "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19"
